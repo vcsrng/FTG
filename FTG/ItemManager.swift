@@ -10,7 +10,7 @@ import Foundation
 class ItemManager {
     static let shared = ItemManager()
     
-    var isHoopEntityPlaced = false // Modify this property as needed
+    var isItemEntityPlaced = false // Modify this property as needed
     
     private init() {}
 }

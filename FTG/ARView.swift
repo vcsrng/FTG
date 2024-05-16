@@ -31,9 +31,20 @@ class CustomARView: ARView {
     var collisionSubscription: Cancellable?
     private var cancellables: Set<AnyCancellable> = []
     var cancellable: AnyCancellable?
+    
+    var collectedItems: Set<Entity> = []
 
     // List of item assets
     let itemAssets = ["Eight_Ball.usdz", "Golf_Ball.usdz", "Soccer_Ball.usdz", "Basketball_Ball.usdz", "Crumpled_paper.usdz"]
+    
+    // Scales for each item asset
+    let itemScales: [SIMD3<Float>] = [
+        SIMD3<Float>(repeating: 0.0005), // Scale for Eight_Ball.usdz
+        SIMD3<Float>(repeating: 0.00012), // Scale for Golf_Ball.usdz
+        SIMD3<Float>(repeating: 0.0012), // Scale for Soccer_Ball.usdz
+        SIMD3<Float>(repeating: 0.015), // Scale for Basketball_Ball.usdz
+        SIMD3<Float>(repeating: 0.0008) // Scale for Crumpled_paper.usdz
+    ]
 
     // MARK: - Lifecycle
 
@@ -79,25 +90,38 @@ private extension CustomARView {
     }
     
     func spawnItems() {
-        let shuffledAssets = itemAssets.shuffled()
-        for asset in shuffledAssets {
+        spawnItems(withScales: itemScales)
+    }
+    
+    func spawnItems(withScales scales: [SIMD3<Float>]) {
+        guard itemAssets.count == scales.count else {
+            print("Number of scales provided does not match number of item assets.")
+            return
+        }
+        
+        for (index, asset) in itemAssets.enumerated() {
             let randomPosition = SIMD3<Float>(
+//                Float.random(in: -1...1),
+//                Float.random(in: -1...1),
+//                Float.random(in: -1...1)
+                // testing
                 Float.random(in: -1...1),
-                Float.random(in: -1...1),
-                Float.random(in: -1...1)
+                Float.random(in: 0...1),
+                Float.random(in: 0...1)
             )
-            spawnItem(named: asset, at: randomPosition)
+            let scale = scales[index]
+            spawnItem(named: asset, at: randomPosition, scale: scale)
         }
     }
     
-    func spawnItem(named assetName: String, at position: SIMD3<Float>) {
+    func spawnItem(named assetName: String, at position: SIMD3<Float>, scale: SIMD3<Float>) {
         guard let modelEntity = try? ModelEntity.loadModel(named: assetName) else {
             return print("Failed to load 3D model \(assetName)")
         }
         
         modelEntity.name = .spawnedItemName
         modelEntity.transform.translation = position
-        modelEntity.scale = SIMD3<Float>(repeating: 0.001) // Change scale as needed
+        modelEntity.scale = scale
         
         let anchorEntity = AnchorEntity(world: position)
         anchorEntity.addChild(modelEntity)
@@ -108,8 +132,20 @@ private extension CustomARView {
         let tapLocation = gesture.location(in: self)
         guard let entity = self.entity(at: tapLocation) else { return }
         
-        if entity.name == .spawnedItemName {
-            showItemFoundProgress()
+        if entity.name == .spawnedItemName && !collectedItems.contains(entity) {
+            collectItem(entity)
+            removeItemFromScene(entity)
+        }
+    }
+    
+    func collectItem(_ item: Entity) {
+        collectedItems.insert(item)
+        // You can perform any action here upon collecting an item, like adding it to inventory, scoring points, etc.
+    }
+    
+    func removeItemFromScene(_ item: Entity) {
+        if let anchorEntity = item.anchor {
+            scene.removeAnchor(anchorEntity)
         }
     }
     
@@ -121,12 +157,21 @@ private extension CustomARView {
             alert.dismiss(animated: true)
         }
     }
+<<<<<<< Updated upstream:FTG/ARView.swift
+=======
+    
+    func collectItem(_ item: Entity, itemURL: URL) {
+        collectedItems.insert(item)
+        let inventoryItem = InventoryItem(name: item.name, modelURL: itemURL)
+        inventory.addItem(inventoryItem)
+    }
+>>>>>>> Stashed changes:FTG/ARThings/ARView.swift
 }
 
 extension CustomARView: ARSessionDelegate {
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         if let _ = scene.findEntity(named: "hoop") {
-            ItemManager.shared.isHoopEntityPlaced = true
+            ItemManager.shared.isItemEntityPlaced = true
         }
     }
 }

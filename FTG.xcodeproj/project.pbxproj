@@ -22,7 +22,7 @@
 		BF76F1632BF61F9000F512F3 /* ARContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1622BF61F9000F512F3 /* ARContentView.swift */; };
 		BF76F1652BF61FAC00F512F3 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1642BF61FAC00F512F3 /* ARView.swift */; };
 		BF76F1672BF61FEC00F512F3 /* ItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1662BF61FEC00F512F3 /* ItemManager.swift */; };
-		BF76F1692BF62AD000F512F3 /* Basketball_Ball.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1682BF62AD000F512F3 /* Basketball_Ball.usdz */; };
+		BF76F16D2BF63BEE00F512F3 /* Basketball_Ball.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF76F16C2BF63BEE00F512F3 /* Basketball_Ball.usdz */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +60,7 @@
 		BF76F1622BF61F9000F512F3 /* ARContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARContentView.swift; sourceTree = "<group>"; };
 		BF76F1642BF61FAC00F512F3 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		BF76F1662BF61FEC00F512F3 /* ItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemManager.swift; sourceTree = "<group>"; };
-		BF76F1682BF62AD000F512F3 /* Basketball_Ball.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Basketball_Ball.usdz; sourceTree = "<group>"; };
+		BF76F16C2BF63BEE00F512F3 /* Basketball_Ball.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Basketball_Ball.usdz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +116,7 @@
 				BF76F0DD2BF5046B00F512F3 /* Golf_Ball.usdz */,
 				BF76F0DE2BF5046B00F512F3 /* Soccer_Ball.usdz */,
 				BF76F0E32BF506FB00F512F3 /* Crumpled_paper.usdz */,
-				BF76F1682BF62AD000F512F3 /* Basketball_Ball.usdz */,
+				BF76F16C2BF63BEE00F512F3 /* Basketball_Ball.usdz */,
 				BF76F0A52BF4F57100F512F3 /* AppDelegate.swift */,
 				BF76F1622BF61F9000F512F3 /* ARContentView.swift */,
 				BF76F0D72BF5011500F512F3 /* ARGameViewController.swift */,
@@ -264,7 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF76F0E02BF5046B00F512F3 /* Golf_Ball.usdz in Resources */,
-				BF76F1692BF62AD000F512F3 /* Basketball_Ball.usdz in Resources */,
+				BF76F16D2BF63BEE00F512F3 /* Basketball_Ball.usdz in Resources */,
 				BF76F0E12BF5046B00F512F3 /* Soccer_Ball.usdz in Resources */,
 				BF76F0E42BF506FB00F512F3 /* Crumpled_paper.usdz in Resources */,
 				BF76F0E22BF5046B00F512F3 /* Eight_Ball.usdz in Resources */,
