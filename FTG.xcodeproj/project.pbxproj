@@ -13,7 +13,6 @@
 		BF76F0B72BF4F57200F512F3 /* FTGTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F0B62BF4F57200F512F3 /* FTGTests.swift */; };
 		BF76F0C12BF4F57200F512F3 /* FTGUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F0C02BF4F57200F512F3 /* FTGUITests.swift */; };
 		BF76F0C32BF4F57200F512F3 /* FTGUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F0C22BF4F57200F512F3 /* FTGUITestsLaunchTests.swift */; };
-		BF76F0D82BF5011500F512F3 /* ARGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F0D72BF5011500F512F3 /* ARGameViewController.swift */; };
 		BF76F0E02BF5046B00F512F3 /* Golf_Ball.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0DD2BF5046B00F512F3 /* Golf_Ball.usdz */; };
 		BF76F0E12BF5046B00F512F3 /* Soccer_Ball.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0DE2BF5046B00F512F3 /* Soccer_Ball.usdz */; };
 		BF76F0E22BF5046B00F512F3 /* Eight_Ball.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0DF2BF5046B00F512F3 /* Eight_Ball.usdz */; };
@@ -23,6 +22,9 @@
 		BF76F1652BF61FAC00F512F3 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1642BF61FAC00F512F3 /* ARView.swift */; };
 		BF76F1672BF61FEC00F512F3 /* ItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1662BF61FEC00F512F3 /* ItemManager.swift */; };
 		BF76F16D2BF63BEE00F512F3 /* Basketball_Ball.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF76F16C2BF63BEE00F512F3 /* Basketball_Ball.usdz */; };
+		BF76F16F2BF656CF00F512F3 /* InventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F16E2BF656CF00F512F3 /* InventoryView.swift */; };
+		BF76F1712BF6575300F512F3 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1702BF6575300F512F3 /* Inventory.swift */; };
+		BF76F1732BF657B800F512F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1722BF657B800F512F3 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +54,6 @@
 		BF76F0BC2BF4F57200F512F3 /* FTGUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FTGUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF76F0C02BF4F57200F512F3 /* FTGUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTGUITests.swift; sourceTree = "<group>"; };
 		BF76F0C22BF4F57200F512F3 /* FTGUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTGUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		BF76F0D72BF5011500F512F3 /* ARGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGameViewController.swift; sourceTree = "<group>"; };
 		BF76F0DD2BF5046B00F512F3 /* Golf_Ball.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Golf_Ball.usdz; sourceTree = "<group>"; };
 		BF76F0DE2BF5046B00F512F3 /* Soccer_Ball.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Soccer_Ball.usdz; sourceTree = "<group>"; };
 		BF76F0DF2BF5046B00F512F3 /* Eight_Ball.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Eight_Ball.usdz; sourceTree = "<group>"; };
@@ -61,6 +62,9 @@
 		BF76F1642BF61FAC00F512F3 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		BF76F1662BF61FEC00F512F3 /* ItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemManager.swift; sourceTree = "<group>"; };
 		BF76F16C2BF63BEE00F512F3 /* Basketball_Ball.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Basketball_Ball.usdz; sourceTree = "<group>"; };
+		BF76F16E2BF656CF00F512F3 /* InventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryView.swift; sourceTree = "<group>"; };
+		BF76F1702BF6575300F512F3 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		BF76F1722BF657B800F512F3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,16 +116,11 @@
 		BF76F0A42BF4F57100F512F3 /* FTG */ = {
 			isa = PBXGroup;
 			children = (
-				BF76F0DF2BF5046B00F512F3 /* Eight_Ball.usdz */,
-				BF76F0DD2BF5046B00F512F3 /* Golf_Ball.usdz */,
-				BF76F0DE2BF5046B00F512F3 /* Soccer_Ball.usdz */,
-				BF76F0E32BF506FB00F512F3 /* Crumpled_paper.usdz */,
-				BF76F16C2BF63BEE00F512F3 /* Basketball_Ball.usdz */,
+				BF76F1772BF65C0700F512F3 /* Model */,
 				BF76F0A52BF4F57100F512F3 /* AppDelegate.swift */,
-				BF76F1622BF61F9000F512F3 /* ARContentView.swift */,
-				BF76F0D72BF5011500F512F3 /* ARGameViewController.swift */,
-				BF76F1642BF61FAC00F512F3 /* ARView.swift */,
-				BF76F1662BF61FEC00F512F3 /* ItemManager.swift */,
+				BF76F1742BF65BAE00F512F3 /* ARThings */,
+				BF76F1762BF65BF900F512F3 /* View */,
+				BF76F1752BF65BC900F512F3 /* Storage */,
 				BF76F0A92BF4F57200F512F3 /* Assets.xcassets */,
 				BF76F0AB2BF4F57200F512F3 /* Preview Content */,
 			);
@@ -151,6 +150,45 @@
 				BF76F0C22BF4F57200F512F3 /* FTGUITestsLaunchTests.swift */,
 			);
 			path = FTGUITests;
+			sourceTree = "<group>";
+		};
+		BF76F1742BF65BAE00F512F3 /* ARThings */ = {
+			isa = PBXGroup;
+			children = (
+				BF76F1642BF61FAC00F512F3 /* ARView.swift */,
+				BF76F1622BF61F9000F512F3 /* ARContentView.swift */,
+			);
+			path = ARThings;
+			sourceTree = "<group>";
+		};
+		BF76F1752BF65BC900F512F3 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				BF76F1702BF6575300F512F3 /* Inventory.swift */,
+				BF76F1662BF61FEC00F512F3 /* ItemManager.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		BF76F1762BF65BF900F512F3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BF76F1722BF657B800F512F3 /* ContentView.swift */,
+				BF76F16E2BF656CF00F512F3 /* InventoryView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BF76F1772BF65C0700F512F3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF76F0DF2BF5046B00F512F3 /* Eight_Ball.usdz */,
+				BF76F0DD2BF5046B00F512F3 /* Golf_Ball.usdz */,
+				BF76F0DE2BF5046B00F512F3 /* Soccer_Ball.usdz */,
+				BF76F0E32BF506FB00F512F3 /* Crumpled_paper.usdz */,
+				BF76F16C2BF63BEE00F512F3 /* Basketball_Ball.usdz */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,8 +334,10 @@
 			files = (
 				BF76F1632BF61F9000F512F3 /* ARContentView.swift in Sources */,
 				BF76F1672BF61FEC00F512F3 /* ItemManager.swift in Sources */,
+				BF76F1732BF657B800F512F3 /* ContentView.swift in Sources */,
+				BF76F1712BF6575300F512F3 /* Inventory.swift in Sources */,
 				BF76F1652BF61FAC00F512F3 /* ARView.swift in Sources */,
-				BF76F0D82BF5011500F512F3 /* ARGameViewController.swift in Sources */,
+				BF76F16F2BF656CF00F512F3 /* InventoryView.swift in Sources */,
 				BF76F0A62BF4F57100F512F3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
