@@ -19,10 +19,10 @@ protocol CustomARViewDelegate {
     func didFind(verticalPlane: Bool)
 }
 
-class CustomARView: ARView {
+class CustomARView: ARView, ObservableObject {
     
     var itemManager: ItemManager = ItemManager.shared
-
+    var inventory = Inventory()
     // MARK: - Properties
 
     var focusEntity: FocusEntity?
@@ -56,8 +56,6 @@ class CustomARView: ARView {
         
         spawnItems()
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        addGestureRecognizer(tapGesture)
         isUserInteractionEnabled = true
     }
 
@@ -101,10 +99,6 @@ private extension CustomARView {
         
         for (index, asset) in itemAssets.enumerated() {
             let randomPosition = SIMD3<Float>(
-//                Float.random(in: -1...1),
-//                Float.random(in: -1...1),
-//                Float.random(in: -1...1)
-                // testing
                 Float.random(in: -1...1),
                 Float.random(in: 0...1),
                 Float.random(in: 0...1)
@@ -128,41 +122,28 @@ private extension CustomARView {
         scene.addAnchor(anchorEntity)
     }
     
-    @objc func handleTap(_ gesture: UITapGestureRecognizer) {
-        let tapLocation = gesture.location(in: self)
-        guard let entity = self.entity(at: tapLocation) else { return }
-        
-        if entity.name == .spawnedItemName && !collectedItems.contains(entity) {
-            collectItem(entity)
-            removeItemFromScene(entity)
-        }
-    }
-    
-    func collectItem(_ item: Entity) {
-        collectedItems.insert(item)
-        // You can perform any action here upon collecting an item, like adding it to inventory, scoring points, etc.
-    }
-    
     func removeItemFromScene(_ item: Entity) {
         if let anchorEntity = item.anchor {
             scene.removeAnchor(anchorEntity)
-        }
-    }
-    
-    func showItemFoundProgress() {
-        let alert = UIAlertController(title: "Item Found", message: "You found an item!", preferredStyle: .alert)
-        self.window?.rootViewController?.present(alert, animated: true)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            alert.dismiss(animated: true)
         }
     }
 }
 
 extension CustomARView: ARSessionDelegate {
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
-        if let _ = scene.findEntity(named: "hoop") {
-            ItemManager.shared.isItemEntityPlaced = true
+        let screenCenter = CGPoint(x: bounds.midX, y: bounds.midY)
+        
+        guard let screenCenterInWorld = self.raycast(from: screenCenter, allowing: .existingPlaneGeometry, alignment: .any).first?.worldTransform.translation else {
+            return
+        }
+        
+        for item in collectedItems {
+            let distanceToCenter = simd_distance(item.transform.translation, screenCenterInWorld)
+            let thresholdDistance: Float = 0.1
+            
+            if distanceToCenter < thresholdDistance {
+                removeItemFromScene(item)
+            }
         }
     }
 }
@@ -170,5 +151,18 @@ extension CustomARView: ARSessionDelegate {
 extension CustomARView: FocusEntityDelegate {
     func focusEntity(_ focusEntity: FocusEntity, trackingUpdated trackingState: FocusEntity.State, oldState: FocusEntity.State?) {
         delegate?.didFind(verticalPlane: focusEntity.onPlane)
+    }
+}
+
+extension simd_float4x4 {
+    var translation: SIMD3<Float> {
+        get {
+            return SIMD3<Float>(columns.3.x, columns.3.y, columns.3.z)
+        }
+        set (newValue) {
+            columns.3.x = newValue.x
+            columns.3.y = newValue.y
+            columns.3.z = newValue.z
+        }
     }
 }
