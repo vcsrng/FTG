@@ -17,7 +17,6 @@
 		BF76F0E12BF5046B00F512F3 /* Soccer_Ball.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0DE2BF5046B00F512F3 /* Soccer_Ball.usdz */; };
 		BF76F0E22BF5046B00F512F3 /* Eight_Ball.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0DF2BF5046B00F512F3 /* Eight_Ball.usdz */; };
 		BF76F0E42BF506FB00F512F3 /* Crumpled_paper.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0E32BF506FB00F512F3 /* Crumpled_paper.usdz */; };
-		BF76F1612BF61F5800F512F3 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = BF76F1602BF61F5800F512F3 /* FocusEntity */; };
 		BF76F1632BF61F9000F512F3 /* ARContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1622BF61F9000F512F3 /* ARContentView.swift */; };
 		BF76F1652BF61FAC00F512F3 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1642BF61FAC00F512F3 /* ARView.swift */; };
 		BF76F1672BF61FEC00F512F3 /* ItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1662BF61FEC00F512F3 /* ItemManager.swift */; };
@@ -25,6 +24,7 @@
 		BF76F16F2BF656CF00F512F3 /* InventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F16E2BF656CF00F512F3 /* InventoryView.swift */; };
 		BF76F1712BF6575300F512F3 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1702BF6575300F512F3 /* Inventory.swift */; };
 		BF76F1732BF657B800F512F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1722BF657B800F512F3 /* ContentView.swift */; };
+		BF76F17A2BF662F600F512F3 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = BF76F1792BF662F600F512F3 /* FocusEntity */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF76F1612BF61F5800F512F3 /* FocusEntity in Frameworks */,
+				BF76F17A2BF662F600F512F3 /* FocusEntity in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,7 +208,7 @@
 			);
 			name = FTG;
 			packageProductDependencies = (
-				BF76F1602BF61F5800F512F3 /* FocusEntity */,
+				BF76F1792BF662F600F512F3 /* FocusEntity */,
 			);
 			productName = FTG;
 			productReference = BF76F0A22BF4F57100F512F3 /* FTG.app */;
@@ -283,7 +283,7 @@
 			);
 			mainGroup = BF76F0992BF4F57100F512F3;
 			packageReferences = (
-				BF76F15F2BF61F5800F512F3 /* XCRemoteSwiftPackageReference "FocusEntity" */,
+				BF76F1782BF662F600F512F3 /* XCRemoteSwiftPackageReference "FocusEntity" */,
 			);
 			productRefGroup = BF76F0A32BF4F57100F512F3 /* Products */;
 			projectDirPath = "";
@@ -674,7 +674,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BF76F15F2BF61F5800F512F3 /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
+		BF76F1782BF662F600F512F3 /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/maxxfrazer/FocusEntity";
 			requirement = {
@@ -685,9 +685,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BF76F1602BF61F5800F512F3 /* FocusEntity */ = {
+		BF76F1792BF662F600F512F3 /* FocusEntity */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BF76F15F2BF61F5800F512F3 /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			package = BF76F1782BF662F600F512F3 /* XCRemoteSwiftPackageReference "FocusEntity" */;
 			productName = FocusEntity;
 		};
 /* End XCSwiftPackageProductDependency section */
