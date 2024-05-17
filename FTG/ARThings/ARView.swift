@@ -118,6 +118,7 @@ private extension CustomARView {
         guard let modelEntity = try? ModelEntity.loadModel(named: assetName) else {
             return print("Failed to load 3D model \(assetName)")
         }
+        modelEntity.generateCollisionShapes(recursive: true)
         
         modelEntity.name = .spawnedItemName
         modelEntity.transform.translation = position
