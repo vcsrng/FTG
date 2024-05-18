@@ -8,38 +8,48 @@
 import SwiftUI
 
 struct SettingView: View {
-    @State private var bgmVolume: Double = 0.5
-    @State private var sfxVolume: Double = 0.5
+    @Binding var bgmVolume: Float
+    @Binding var sfxVolume: Float
 
     var body: some View {
         VStack {
-            Spacer()
             Text("Settings")
                 .font(.largeTitle)
-                .fontWeight(.bold)
                 .padding()
-            
-            Divider()
-            
-            VStack {
-                Text("BGM Volume")
-                Slider(value: $bgmVolume, in: 0...1)
-                    .frame(width: 600)
-            }
-            .padding()
 
-            VStack {
-                Text("SFX Volume")
-                Slider(value: $sfxVolume, in: 0...1)
-                    .frame(width: 600)
+            VStack(alignment: .leading) {
+                Text("Background Music Volume")
+                    .padding(.leading)
+                Slider(value: Binding(
+                    get: { Double(bgmVolume) },
+                    set: { newValue in
+                        bgmVolume = Float(newValue)
+                        AudioManager.shared.setBGMVolume(bgmVolume)
+                    }
+                ), in: 0...1)
+                .frame(width: 600)
+                .padding()
+
+                Text("Sound Effects Volume")
+                    .padding(.leading)
+                Slider(value: Binding(
+                    get: { Double(sfxVolume) },
+                    set: { newValue in
+                        sfxVolume = Float(newValue)
+                        AudioManager.shared.setSFXVolume(sfxVolume)
+                    }
+                ), in: 0...1)
+                .frame(width: 600)
+                .padding()
             }
-            .padding()
-            Spacer()
         }
-        .padding(.top)
+        .padding()
+//        .background(.yellow)
     }
 }
 
-#Preview {
-    SettingView()
+struct SettingsView_Previews: PreviewProvider {
+    static var previews: some View {
+        SettingView(bgmVolume: .constant(0.5), sfxVolume: .constant(0.5))
+    }
 }

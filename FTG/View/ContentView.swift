@@ -11,13 +11,15 @@ struct ContentView: View {
     @StateObject private var customARView = CustomARView(frame: .zero)
     @State private var showInventory = false
     @State private var showSettings = false
+    @State private var bgmVolume: Float = 1
+    @State private var sfxVolume: Float = 1
 
     var body: some View {
         ZStack {
             ARContentView(arView: customARView)
                 .edgesIgnoringSafeArea(.all)
             VStack{
-                Text("\(customARView.inventory.items.count)")
+                Text("\(customARView.collectedItems.count)")
                     .font(.system(size: 104))
                 Spacer()
             }.padding(.top, 80)
@@ -176,17 +178,18 @@ struct ContentView: View {
                     .cornerRadius(24)
                     .padding(80)
                     .zIndex(2)
-//                    .transition(.move(edge: .trailing))
             }
 
             if showSettings {
-                SettingView()
+                SettingView(bgmVolume: $bgmVolume, sfxVolume: $sfxVolume)
                     .background(Color.white)
                     .cornerRadius(24)
                     .padding(320)
                     .zIndex(1)
             }
-            
+        }
+        .onAppear {
+            AudioManager.shared.playBGM(filename: "BGM", volume: bgmVolume)
         }
     }
 }

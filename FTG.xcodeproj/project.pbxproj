@@ -26,6 +26,9 @@
 		BF76F1732BF657B800F512F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1722BF657B800F512F3 /* ContentView.swift */; };
 		BF76F1B82BF7052C00F512F3 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = BF76F1B72BF7052C00F512F3 /* FocusEntity */; };
 		BF76F1BA2BF8C62700F512F3 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1B92BF8C62700F512F3 /* SettingView.swift */; };
+		BF76F1BE2BF8D35F00F512F3 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1BD2BF8D35F00F512F3 /* AudioManager.swift */; };
+		BF76F1C12BF8D50D00F512F3 /* BGM.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1C02BF8D50D00F512F3 /* BGM.mp3 */; };
+		BF76F1C32BF8D72600F512F3 /* ItemCollect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1C22BF8D72600F512F3 /* ItemCollect.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,9 @@
 		BF76F1702BF6575300F512F3 /* InventoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryItem.swift; sourceTree = "<group>"; };
 		BF76F1722BF657B800F512F3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF76F1B92BF8C62700F512F3 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		BF76F1BD2BF8D35F00F512F3 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		BF76F1C02BF8D50D00F512F3 /* BGM.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BGM.mp3; sourceTree = "<group>"; };
+		BF76F1C22BF8D72600F512F3 /* ItemCollect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ItemCollect.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,11 +124,13 @@
 		BF76F0A42BF4F57100F512F3 /* FTG */ = {
 			isa = PBXGroup;
 			children = (
+				BF76F1BF2BF8D4EA00F512F3 /* BGM */,
 				BF76F1772BF65C0700F512F3 /* Model */,
 				BF76F0A52BF4F57100F512F3 /* AppDelegate.swift */,
+				BF76F1C42BF8D7C000F512F3 /* Audio */,
 				BF76F1742BF65BAE00F512F3 /* ARThings */,
 				BF76F1762BF65BF900F512F3 /* View */,
-				BF76F1752BF65BC900F512F3 /* Storage */,
+				BF76F1752BF65BC900F512F3 /* Container */,
 				BF76F0A92BF4F57200F512F3 /* Assets.xcassets */,
 				BF76F0AB2BF4F57200F512F3 /* Preview Content */,
 			);
@@ -163,13 +171,13 @@
 			path = ARThings;
 			sourceTree = "<group>";
 		};
-		BF76F1752BF65BC900F512F3 /* Storage */ = {
+		BF76F1752BF65BC900F512F3 /* Container */ = {
 			isa = PBXGroup;
 			children = (
 				BF76F1702BF6575300F512F3 /* InventoryItem.swift */,
 				BF76F1662BF61FEC00F512F3 /* ItemManager.swift */,
 			);
-			path = Storage;
+			path = Container;
 			sourceTree = "<group>";
 		};
 		BF76F1762BF65BF900F512F3 /* View */ = {
@@ -192,6 +200,23 @@
 				BF76F16C2BF63BEE00F512F3 /* Basketball_Ball.usdz */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BF76F1BF2BF8D4EA00F512F3 /* BGM */ = {
+			isa = PBXGroup;
+			children = (
+				BF76F1C02BF8D50D00F512F3 /* BGM.mp3 */,
+				BF76F1C22BF8D72600F512F3 /* ItemCollect.mp3 */,
+			);
+			path = BGM;
+			sourceTree = "<group>";
+		};
+		BF76F1C42BF8D7C000F512F3 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				BF76F1BD2BF8D35F00F512F3 /* AudioManager.swift */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +330,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF76F0E02BF5046B00F512F3 /* Golf_Ball.usdz in Resources */,
+				BF76F1C32BF8D72600F512F3 /* ItemCollect.mp3 in Resources */,
+				BF76F1C12BF8D50D00F512F3 /* BGM.mp3 in Resources */,
 				BF76F16D2BF63BEE00F512F3 /* Basketball_Ball.usdz in Resources */,
 				BF76F0E12BF5046B00F512F3 /* Soccer_Ball.usdz in Resources */,
 				BF76F0E42BF506FB00F512F3 /* Crumpled_paper.usdz in Resources */,
@@ -341,6 +368,7 @@
 				BF76F1712BF6575300F512F3 /* InventoryItem.swift in Sources */,
 				BF76F1652BF61FAC00F512F3 /* ARView.swift in Sources */,
 				BF76F1BA2BF8C62700F512F3 /* SettingView.swift in Sources */,
+				BF76F1BE2BF8D35F00F512F3 /* AudioManager.swift in Sources */,
 				BF76F16F2BF656CF00F512F3 /* InventoryView.swift in Sources */,
 				BF76F0A62BF4F57100F512F3 /* AppDelegate.swift in Sources */,
 			);

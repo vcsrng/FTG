@@ -50,6 +50,9 @@ class CustomARView: ARView, ObservableObject {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         addGestureRecognizer(tapGesture)
         isUserInteractionEnabled = true
+        
+        // Play background music
+//        AudioManager.shared.playBGM(filename: "bgm", fileType: "mp3")
     }
     
     required init?(coder decoder: NSCoder) {
@@ -131,6 +134,9 @@ class CustomARView: ARView, ObservableObject {
             guard let self = self else { return }
             let inventoryItem = InventoryItem(name: itemName, modelURL: itemURL, thumbnail: image)
             self.inventory.addItem(inventoryItem)
+            
+            // Play item collection sound effect
+//            AudioManager.shared.playSFX(filename: "item_collect", fileType: "mp3")
             
             self.showItemFoundProgress(itemName: itemName)
         }

@@ -5,20 +5,29 @@
 //  Created by Vincent Saranang on 15/05/24.
 //
 
+//
+//  AppDelegate.swift
+//  FTG
+//
+//  Created by Vincent Saranang on 15/05/24.
+//
+
 import UIKit
 import SwiftUI
+import AVFoundation
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
+        // Set up audio session
+        setupAudioSession()
+        
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView()
-
+        
         // Use a UIHostingController as window root view controller.
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = UIHostingController(rootView: contentView)
@@ -44,6 +53,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
-
+    func setupAudioSession() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers])
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Failed to set up audio session: \(error)")
+        }
+    }
 }
-
