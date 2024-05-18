@@ -5,13 +5,6 @@
 //  Created by Vincent Saranang on 15/05/24.
 //
 
-//
-//  AppDelegate.swift
-//  FTG
-//
-//  Created by Vincent Saranang on 15/05/24.
-//
-
 import UIKit
 import SwiftUI
 import AVFoundation

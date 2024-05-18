@@ -44,7 +44,6 @@ struct SettingView: View {
             }
         }
         .padding()
-//        .background(.yellow)
     }
 }
 

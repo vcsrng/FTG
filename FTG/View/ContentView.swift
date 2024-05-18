@@ -12,7 +12,6 @@ struct ContentView: View {
     @State private var showInventory = false
     @State private var showSettings = false
     @State private var bgmVolume: Float = 1
-    @State private var sfxVolume: Float = 1
 
     var body: some View {
         ZStack {
@@ -181,7 +180,7 @@ struct ContentView: View {
             }
 
             if showSettings {
-                SettingView(bgmVolume: $bgmVolume, sfxVolume: $sfxVolume)
+                SettingView(bgmVolume: $bgmVolume, sfxVolume: $customARView.sfxVolume)
                     .background(Color.white)
                     .cornerRadius(24)
                     .padding(320)

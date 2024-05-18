@@ -11,12 +11,15 @@ import RealityKit
 import Combine
 import SwiftUI
 import UIKit
+import AVFoundation
 
 protocol CustomARViewDelegate {
     func didFind(verticalPlane: Bool)
 }
 
 class CustomARView: ARView, ObservableObject {
+    @Published var sfxVolume: Float = 1.0
+    
     var itemManager: ItemManager = ItemManager.shared
     var inventory = Inventory()
     
@@ -136,7 +139,7 @@ class CustomARView: ARView, ObservableObject {
             self.inventory.addItem(inventoryItem)
             
             // Play item collection sound effect
-//            AudioManager.shared.playSFX(filename: "item_collect", fileType: "mp3")
+            AudioManager.shared.playSFX(filename: "ItemCollect", volume: sfxVolume)
             
             self.showItemFoundProgress(itemName: itemName)
         }
