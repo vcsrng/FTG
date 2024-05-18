@@ -178,6 +178,7 @@ struct ContentView: View {
                     .zIndex(2)
 //                    .transition(.move(edge: .trailing))
             }
+
             if showSettings {
                 SettingView()
                     .background(Color.white)
