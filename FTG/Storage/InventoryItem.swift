@@ -7,10 +7,13 @@
 
 import Foundation
 
+import SwiftUI
+
 struct InventoryItem: Identifiable {
     let id = UUID()
     let name: String
-    let modelURL: URL // URL of the 3D model associated with the item
+    let modelURL: URL
+    var thumbnail: UIImage?
 }
 
 class Inventory: ObservableObject {

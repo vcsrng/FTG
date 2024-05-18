@@ -25,6 +25,7 @@
 		BF76F1712BF6575300F512F3 /* InventoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1702BF6575300F512F3 /* InventoryItem.swift */; };
 		BF76F1732BF657B800F512F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1722BF657B800F512F3 /* ContentView.swift */; };
 		BF76F1B82BF7052C00F512F3 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = BF76F1B72BF7052C00F512F3 /* FocusEntity */; };
+		BF76F1BA2BF8C62700F512F3 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1B92BF8C62700F512F3 /* SettingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		BF76F16E2BF656CF00F512F3 /* InventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryView.swift; sourceTree = "<group>"; };
 		BF76F1702BF6575300F512F3 /* InventoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryItem.swift; sourceTree = "<group>"; };
 		BF76F1722BF657B800F512F3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BF76F1B92BF8C62700F512F3 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				BF76F1722BF657B800F512F3 /* ContentView.swift */,
+				BF76F1B92BF8C62700F512F3 /* SettingView.swift */,
 				BF76F16E2BF656CF00F512F3 /* InventoryView.swift */,
 			);
 			path = View;
@@ -337,6 +340,7 @@
 				BF76F1732BF657B800F512F3 /* ContentView.swift in Sources */,
 				BF76F1712BF6575300F512F3 /* InventoryItem.swift in Sources */,
 				BF76F1652BF61FAC00F512F3 /* ARView.swift in Sources */,
+				BF76F1BA2BF8C62700F512F3 /* SettingView.swift in Sources */,
 				BF76F16F2BF656CF00F512F3 /* InventoryView.swift in Sources */,
 				BF76F0A62BF4F57100F512F3 /* AppDelegate.swift in Sources */,
 			);

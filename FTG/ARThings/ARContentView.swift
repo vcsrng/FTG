@@ -15,6 +15,5 @@ struct ARContentView: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: CustomARView, context: Context) {
-        // Update the AR view if needed
     }
 }

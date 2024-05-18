@@ -9,18 +9,17 @@ import SwiftUI
 
 struct InventoryView: View {
     @ObservedObject var inventory: Inventory
-    @Binding  var showInventory: Bool
+    @Binding var showInventory: Bool
 
     var body: some View {
         VStack {
             ZStack {
-                Text("Found Item")
+                Text("Found Items")
                     .font(.largeTitle)
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                .padding()
+                    .fontWeight(.bold)
+                    .padding()
                 HStack {
                     Spacer()
-                    
                     Button(action: {
                         withAnimation {
                             showInventory.toggle()
@@ -36,12 +35,19 @@ struct InventoryView: View {
             }
             
             ScrollView {
-                ForEach(inventory.items, id: \.name) { item in
+                ForEach(inventory.items, id: \.id) { item in
                     HStack {
-                        Image(systemName: "cube.box.fill")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .padding()
+                        if let thumbnail = item.thumbnail {
+                            Image(uiImage: thumbnail)
+                                .resizable()
+                                .frame(width: 80, height: 80)
+                                .padding()
+                        } else {
+                            Image(systemName: "cube.box.fill")
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                .padding()
+                        }
 
                         VStack(alignment: .leading) {
                             Text(item.name)
@@ -59,13 +65,8 @@ struct InventoryView: View {
                     .shadow(radius: 5)
                     .padding([.leading, .trailing, .top])
                 }
-            }.padding(.horizontal, 24)
+            }
+            .padding(.horizontal, 24)
         }
-    }
-}
-
-struct InventoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        InventoryView(inventory: Inventory(), showInventory: .constant(true))
     }
 }

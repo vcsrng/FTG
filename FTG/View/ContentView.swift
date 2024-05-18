@@ -10,13 +10,14 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var customARView = CustomARView(frame: .zero)
     @State private var showInventory = false
+    @State private var showSettings = false
 
     var body: some View {
         ZStack {
             ARContentView(arView: customARView)
                 .edgesIgnoringSafeArea(.all)
             VStack{
-                Text("1") // Item collected progress
+                Text("\(customARView.inventory.items.count)")
                     .font(.system(size: 104))
                 Spacer()
             }.padding(.top, 80)
@@ -100,7 +101,7 @@ struct ContentView: View {
                             
                             Button(action: {
                                 withAnimation {
-                                    // show settingView (BGM, Sound effect)(slider)
+                                    showSettings.toggle()
                                 }
                             }) {
                                 RoundedRectangle(cornerRadius: 12)
@@ -177,6 +178,14 @@ struct ContentView: View {
                     .zIndex(2)
 //                    .transition(.move(edge: .trailing))
             }
+            if showSettings {
+                SettingView()
+                    .background(Color.white)
+                    .cornerRadius(24)
+                    .padding(320)
+                    .zIndex(1)
+            }
+            
         }
     }
 }

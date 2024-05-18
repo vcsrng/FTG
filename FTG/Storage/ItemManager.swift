@@ -10,7 +10,7 @@ import Foundation
 class ItemManager {
     static let shared = ItemManager()
     
-    var isItemEntityPlaced = false // Modify this property as needed
+    var isItemEntityPlaced = false
     
     private init() {}
 }
