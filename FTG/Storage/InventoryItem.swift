@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct InventoryItem {
+struct InventoryItem: Identifiable {
+    let id = UUID()
     let name: String
     let modelURL: URL // URL of the 3D model associated with the item
 }
