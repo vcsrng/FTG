@@ -19,6 +19,15 @@ protocol CustomARViewDelegate {
 
 class CustomARView: ARView, ObservableObject {
     @Published var sfxVolume: Float = 1.0
+    @Published var isGuessCorrect: Bool = false
+    @Published var correctAnswer: String = "Correct Answer"
+    
+    func showGameEnd(correct: Bool) {
+        // Implement your logic to show the game end view
+        print(correct ? "Correct Guess" : "Incorrect Guess")
+        // You may need to update some @Published properties to trigger UI updates
+        NotificationCenter.default.post(name: .gameEnded, object: nil, userInfo: ["correct": correct])
+    }
     
     var itemManager: ItemManager = ItemManager.shared
     var inventory = Inventory()
@@ -60,6 +69,19 @@ class CustomARView: ARView, ObservableObject {
     
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
+    }
+    
+    func resetGame() {
+        // Clear inventory
+        inventory.items.removeAll()
+        
+        // Reset collected items
+        collectedItems.removeAll()
+        
+        // Reset any other necessary game state
+        answerList = [:]
+        correctAnswer = "" // Set to the correct default or new game value
+        // Add additional reset logic as needed
     }
     
     private func setupFocusEntity() {
@@ -204,9 +226,6 @@ class CustomARView: ARView, ObservableObject {
             AudioManager.shared.playSFX(filename: "ItemCollect", volume: self.sfxVolume)
             
             self.showItemFoundProgress(itemName: itemName)
-            
-            // Add collected item to evidence list
-            self.collectedEvidence.insert(itemName)
         }
     }
     
@@ -241,6 +260,10 @@ class CustomARView: ARView, ObservableObject {
             completion(image)
         }
     }
+}
+
+extension Notification.Name {
+    static let gameEnded = Notification.Name("gameEnded")
 }
 
 extension CustomARView: FocusEntityDelegate {

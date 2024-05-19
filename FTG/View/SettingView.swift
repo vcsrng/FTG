@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct SettingView: View {
+    @StateObject private var customARView = CustomARView(frame: .zero)
     @Binding var showSettings: Bool
     @Binding var bgmVolume: Float
     @Binding var sfxVolume: Float
+    @State private var showMainMenu = false
 
     var body: some View {
         VStack {
             ZStack {
                 Text("Settings")
                     .font(.largeTitle)
-                .padding()
+                    .padding()
                 HStack {
                     Spacer()
                     Button(action: {
@@ -45,7 +47,7 @@ struct SettingView: View {
                         AudioManager.shared.setBGMVolume(bgmVolume)
                     }
                 ), in: 0...1)
-                .frame(width: UIScreen.main.bounds.width*9/16)
+                .frame(width: UIScreen.main.bounds.width * 9 / 16)
                 .padding()
 
                 Text("Sound Effects Volume")
@@ -57,11 +59,29 @@ struct SettingView: View {
                         AudioManager.shared.setSFXVolume(sfxVolume)
                     }
                 ), in: 0...1)
-                .frame(width: UIScreen.main.bounds.width*9/16)
+                .frame(width: UIScreen.main.bounds.width * 9 / 16)
                 .padding()
             }
-            .padding(.bottom,24)
+            .padding(.bottom, 24)
+
+//            Spacer()
+//
+//            Button(action: {
+//                showMainMenu = true
+//                showSettings = false
+//            }) {
+//                Text("Back to Main Menu")
+//                    .font(.title2)
+//                    .padding()
+//                    .background(Color.red)
+//                    .foregroundColor(.white)
+//                    .cornerRadius(10)
+//            }
+            .padding()
         }
+//        .fullScreenCover(isPresented: $showMainMenu) {
+//            MainMenuView(arView: customARView, showMainMenu: $showMainMenu)
+//        }
     }
 }
 

@@ -33,6 +33,9 @@
 		BF76F1CC2BF91EC400F512F3 /* GuessNowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1CB2BF91EC400F512F3 /* GuessNowView.swift */; };
 		BF76F1D22BF9237D00F512F3 /* ButtonClick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1D12BF9237D00F512F3 /* ButtonClick.mp3 */; };
 		BF76F1D82BF9B73600F512F3 /* AnswerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1D72BF9B73600F512F3 /* AnswerList.swift */; };
+		BF76F1DA2BFA5FFB00F512F3 /* GameEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1D92BFA5FFB00F512F3 /* GameEndView.swift */; };
+		BF76F1DC2BFA601F00F512F3 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1DB2BFA601F00F512F3 /* MainMenuView.swift */; };
+		BF76F1DE2BFA604200F512F3 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1DD2BFA604200F512F3 /* HowToPlayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +84,9 @@
 		BF76F1CB2BF91EC400F512F3 /* GuessNowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessNowView.swift; sourceTree = "<group>"; };
 		BF76F1D12BF9237D00F512F3 /* ButtonClick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ButtonClick.mp3; sourceTree = "<group>"; };
 		BF76F1D72BF9B73600F512F3 /* AnswerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerList.swift; sourceTree = "<group>"; };
+		BF76F1D92BFA5FFB00F512F3 /* GameEndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEndView.swift; sourceTree = "<group>"; };
+		BF76F1DB2BFA601F00F512F3 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		BF76F1DD2BFA604200F512F3 /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,9 +138,9 @@
 		BF76F0A42BF4F57100F512F3 /* FTG */ = {
 			isa = PBXGroup;
 			children = (
+				BF76F0A52BF4F57100F512F3 /* AppDelegate.swift */,
 				BF76F1BF2BF8D4EA00F512F3 /* BGM */,
 				BF76F1772BF65C0700F512F3 /* Model */,
-				BF76F0A52BF4F57100F512F3 /* AppDelegate.swift */,
 				BF76F1C42BF8D7C000F512F3 /* Audio */,
 				BF76F1742BF65BAE00F512F3 /* ARThings */,
 				BF76F1762BF65BF900F512F3 /* View */,
@@ -196,7 +202,10 @@
 				BF76F1C92BF91E8E00F512F3 /* JournalView.swift */,
 				BF76F1CB2BF91EC400F512F3 /* GuessNowView.swift */,
 				BF76F1B92BF8C62700F512F3 /* SettingView.swift */,
+				BF76F1D92BFA5FFB00F512F3 /* GameEndView.swift */,
+				BF76F1DB2BFA601F00F512F3 /* MainMenuView.swift */,
 				BF76F16E2BF656CF00F512F3 /* InventoryView.swift */,
+				BF76F1DD2BFA604200F512F3 /* HowToPlayView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -381,12 +390,15 @@
 				BF76F1712BF6575300F512F3 /* InventoryItem.swift in Sources */,
 				BF76F1652BF61FAC00F512F3 /* ARView.swift in Sources */,
 				BF76F1BA2BF8C62700F512F3 /* SettingView.swift in Sources */,
+				BF76F1DE2BFA604200F512F3 /* HowToPlayView.swift in Sources */,
 				BF76F1CA2BF91E8E00F512F3 /* JournalView.swift in Sources */,
 				BF76F1BE2BF8D35F00F512F3 /* AudioManager.swift in Sources */,
+				BF76F1DC2BFA601F00F512F3 /* MainMenuView.swift in Sources */,
 				BF76F16F2BF656CF00F512F3 /* InventoryView.swift in Sources */,
 				BF76F1CC2BF91EC400F512F3 /* GuessNowView.swift in Sources */,
 				BF76F1D82BF9B73600F512F3 /* AnswerList.swift in Sources */,
 				BF76F0A62BF4F57100F512F3 /* AppDelegate.swift in Sources */,
+				BF76F1DA2BFA5FFB00F512F3 /* GameEndView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
