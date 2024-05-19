@@ -32,30 +32,25 @@ class CustomARView: ARView, ObservableObject {
     
     var collectedItems: Set<Entity> = []
     
-    let itemAssets = ["Eight_Ball.usdz", "Golf_Ball.usdz", "Soccer_Ball.usdz", "Basketball_Ball.usdz", "Crumpled_paper.usdz"]
-    
-    let itemScales: [SIMD3<Float>] = [
-        SIMD3<Float>(repeating: 0.0005),
-        SIMD3<Float>(repeating: 0.00012),
-        SIMD3<Float>(repeating: 0.0012),
-        SIMD3<Float>(repeating: 0.015),
-        SIMD3<Float>(repeating: 0.0008)
-    ]
-    
+    var itemAssets: [String] = []
+    var itemScales: [SIMD3<Float>] = []
+    var itemDescriptions: [String] = []
+    var answerKey: String = ""
+
     required init(frame frameRect: CGRect) {
         super.init(frame: frameRect)
         
         setupFocusEntity()
         setupARView()
         
+        let configuration = selectConfiguration(caseNumber: Int.random(in: 1...2))
+        applyConfiguration(configuration)
+        
         spawnItems()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         addGestureRecognizer(tapGesture)
         isUserInteractionEnabled = true
-        
-        // Play background music
-//        AudioManager.shared.playBGM(filename: "bgm", fileType: "mp3")
     }
     
     required init?(coder decoder: NSCoder) {
@@ -79,6 +74,58 @@ class CustomARView: ARView, ObservableObject {
         
         session.delegate = self
         self.session.run(config)
+    }
+    
+    private func selectConfiguration(caseNumber: Int) -> ItemConfiguration {
+        switch caseNumber {
+        case 1:
+            return ItemConfiguration(
+                itemAssets: ["Eight_Ball.usdz", "Golf_Ball.usdz", "Soccer_Ball.usdz", "Basketball_Ball.usdz", "Crumpled_paper.usdz"],
+                itemScales: [
+                    SIMD3<Float>(repeating: 0.0005),
+                    SIMD3<Float>(repeating: 0.00012),
+                    SIMD3<Float>(repeating: 0.0012),
+                    SIMD3<Float>(repeating: 0.015),
+                    SIMD3<Float>(repeating: 0.0008)
+                ],
+                itemDescriptions: [
+                    "An eight ball",
+                    "A golf ball",
+                    "A soccer ball",
+                    "A basketball",
+                    "Crumpled paper"
+                ],
+                answerKey: "Coach"
+            )
+        case 2:
+            return ItemConfiguration(
+                itemAssets: ["Nine_Ball.usdz", "Bowling_Ball.usdz", "Rugby_Ball.usdz", "Basketball_Ball.usdz", "Crumpled_paper.usdz"],
+                itemScales: [
+                    SIMD3<Float>(repeating: 0.0005),
+                    SIMD3<Float>(repeating: 0.001),
+                    SIMD3<Float>(repeating: 0.0005),
+                    SIMD3<Float>(repeating: 0.015),
+                    SIMD3<Float>(repeating: 0.0008)
+                ],
+                itemDescriptions: [
+                    "A nine ball",
+                    "A bowling ball",
+                    "A rugby ball",
+                    "A basketball",
+                    "Crumpled paper"
+                ],
+                answerKey: "Coach 2"
+            )
+        default:
+            fatalError("Unknown case number")
+        }
+    }
+    
+    private func applyConfiguration(_ configuration: ItemConfiguration) {
+        itemAssets = configuration.itemAssets
+        itemScales = configuration.itemScales
+        itemDescriptions = configuration.itemDescriptions
+        answerKey = configuration.answerKey
     }
     
     private func spawnItems() {
@@ -139,7 +186,7 @@ class CustomARView: ARView, ObservableObject {
             self.inventory.addItem(inventoryItem)
             
             // Play item collection sound effect
-            AudioManager.shared.playSFX(filename: "ItemCollect", volume: sfxVolume)
+            AudioManager.shared.playSFX(filename: "ItemCollect", volume: self.sfxVolume)
             
             self.showItemFoundProgress(itemName: itemName)
         }
