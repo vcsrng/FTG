@@ -37,6 +37,9 @@ class CustomARView: ARView, ObservableObject {
     var itemDescriptions: [String] = []
     var answerKey: String = ""
 
+    var answerList: [String: [String]] = [:]  // Answer list with corresponding evidence
+    var collectedEvidence: Set<String> = []   // Collected evidence
+    
     required init(frame frameRect: CGRect) {
         super.init(frame: frameRect)
         
@@ -45,6 +48,8 @@ class CustomARView: ARView, ObservableObject {
         
         let configuration = selectConfiguration(caseNumber: Int.random(in: 1...2))
         applyConfiguration(configuration)
+        
+        answerList = generateAnswerList() // Generate the answer list
         
         spawnItems()
         
@@ -199,6 +204,9 @@ class CustomARView: ARView, ObservableObject {
             AudioManager.shared.playSFX(filename: "ItemCollect", volume: self.sfxVolume)
             
             self.showItemFoundProgress(itemName: itemName)
+            
+            // Add collected item to evidence list
+            self.collectedEvidence.insert(itemName)
         }
     }
     
@@ -250,19 +258,8 @@ extension CustomARView: ARSessionDelegate {
     func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
         for anchor in anchors {
             if let planeAnchor = anchor as? ARPlaneAnchor {
-                if planeAnchor.alignment == .vertical {
-                    delegate?.didFind(verticalPlane: true)
-                }
-            }
-        }
-    }
-    
-    func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
-        for anchor in anchors {
-            if let planeAnchor = anchor as? ARPlaneAnchor {
-                if planeAnchor.alignment == .vertical {
-                    delegate?.didFind(verticalPlane: true)
-                }
+                let isVertical = planeAnchor.alignment == .vertical
+                self.delegate?.didFind(verticalPlane: isVertical)
             }
         }
     }

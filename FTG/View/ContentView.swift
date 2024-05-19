@@ -195,14 +195,14 @@ struct ContentView: View {
             }
             
             if showJournal {
-                JournalView(inventory: customARView.inventory, answerKey: customARView.answerKey, showJournal: $showJournal, sfxVolume: $customARView.sfxVolume)
+                JournalView(answerList: customARView.answerList, showJournal: $showJournal, sfxVolume: $customARView.sfxVolume)
                     .background(Color.white)
                     .cornerRadius(24)
                     .padding(80)
                     .zIndex(1)
             }
             if showGuessNow {
-                GuessNowView(inventory: customARView.inventory, showGuessNow: $showGuessNow, sfxVolume: $customARView.sfxVolume, itemDescriptions: customARView.itemDescriptions, answerKey: customARView.answerKey, answerList: customARView.generateAnswerList())
+                GuessNowView(arView: customARView)
                     .background(Color.white)
                     .cornerRadius(24)
                     .padding(80)
