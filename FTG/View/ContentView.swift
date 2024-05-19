@@ -187,7 +187,7 @@ struct ContentView: View {
                 SettingView(showSettings: $showSettings, bgmVolume: $bgmVolume, sfxVolume: $customARView.sfxVolume)
                     .background(Color.white)
                     .cornerRadius(24)
-                    .padding(320)
+                    .padding(UIScreen.main.bounds.width*3/16)
                     .zIndex(1)
             }
         }

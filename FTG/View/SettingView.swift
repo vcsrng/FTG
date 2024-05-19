@@ -45,7 +45,7 @@ struct SettingView: View {
                         AudioManager.shared.setBGMVolume(bgmVolume)
                     }
                 ), in: 0...1)
-                .frame(width: 600)
+                .frame(width: UIScreen.main.bounds.width*9/16)
                 .padding()
 
                 Text("Sound Effects Volume")
@@ -57,11 +57,11 @@ struct SettingView: View {
                         AudioManager.shared.setSFXVolume(sfxVolume)
                     }
                 ), in: 0...1)
-                .frame(width: 600)
+                .frame(width: UIScreen.main.bounds.width*9/16)
                 .padding()
             }
+            .padding(.bottom,24)
         }
-        .padding()
     }
 }
 
