@@ -10,6 +10,7 @@ import SwiftUI
 struct InventoryView: View {
     @ObservedObject var inventory: Inventory
     @Binding var showInventory: Bool
+    @Binding var sfxVolume: Float
 
     var body: some View {
         VStack {
@@ -24,6 +25,7 @@ struct InventoryView: View {
                         withAnimation {
                             showInventory.toggle()
                         }
+                        AudioManager.shared.playSFX(filename: "ButtonClick", volume: sfxVolume)
                     }) {
                         Image(systemName: "x.square.fill")
                             .font(.system(size: 40))

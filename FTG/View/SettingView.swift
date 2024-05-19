@@ -8,14 +8,32 @@
 import SwiftUI
 
 struct SettingView: View {
+    @Binding var showSettings: Bool
     @Binding var bgmVolume: Float
     @Binding var sfxVolume: Float
 
     var body: some View {
         VStack {
-            Text("Settings")
-                .font(.largeTitle)
+            ZStack {
+                Text("Settings")
+                    .font(.largeTitle)
                 .padding()
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        withAnimation {
+                            showSettings.toggle()
+                        }
+                        AudioManager.shared.playSFX(filename: "ButtonClick", volume: sfxVolume)
+                    }) {
+                        Image(systemName: "x.square.fill")
+                            .font(.system(size: 40))
+                            .foregroundColor(.red)
+                            .padding()
+                    }
+                    .padding()
+                }
+            }
 
             VStack(alignment: .leading) {
                 Text("Background Music Volume")
@@ -49,6 +67,6 @@ struct SettingView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView(bgmVolume: .constant(0.5), sfxVolume: .constant(0.5))
+        SettingView(showSettings: .constant(true), bgmVolume: .constant(0.5), sfxVolume: .constant(0.5))
     }
 }

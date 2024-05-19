@@ -33,6 +33,7 @@ struct ContentView: View {
                                 withAnimation {
                                     // show journalView
                                 }
+                                AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
                             }) {
                                 RoundedRectangle(cornerRadius: 12)
                                     .frame(width: 72, height: 72)
@@ -64,6 +65,7 @@ struct ContentView: View {
                                 withAnimation {
                                     // show guessNowView
                                 }
+                                AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
                             }) {
                                 RoundedRectangle(cornerRadius: 24)
                                     .frame(width: 144, height: 144)
@@ -104,6 +106,7 @@ struct ContentView: View {
                                 withAnimation {
                                     showSettings.toggle()
                                 }
+                                AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
                             }) {
                                 RoundedRectangle(cornerRadius: 12)
                                     .frame(width: 72, height: 72)
@@ -141,6 +144,7 @@ struct ContentView: View {
                                 withAnimation {
                                     showInventory.toggle()
                                 }
+                                AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
                             }) {
                                 RoundedRectangle(cornerRadius: 24)
                                     .frame(width: 144, height: 144)
@@ -172,7 +176,7 @@ struct ContentView: View {
             }
 
             if showInventory {
-                InventoryView(inventory: customARView.inventory, showInventory: $showInventory)
+                InventoryView(inventory: customARView.inventory, showInventory: $showInventory, sfxVolume: $customARView.sfxVolume)
                     .background(Color.white)
                     .cornerRadius(24)
                     .padding(80)
@@ -180,7 +184,7 @@ struct ContentView: View {
             }
 
             if showSettings {
-                SettingView(bgmVolume: $bgmVolume, sfxVolume: $customARView.sfxVolume)
+                SettingView(showSettings: $showSettings, bgmVolume: $bgmVolume, sfxVolume: $customARView.sfxVolume)
                     .background(Color.white)
                     .cornerRadius(24)
                     .padding(320)
