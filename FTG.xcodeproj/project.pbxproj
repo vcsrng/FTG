@@ -32,6 +32,7 @@
 		BF76F1CA2BF91E8E00F512F3 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1C92BF91E8E00F512F3 /* JournalView.swift */; };
 		BF76F1CC2BF91EC400F512F3 /* GuessNowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1CB2BF91EC400F512F3 /* GuessNowView.swift */; };
 		BF76F1D22BF9237D00F512F3 /* ButtonClick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1D12BF9237D00F512F3 /* ButtonClick.mp3 */; };
+		BF76F1D82BF9B73600F512F3 /* AnswerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1D72BF9B73600F512F3 /* AnswerList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		BF76F1C92BF91E8E00F512F3 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
 		BF76F1CB2BF91EC400F512F3 /* GuessNowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessNowView.swift; sourceTree = "<group>"; };
 		BF76F1D12BF9237D00F512F3 /* ButtonClick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ButtonClick.mp3; sourceTree = "<group>"; };
+		BF76F1D72BF9B73600F512F3 /* AnswerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 			children = (
 				BF76F1702BF6575300F512F3 /* InventoryItem.swift */,
 				BF76F1662BF61FEC00F512F3 /* ItemManager.swift */,
+				BF76F1D72BF9B73600F512F3 /* AnswerList.swift */,
 			);
 			path = Container;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				BF76F1BE2BF8D35F00F512F3 /* AudioManager.swift in Sources */,
 				BF76F16F2BF656CF00F512F3 /* InventoryView.swift in Sources */,
 				BF76F1CC2BF91EC400F512F3 /* GuessNowView.swift in Sources */,
+				BF76F1D82BF9B73600F512F3 /* AnswerList.swift in Sources */,
 				BF76F0A62BF4F57100F512F3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

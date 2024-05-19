@@ -121,6 +121,16 @@ class CustomARView: ARView, ObservableObject {
         }
     }
     
+    func generateAnswerList() -> [String: [String]] {
+        // Generate a dummy answer list from ItemConfiguration or any other source
+        return [
+            "Answer 1": ["Evidence 1", "Evidence 2"],
+            "Answer 2": ["Evidence 2", "Evidence 3"],
+            "Answer 3": ["Evidence 1", "Evidence 3"],
+            "Answer 4": ["Evidence 1", "Evidence 2", "Evidence 3"]
+        ]
+    }
+    
     private func applyConfiguration(_ configuration: ItemConfiguration) {
         itemAssets = configuration.itemAssets
         itemScales = configuration.itemScales

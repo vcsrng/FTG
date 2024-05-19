@@ -11,6 +11,9 @@ struct ContentView: View {
     @StateObject private var customARView = CustomARView(frame: .zero)
     @State private var showInventory = false
     @State private var showSettings = false
+    @State private var showJournal = false
+    @State private var showGuessNow = false
+
     @State private var bgmVolume: Float = 1
 
     var body: some View {
@@ -31,7 +34,7 @@ struct ContentView: View {
                         HStack {
                             Button(action: {
                                 withAnimation {
-                                    // show journalView
+                                    showJournal.toggle()
                                 }
                                 AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
                             }) {
@@ -63,7 +66,7 @@ struct ContentView: View {
                         HStack {
                             Button(action: {
                                 withAnimation {
-                                    // show guessNowView
+                                    showGuessNow.toggle()
                                 }
                                 AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
                             }) {
@@ -188,6 +191,21 @@ struct ContentView: View {
                     .background(Color.white)
                     .cornerRadius(24)
                     .padding(UIScreen.main.bounds.width*3/16)
+                    .zIndex(1)
+            }
+            
+            if showJournal {
+                JournalView(inventory: customARView.inventory, answerKey: customARView.answerKey, showJournal: $showJournal, sfxVolume: $customARView.sfxVolume)
+                    .background(Color.white)
+                    .cornerRadius(24)
+                    .padding(80)
+                    .zIndex(1)
+            }
+            if showGuessNow {
+                GuessNowView(inventory: customARView.inventory, showGuessNow: $showGuessNow, sfxVolume: $customARView.sfxVolume, itemDescriptions: customARView.itemDescriptions, answerKey: customARView.answerKey, answerList: customARView.generateAnswerList())
+                    .background(Color.white)
+                    .cornerRadius(24)
+                    .padding(80)
                     .zIndex(1)
             }
         }
