@@ -87,7 +87,7 @@ struct JournalView: View {
                             VStack(alignment: .leading) {
                                 Text(item.name)
                                     .font(.headline)
-                                Text(item.modelURL.absoluteString)
+                                Text(item.description)
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }

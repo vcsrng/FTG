@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainMenuView: View {
-    @ObservedObject var arView: CustomARView
+    @StateObject var arView: CustomARView
     @Binding var showMainMenu: Bool
     @Binding var bgmVolume: Float
     @Binding var sfxVolume: Float
@@ -24,7 +24,7 @@ struct MainMenuView: View {
             Button(action: {
                 arView.resetGame()
                 showMainMenu = false
-                AudioManager.shared.playSFX(filename: "ButtonClick", volume: sfxVolume)
+                AudioManager.shared.playSFX(filename: "ButtonClick2", volume: sfxVolume)
             }) {
                 Text("Start Game")
                     .font(.title)
@@ -37,7 +37,7 @@ struct MainMenuView: View {
             
             Button(action: {
                 showHowToPlay.toggle()
-                AudioManager.shared.playSFX(filename: "ButtonClick", volume: sfxVolume)
+                AudioManager.shared.playSFX(filename: "ButtonClick2", volume: sfxVolume)
             }) {
                 Text("How to Play")
                     .font(.title)
@@ -57,7 +57,7 @@ struct MainMenuView: View {
             
             Button(action: {
                 showSettings.toggle()
-                AudioManager.shared.playSFX(filename: "ButtonClick", volume: sfxVolume)
+                AudioManager.shared.playSFX(filename: "ButtonClick2", volume: sfxVolume)
             }) {
                 Text("Settings")
                     .font(.title)
@@ -69,7 +69,7 @@ struct MainMenuView: View {
             .padding()
             .sheet(isPresented: $showSettings){
                 NavigationView{
-                    SettingView(showSettings: $showSettings, bgmVolume: $bgmVolume, sfxVolume: $sfxVolume)
+                    SettingView(customARView: arView, showSettings: $showSettings, bgmVolume: $bgmVolume, sfxVolume: $sfxVolume)
                         .background(Color.white)
                         .cornerRadius(24)
                         .padding(UIScreen.main.bounds.width*3/16)

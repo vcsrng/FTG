@@ -32,10 +32,11 @@
 		BF76F1CA2BF91E8E00F512F3 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1C92BF91E8E00F512F3 /* JournalView.swift */; };
 		BF76F1CC2BF91EC400F512F3 /* GuessNowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1CB2BF91EC400F512F3 /* GuessNowView.swift */; };
 		BF76F1D22BF9237D00F512F3 /* ButtonClick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1D12BF9237D00F512F3 /* ButtonClick.mp3 */; };
-		BF76F1D82BF9B73600F512F3 /* AnswerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1D72BF9B73600F512F3 /* AnswerList.swift */; };
 		BF76F1DA2BFA5FFB00F512F3 /* GameEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1D92BFA5FFB00F512F3 /* GameEndView.swift */; };
 		BF76F1DC2BFA601F00F512F3 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1DB2BFA601F00F512F3 /* MainMenuView.swift */; };
 		BF76F1DE2BFA604200F512F3 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1DD2BFA604200F512F3 /* HowToPlayView.swift */; };
+		BF76F1E02BFB35E600F512F3 /* BGM2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1DF2BFB35E600F512F3 /* BGM2.mp3 */; };
+		BF76F1E22BFB362700F512F3 /* ButtonClick2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1E12BFB362700F512F3 /* ButtonClick2.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,10 +84,11 @@
 		BF76F1C92BF91E8E00F512F3 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
 		BF76F1CB2BF91EC400F512F3 /* GuessNowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessNowView.swift; sourceTree = "<group>"; };
 		BF76F1D12BF9237D00F512F3 /* ButtonClick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ButtonClick.mp3; sourceTree = "<group>"; };
-		BF76F1D72BF9B73600F512F3 /* AnswerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerList.swift; sourceTree = "<group>"; };
 		BF76F1D92BFA5FFB00F512F3 /* GameEndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEndView.swift; sourceTree = "<group>"; };
 		BF76F1DB2BFA601F00F512F3 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		BF76F1DD2BFA604200F512F3 /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
+		BF76F1DF2BFB35E600F512F3 /* BGM2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BGM2.mp3; sourceTree = "<group>"; };
+		BF76F1E12BFB362700F512F3 /* ButtonClick2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ButtonClick2.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,7 +192,6 @@
 			children = (
 				BF76F1702BF6575300F512F3 /* InventoryItem.swift */,
 				BF76F1662BF61FEC00F512F3 /* ItemManager.swift */,
-				BF76F1D72BF9B73600F512F3 /* AnswerList.swift */,
 			);
 			path = Container;
 			sourceTree = "<group>";
@@ -226,8 +227,10 @@
 			isa = PBXGroup;
 			children = (
 				BF76F1C02BF8D50D00F512F3 /* BGM.mp3 */,
+				BF76F1DF2BFB35E600F512F3 /* BGM2.mp3 */,
 				BF76F1C22BF8D72600F512F3 /* ItemCollect.mp3 */,
 				BF76F1D12BF9237D00F512F3 /* ButtonClick.mp3 */,
+				BF76F1E12BFB362700F512F3 /* ButtonClick2.mp3 */,
 			);
 			path = BGM;
 			sourceTree = "<group>";
@@ -351,12 +354,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF76F0E02BF5046B00F512F3 /* Golf_Ball.usdz in Resources */,
+				BF76F1E22BFB362700F512F3 /* ButtonClick2.mp3 in Resources */,
 				BF76F1C32BF8D72600F512F3 /* ItemCollect.mp3 in Resources */,
 				BF76F1C12BF8D50D00F512F3 /* BGM.mp3 in Resources */,
 				BF76F16D2BF63BEE00F512F3 /* Basketball_Ball.usdz in Resources */,
 				BF76F0E12BF5046B00F512F3 /* Soccer_Ball.usdz in Resources */,
 				BF76F0E42BF506FB00F512F3 /* Crumpled_paper.usdz in Resources */,
 				BF76F0E22BF5046B00F512F3 /* Eight_Ball.usdz in Resources */,
+				BF76F1E02BFB35E600F512F3 /* BGM2.mp3 in Resources */,
 				BF76F0AD2BF4F57200F512F3 /* Preview Assets.xcassets in Resources */,
 				BF76F1D22BF9237D00F512F3 /* ButtonClick.mp3 in Resources */,
 				BF76F0AA2BF4F57200F512F3 /* Assets.xcassets in Resources */,
@@ -396,7 +401,6 @@
 				BF76F1DC2BFA601F00F512F3 /* MainMenuView.swift in Sources */,
 				BF76F16F2BF656CF00F512F3 /* InventoryView.swift in Sources */,
 				BF76F1CC2BF91EC400F512F3 /* GuessNowView.swift in Sources */,
-				BF76F1D82BF9B73600F512F3 /* AnswerList.swift in Sources */,
 				BF76F0A62BF4F57100F512F3 /* AppDelegate.swift in Sources */,
 				BF76F1DA2BFA5FFB00F512F3 /* GameEndView.swift in Sources */,
 			);

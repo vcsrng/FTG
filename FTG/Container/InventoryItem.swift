@@ -13,6 +13,7 @@ struct InventoryItem: Identifiable {
     let name: String
     let modelURL: URL
     var thumbnail: UIImage?
+    let description: String
 }
 
 class Inventory: ObservableObject {

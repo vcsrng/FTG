@@ -223,11 +223,12 @@ class CustomARView: ARView, ObservableObject {
     private func collectItem(_ item: Entity) {
         collectedItems.insert(item)
         let itemName = item.name
+        let itemDescription = getItemDescription(for: itemName)
         let itemURL = URL(string: "path/to/\(itemName).usdz")!
 
         generateThumbnail(for: itemName) { [weak self] image in
             guard let self = self else { return }
-            let inventoryItem = InventoryItem(name: itemName, modelURL: itemURL, thumbnail: image)
+            let inventoryItem = InventoryItem(name: itemName, modelURL: itemURL, thumbnail: image, description: itemDescription)
             self.inventory.addItem(inventoryItem)
 
             // Play item collection sound effect
@@ -236,7 +237,14 @@ class CustomARView: ARView, ObservableObject {
             self.showItemFoundProgress(itemName: itemName)
         }
     }
-
+    
+    private func getItemDescription(for itemName: String) -> String {
+        if let index = itemAssets.firstIndex(of: "\(itemName).usdz") {
+            return itemDescriptions[index]
+        }
+        return "Description not available"
+    }
+    
     private func removeItemFromScene(_ item: Entity) {
         if let anchorEntity = item.anchor {
             scene.removeAnchor(anchorEntity)

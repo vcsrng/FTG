@@ -24,7 +24,7 @@ struct ContentView: View {
             ZStack{
                 MainMenuView(arView: customARView, showMainMenu: $showMainMenu, bgmVolume: $bgmVolume, sfxVolume: $customARView.sfxVolume)
             }.onAppear {
-                AudioManager.shared.playBGM(filename: "BGM", volume: bgmVolume)
+                AudioManager.shared.playBGM(filename: "BGM2", volume: bgmVolume)
             }
         }else{
             ZStack {
@@ -197,7 +197,7 @@ struct ContentView: View {
                 }
                 
                 if showSettings {
-                    SettingView(showSettings: $showSettings, bgmVolume: $bgmVolume, sfxVolume: $customARView.sfxVolume)
+                    SettingView(customARView: customARView, showSettings: $showSettings, bgmVolume: $bgmVolume, sfxVolume: $customARView.sfxVolume)
                         .background(Color.white)
                         .cornerRadius(24)
                         .padding(UIScreen.main.bounds.width*3/16)

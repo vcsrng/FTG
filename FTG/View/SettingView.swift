@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingView: View {
-    @StateObject private var customARView = CustomARView(frame: .zero)
+    @ObservedObject var customARView: CustomARView
     @Binding var showSettings: Bool
     @Binding var bgmVolume: Float
     @Binding var sfxVolume: Float
@@ -63,7 +63,6 @@ struct SettingView: View {
                 .padding()
             }
             .padding(.bottom, 24)
-
 //            Spacer()
 //
 //            Button(action: {
@@ -87,6 +86,6 @@ struct SettingView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView(showSettings: .constant(true), bgmVolume: .constant(0.5), sfxVolume: .constant(0.5))
+        SettingView(customARView: CustomARView(frame: .zero), showSettings: .constant(true), bgmVolume: .constant(0.5), sfxVolume: .constant(0.5))
     }
 }
