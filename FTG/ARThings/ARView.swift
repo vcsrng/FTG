@@ -47,7 +47,7 @@ class CustomARView: ARView, ObservableObject {
         setupFocusEntity()
         setupARView()
 
-        let configuration = selectConfiguration(caseNumber: Int.random(in: 1...2))
+        let configuration = selectConfiguration(caseNumber: Int.random(in: 1...3))
         applyConfiguration(configuration)
 
         answerList = generateAnswerList() // Generate the answer list
@@ -81,7 +81,7 @@ class CustomARView: ARView, ObservableObject {
         answerList = generateAnswerList()
 
         // Reapply configuration
-        let configuration = selectConfiguration(caseNumber: Int.random(in: 1...2))
+        let configuration = selectConfiguration(caseNumber: Int.random(in: 1...3))
         applyConfiguration(configuration)
 
         // Start a new AR session
@@ -132,7 +132,7 @@ class CustomARView: ARView, ObservableObject {
                     "A standard basketball with orange color.",
                     "A piece of crumpled paper."
                 ],
-                answerKey: "Basketball_Ball.usdz"
+                answerKey: "Answer 1"
             )
         case 2:
             return ItemConfiguration(
@@ -153,7 +153,26 @@ class CustomARView: ARView, ObservableObject {
                     "A cup of coffee, often enjoyed hot.",
                     "A piece of crumpled paper."
                 ],
-                answerKey: "Coach 2"
+                answerKey: "Answer 2"
+            )
+        case 3:
+            return ItemConfiguration(
+                itemAssets: ["Eight_Ball.usdz", "Sandwich.usdz", "Soccer_Ball.usdz", "Basketball_Ball.usdz", "Coffee_Cup.usdz"],
+                itemScales: [
+                    SIMD3<Float>(repeating: 0.0005),
+                    SIMD3<Float>(repeating: 0.01),
+                    SIMD3<Float>(repeating: 0.0012),
+                    SIMD3<Float>(repeating: 0.015),
+                    SIMD3<Float>(repeating: 0.01)
+                ],
+                itemDescriptions: [
+                    "An eight ball with black and white colors.",
+                    "A sandwich with layers of ingredients between bread slices.",
+                    "A classic soccer ball with black and white patches.",
+                    "A standard basketball with orange color.",
+                    "A cup of coffee, often enjoyed hot."
+                ],
+                answerKey: "Answer 3"
             )
         default:
             fatalError("Invalid case number")
@@ -163,10 +182,10 @@ class CustomARView: ARView, ObservableObject {
     func generateAnswerList() -> [String: [String]] {
         // Generate a dummy answer list from ItemConfiguration or any other source
         return [
-            "Coach": ["Eight_Ball.usdz", "Golf_Ball.usdz", "Soccer_Ball.usdz", "Basketball_Ball.usdz", "Crumpled_paper.usdz"],
-            "Coach 2": ["Toothpaste.usdz", "Sandwich.usdz", "Sundae.usdz", "Cookies.usdz", "Coffee_Cup.usdz"],
-            "Answer 3": ["Soccer_Ball", "Basketball_Ball"],
-            "Answer 4": ["Crumpled_paper", "Basketball_Ball"]
+            "Answer 1": ["Eight_Ball.usdz", "Golf_Ball.usdz", "Soccer_Ball.usdz", "Basketball_Ball.usdz", "Crumpled_paper.usdz"],
+            "Answer 2": ["Toothpaste.usdz", "Sandwich.usdz", "Sundae.usdz", "Cookies.usdz", "Coffee_Cup.usdz", "Crumpled_paper.usdz"],
+            "Answer 3": ["Eight_Ball.usdz", "Sandwich.usdz", "Soccer_Ball.usdz", "Basketball_Ball.usdz", "Coffee_Cup.usdz"],
+            "Answer 4": ["Eight_Ball.usdz", "Soccer_Ball.usdz", "Basketball_Ball.usdz", "Crumpled_paper.usdz", "Cookies.usdz"]
         ]
     }
     
@@ -223,19 +242,24 @@ class CustomARView: ARView, ObservableObject {
     private func collectItem(_ item: Entity) {
         collectedItems.insert(item)
         let itemName = item.name
+        let formattedItemName = formatItemName(itemName)
         let itemDescription = getItemDescription(for: itemName)
         let itemURL = URL(string: "path/to/\(itemName).usdz")!
 
         generateThumbnail(for: itemName) { [weak self] image in
             guard let self = self else { return }
-            let inventoryItem = InventoryItem(name: itemName, modelURL: itemURL, thumbnail: image, description: itemDescription)
+            let inventoryItem = InventoryItem(name: formattedItemName, modelURL: itemURL, thumbnail: image, description: itemDescription)
             self.inventory.addItem(inventoryItem)
 
             // Play item collection sound effect
             AudioManager.shared.playSFX(filename: "ItemCollect", volume: self.sfxVolume)
 
-            self.showItemFoundProgress(itemName: itemName)
+            self.showItemFoundProgress(itemName: formattedItemName)
         }
+    }
+
+    private func formatItemName(_ itemName: String) -> String {
+        return itemName.replacingOccurrences(of: "_", with: " ").capitalized
     }
     
     private func getItemDescription(for itemName: String) -> String {

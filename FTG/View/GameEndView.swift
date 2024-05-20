@@ -15,36 +15,44 @@ struct GameEndView: View {
 
     var body: some View {
         VStack {
-            Text(isCorrect ? "Congratulations! You guessed correctly!" : "Sorry, your guess was incorrect.")
-                .font(.largeTitle)
-                .padding()
-            
-            Button(action: {
-                showMainMenu = true
-                showGameEnd = false
-            }) {
-                Text("Back to Main Menu")
+            VStack {
+                Text(isCorrect ? "Congratulations!" : "Unfortunately")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                Text(isCorrect ? "You guessed correctly!" : "Your guess was incorrect.")
                     .font(.title)
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
             }
             .padding()
+            .padding(.bottom, 56)
+           
             
-            Button(action: {
-                arView.resetGame()
-                showGameEnd = false
-                // Optionally set showGuessNow to true if you want to directly start guessing again
-            }) {
-                Text("Play Again")
-                    .font(.title)
-                    .padding()
-                    .background(Color.green)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+            HStack {
+                Button(action: {
+                    showMainMenu = true
+                    showGameEnd = false
+                }) {
+                    Text("Main Menu")
+                        .font(.title)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                
+                Button(action: {
+                    arView.resetGame()
+                    showGameEnd = false
+                    // Optionally set showGuessNow to true if you want to directly start guessing again
+                }) {
+                    Text("Play Again")
+                        .font(.title)
+                        .padding()
+                        .background(Color.green)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
             }
-            .padding()
+            .padding(.horizontal, 24)
             
 //            Button(action: {
 //                showGameEnd = false
@@ -58,5 +66,10 @@ struct GameEndView: View {
 //            }
 //            .padding()
         }
+        .padding(40)
     }
+}
+
+#Preview {
+    GameEndView(showMainMenu: .constant(true), showGameEnd: .constant(true), isCorrect: .constant(true), arView: CustomARView(frame: .zero))
 }

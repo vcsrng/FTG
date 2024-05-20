@@ -11,6 +11,7 @@ struct JournalView: View {
     @ObservedObject var arView: CustomARView
     @Binding var showJournal: Bool
     @State private var selectedSegment: JournalSegment = .overview
+    @State private var selectedAnswer: String? = nil
     
     enum JournalSegment: String, CaseIterable, Identifiable {
         case overview = "Overview"
@@ -25,6 +26,7 @@ struct JournalView: View {
             ZStack {
                 Text("Journal")
                     .font(.largeTitle)
+                    .fontWeight(.bold)
                     .padding()
                 HStack {
                     Spacer()
@@ -46,28 +48,42 @@ struct JournalView: View {
             Picker("Select Segment", selection: $selectedSegment) {
                 ForEach(JournalSegment.allCases) { segment in
                     Text(segment.rawValue).tag(segment)
+                        .font(.title)
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
-            .padding()
+            .padding(40)
             
             ScrollView {
                 switch selectedSegment {
                 case .overview:
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("How to Play")
-                            .font(.headline)
-                            .padding(.bottom, 8)
-                        
-                        Text("1. Explore the area and collect items.")
-                        Text("2. Select evidence from the collected items and possible answers.")
-                        Text("3. Make your guess based on the selected evidence.")
-                        Text("4. Submit your guess and see if you're correct!")
+                    VStack {
+                        Spacer()
+                        VStack(alignment: .leading, spacing: 16) {
+                            RoundedRectangle(cornerRadius: 24)
+                                .foregroundColor(Color.yellow.opacity(0.1))
+                                .frame(width: 240, height: 80)
+                                .overlay {
+                                    Text("How to Play")
+                                        .font(.title)
+                                        .fontWeight(.bold)
+                                        .padding()
+                                }
+                                .padding(.bottom, 16)
+                            
+                            Text("1. Explore the area and collect items.")
+                                .font(.title2)
+                            Text("2. Select evidence from the collected items and possible answers.")
+                                .font(.title2)
+                            Text("3. Make your guess based on the selected evidence.")
+                                .font(.title2)
+                            Text("4. Submit your guess and see if you're correct!")
+                                .font(.title2)
+                        }
+                        .padding(40)
+                        .cornerRadius(8)
+                        Spacer()
                     }
-                    .padding()
-                    .background(Color.yellow.opacity(0.1))
-                    .cornerRadius(8)
-                    .padding(.horizontal)
                     
                 case .evidence:
                     ForEach(arView.inventory.items, id: \.id) { item in
@@ -98,29 +114,82 @@ struct JournalView: View {
                         .cornerRadius(10)
                         .shadow(radius: 5)
                         .padding([.leading, .trailing, .top])
+                        .padding(.horizontal, 8)
                     }
                     
                 case .answers:
-                    ForEach(Array(arView.answerList.keys), id: \.self) { answer in
-                        VStack(alignment: .center, spacing: 8) {
-                            Text(answer)
-                                .font(.headline)
-                                .padding(.bottom, 8)
-                            
-                            ForEach(arView.answerList[answer] ?? [], id: \.self) { evidence in
-                                Text("- \(evidence)")
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
+                    GeometryReader { geometry in
+                        HStack {
+                            // Answer list
+                            VStack(alignment: .center) {
+                                Text("Answer List")
+                                    .font(.title2)
+                                    .padding(.bottom, 24)
+                                Spacer()
+                                ScrollView {
+                                    ForEach(Array(arView.answerList.keys), id: \.self) { answer in
+                                        Button(action: {
+                                            selectedAnswer = answer
+                                        }) {
+                                            Ellipse()
+                                                .strokeBorder(style: StrokeStyle())
+                                                .foregroundColor(selectedAnswer == answer ? Color.black : Color.clear)
+                                                .frame(width: 160, height: 56)
+                                                .overlay {
+                                                    Text(answer)
+                                                        .font(.headline)
+                                                }
+                                        }
+                                        .padding(.vertical, 4)
+                                    }
+                                }
+                                Spacer()
                             }
+                            .padding()
+                            .cornerRadius(8)
+                            .frame(width: geometry.size.width / 2)
+                            
+                            Divider()
+                            // Evidence list
+                            VStack(alignment: .center) {
+                                Text("Evidence List")
+                                    .font(.title2)
+                                    .padding(.bottom, 24)
+                                Spacer()
+                                if let selectedAnswer = selectedAnswer {
+                                    ScrollView {
+                                        ForEach(arView.answerList[selectedAnswer] ?? [], id: \.self) { evidence in
+                                            RoundedRectangle(cornerRadius: 24)
+                                                .foregroundColor(.gray.opacity(0.1))
+                                                .frame(width: geometry.size.width / 2 - 16, height: 50)
+                                                .overlay {
+                                                    Text(evidence)
+                                                        .font(.subheadline)
+                                                        .padding()
+                                                }
+                                                .padding(.vertical, 4)
+                                        }
+                                    }
+                                } else {
+                                    Text("Select an answer to see the evidence.")
+                                        .font(.subheadline)
+                                        .foregroundColor(.gray)
+                                }
+                                Spacer()
+                            }
+                            .padding()
+                            .frame(width: geometry.size.width / 2)
                         }
-                        .padding()
-                        .background(Color.yellow)
-                        .cornerRadius(8)
                         .padding(.horizontal)
                     }
+                    .frame(height: UIScreen.main.bounds.height / 2)
                 }
             }
-            .padding()
+            .padding(.horizontal)
         }
     }
+}
+
+#Preview {
+    JournalView(arView: CustomARView(frame: .zero), showJournal: .constant(true))
 }

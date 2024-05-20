@@ -48,7 +48,7 @@ struct MainMenuView: View {
             }
             .padding()
             .sheet(isPresented: $showHowToPlay) {
-                HowToPlayView()
+                HowToPlayView(showHowToPlay: $showHowToPlay, sfxVolume: $sfxVolume)
                     .background(Color.white)
                     .cornerRadius(24)
                     .padding(80)
@@ -78,4 +78,8 @@ struct MainMenuView: View {
             }
         }
     }
+}
+
+#Preview {
+    MainMenuView(arView: CustomARView(frame: .zero), showMainMenu: .constant(true), bgmVolume: .constant(1), sfxVolume: .constant(1))
 }

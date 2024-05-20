@@ -27,6 +27,7 @@ struct GuessNowView: View {
             ZStack {
                 Text("Guess Now")
                     .font(.largeTitle)
+                    .fontWeight(.bold)
                     .padding()
                 HStack {
                     Spacer()
@@ -46,11 +47,10 @@ struct GuessNowView: View {
             }
             
             HStack {
-                VStack(alignment: .center) {
+                VStack {
                     Text("Collected Items")
                         .font(.headline)
                         .padding()
-                    
                     ScrollView {
                         ForEach(arView.inventory.items, id: \.id) { item in
                             HStack {
@@ -82,7 +82,7 @@ struct GuessNowView: View {
                             .padding([.leading, .trailing, .top])
                         }
                     }
-                    .frame(maxHeight: UIScreen.main.bounds.height / 3)
+                    .frame(maxHeight: UIScreen.main.bounds.height * 2 / 3)
                 }
                 .padding()
                 
@@ -92,7 +92,6 @@ struct GuessNowView: View {
                     Text("Select Evidence")
                         .font(.headline)
                         .padding()
-                    
                     ScrollView {
                         ForEach(allEvidence, id: \.self) { evidence in
                             EvidenceRow(evidence: evidence, isSelected: selectedEvidence.contains(evidence)) {
@@ -100,7 +99,7 @@ struct GuessNowView: View {
                             }
                         }
                     }
-                    .frame(maxHeight: UIScreen.main.bounds.height / 3)
+                    .frame(maxHeight: UIScreen.main.bounds.height * 2 / 3)
                 }
                 .padding()
                 
@@ -110,7 +109,6 @@ struct GuessNowView: View {
                     Text("Possible Answers")
                         .font(.headline)
                         .padding()
-                    
                     ScrollView {
                         ForEach(possibleAnswers, id: \.self) { answer in
                             Button(action: {
@@ -125,7 +123,7 @@ struct GuessNowView: View {
                             }
                         }
                     }
-                    .frame(maxHeight: UIScreen.main.bounds.height / 3)
+                    .frame(maxHeight: UIScreen.main.bounds.height * 2 / 3)
                 }
                 .padding()
             }
@@ -198,4 +196,8 @@ struct EvidenceRow: View {
             .cornerRadius(8)
         }
     }
+}
+
+#Preview {
+    GuessNowView(arView: CustomARView(frame: .zero), showGuessNow: .constant(true), showGameEnd: .constant(false), isCorrect: .constant(true))
 }

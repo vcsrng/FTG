@@ -19,6 +19,7 @@ struct SettingView: View {
             ZStack {
                 Text("Settings")
                     .font(.largeTitle)
+                    .fontWeight(.bold)
                     .padding()
                 HStack {
                     Spacer()

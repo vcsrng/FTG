@@ -8,11 +8,32 @@
 import SwiftUI
 
 struct HowToPlayView: View {
+    @Binding var showHowToPlay: Bool
+    @Binding var sfxVolume: Float
+    
     var body: some View {
         VStack {
-            Text("How to Play")
-                .font(.largeTitle)
-                .padding()
+            ZStack{
+                Text("How to Play")
+                    .font(.largeTitle)
+                    .padding()
+                
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        withAnimation {
+                            showHowToPlay.toggle()
+                        }
+                        AudioManager.shared.playSFX(filename: "ButtonClick", volume: sfxVolume)
+                    }) {
+                        Image(systemName: "x.square.fill")
+                            .font(.system(size: 40))
+                            .foregroundColor(.red)
+                            .padding()
+                    }
+                    .padding()
+                }
+            }
             
             ScrollView {
                 VStack(alignment: .leading, spacing: 8) {
@@ -24,7 +45,11 @@ struct HowToPlayView: View {
                 .padding()
                 .font(.title2)
             }
-            .padding()
+//            .padding()
         }
     }
+}
+
+#Preview {
+    HowToPlayView(showHowToPlay: .constant(true), sfxVolume: .constant(0.5))
 }

@@ -26,20 +26,22 @@ struct ContentView: View {
             }.onAppear {
                 AudioManager.shared.playBGM(filename: "BGM2", volume: bgmVolume)
             }
-        }else{
+        } else {
             ZStack {
                 ARContentView(arView: customARView)
                     .edgesIgnoringSafeArea(.all)
-                VStack{
+                
+                VStack {
                     Text("\(customARView.collectedItems.count)")
                         .font(.system(size: 104))
                     Spacer()
-                }.padding(.top, 80)
+                }
+                .padding(.top, 80)
                 
                 VStack {
                     Spacer()
                     HStack {
-                        // Button kiri
+                        // Left buttons
                         VStack {
                             HStack {
                                 Button(action: {
@@ -50,23 +52,25 @@ struct ContentView: View {
                                 }) {
                                     RoundedRectangle(cornerRadius: 12)
                                         .frame(width: 72, height: 72)
-                                        .overlay{
+                                        .overlay {
                                             ZStack {
-                                                VStack{
+                                                VStack {
                                                     RoundedRectangle(cornerRadius: 16)
                                                         .foregroundColor(.white.opacity(0.2))
                                                     RoundedRectangle(cornerRadius: 12)
                                                         .opacity(0)
-                                                }.padding(8)
+                                                }
+                                                .padding(8)
                                                 VStack {
                                                     Image(systemName: "list.bullet.clipboard")
                                                         .font(.system(size: 40))
-                                                }.foregroundColor(.black)
+                                                }
+                                                .foregroundColor(.black)
                                             }
                                         }
                                         .foregroundColor(.white.opacity(0.6))
                                         .clipShape(RoundedRectangle(cornerRadius: 24))
-                                        .shadow(radius: 4, x: 2, y:2)
+                                        .shadow(radius: 4, x: 2, y: 2)
                                 }
                                 .padding(.leading, 20)
                                 Spacer()
@@ -82,35 +86,36 @@ struct ContentView: View {
                                 }) {
                                     RoundedRectangle(cornerRadius: 24)
                                         .frame(width: 144, height: 144)
-                                        .overlay{
+                                        .overlay {
                                             ZStack {
-                                                VStack{
+                                                VStack {
                                                     RoundedRectangle(cornerRadius: 16)
                                                         .foregroundColor(.white.opacity(0.2))
                                                     RoundedRectangle(cornerRadius: 24)
                                                         .opacity(0)
-                                                }.padding(8)
+                                                }
+                                                .padding(8)
                                                 VStack {
                                                     Image(systemName: "sparkle.magnifyingglass")
                                                         .font(.system(size: 80))
                                                     Text("Guess now!")
                                                         .font(.system(size: 20))
-                                                }.foregroundColor(.black)
+                                                }
+                                                .foregroundColor(.black)
                                             }
                                         }
                                         .foregroundColor(.white.opacity(0.6))
                                         .clipShape(RoundedRectangle(cornerRadius: 24))
-                                        .shadow(radius: 8, x: 4, y:4)
+                                        .shadow(radius: 8, x: 4, y: 4)
                                 }
                                 .padding(.leading, 20)
-                                
                                 Spacer()
                             }
                         }
                         
                         Spacer()
                         
-                        // Button kanan
+                        // Right buttons
                         VStack {
                             HStack {
                                 Spacer()
@@ -123,29 +128,31 @@ struct ContentView: View {
                                 }) {
                                     RoundedRectangle(cornerRadius: 12)
                                         .frame(width: 72, height: 72)
-                                        .overlay{
+                                        .overlay {
                                             ZStack {
-                                                VStack{
+                                                VStack {
                                                     RoundedRectangle(cornerRadius: 16)
                                                         .foregroundColor(.white.opacity(0.2))
                                                     RoundedRectangle(cornerRadius: 12)
                                                         .opacity(0)
-                                                }.padding(8)
+                                                }
+                                                .padding(8)
                                                 VStack {
                                                     ZStack {
                                                         Image(systemName: "gearshape")
                                                             .font(.system(size: 32))
-                                                            .position(x:30, y: 46)
+                                                            .position(x: 30, y: 46)
                                                         Image(systemName: "gearshape.2")
                                                             .font(.system(size: 32))
-                                                            .position(x:42, y: 26)
+                                                            .position(x: 42, y: 26)
                                                     }
-                                                }.foregroundColor(.black)
+                                                }
+                                                .foregroundColor(.black)
                                             }
                                         }
                                         .foregroundColor(.white.opacity(0.6))
                                         .clipShape(RoundedRectangle(cornerRadius: 24))
-                                        .shadow(radius: 4, x: 2, y:2)
+                                        .shadow(radius: 4, x: 2, y: 2)
                                 }
                                 .padding(.trailing, 20)
                             }
@@ -161,31 +168,41 @@ struct ContentView: View {
                                 }) {
                                     RoundedRectangle(cornerRadius: 24)
                                         .frame(width: 144, height: 144)
-                                        .overlay{
+                                        .overlay {
                                             ZStack {
-                                                VStack{
+                                                VStack {
                                                     RoundedRectangle(cornerRadius: 16)
                                                         .foregroundColor(.white.opacity(0.2))
                                                     RoundedRectangle(cornerRadius: 24)
                                                         .opacity(0)
-                                                }.padding(8)
+                                                }
+                                                .padding(8)
                                                 VStack {
                                                     Image(systemName: "bag")
                                                         .font(.system(size: 80))
                                                     Text("Item found")
                                                         .font(.system(size: 20))
-                                                }.foregroundColor(.black)
+                                                }
+                                                .foregroundColor(.black)
                                             }
                                         }
                                         .foregroundColor(.white.opacity(0.6))
                                         .clipShape(RoundedRectangle(cornerRadius: 24))
-                                        .shadow(radius: 8, x: 4, y:4)
+                                        .shadow(radius: 8, x: 4, y: 4)
                                 }
                                 .padding(.trailing, 20)
                             }
                         }
                     }
                     .padding(.bottom, 8)
+                }
+                
+                if showInventory || showSettings || showJournal || showGuessNow || showGameEnd {
+                    Color.black.opacity(0.4)
+                        .edgesIgnoringSafeArea(.all)
+                        .onTapGesture {
+                            // Disable tap outside to close the popup
+                        }
                 }
                 
                 if showInventory {
@@ -200,7 +217,7 @@ struct ContentView: View {
                     SettingView(customARView: customARView, showSettings: $showSettings, bgmVolume: $bgmVolume, sfxVolume: $customARView.sfxVolume)
                         .background(Color.white)
                         .cornerRadius(24)
-                        .padding(UIScreen.main.bounds.width*3/16)
+                        .padding(UIScreen.main.bounds.width * 3 / 16)
                         .zIndex(1)
                 }
                 
@@ -211,6 +228,7 @@ struct ContentView: View {
                         .padding(80)
                         .zIndex(1)
                 }
+                
                 if showGuessNow {
                     GuessNowView(arView: customARView, showGuessNow: $showGuessNow, showGameEnd: $showGameEnd, isCorrect: $isCorrect)
                         .background(Color.white)
@@ -218,7 +236,8 @@ struct ContentView: View {
                         .padding(80)
                         .zIndex(2)
                 }
-                if showGameEnd{
+                
+                if showGameEnd {
                     GameEndView(showMainMenu: $showMainMenu, showGameEnd: $showGameEnd, isCorrect: $isCorrect, arView: customARView)
                         .background(Color.white)
                         .cornerRadius(24)
