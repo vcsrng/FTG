@@ -10,6 +10,8 @@ import SwiftUI
 struct MainMenuView: View {
     @ObservedObject var arView: CustomARView
     @Binding var showMainMenu: Bool
+    @Binding var bgmVolume: Float
+    @Binding var sfxVolume: Float
     @State private var showSettings = false
     @State private var showHowToPlay = false
     
@@ -20,8 +22,9 @@ struct MainMenuView: View {
                 .padding()
             
             Button(action: {
-//                arView.resetGame()
+                arView.resetGame()
                 showMainMenu = false
+                AudioManager.shared.playSFX(filename: "ButtonClick", volume: sfxVolume)
             }) {
                 Text("Start Game")
                     .font(.title)
@@ -34,6 +37,7 @@ struct MainMenuView: View {
             
             Button(action: {
                 showHowToPlay.toggle()
+                AudioManager.shared.playSFX(filename: "ButtonClick", volume: sfxVolume)
             }) {
                 Text("How to Play")
                     .font(.title)
@@ -45,10 +49,15 @@ struct MainMenuView: View {
             .padding()
             .sheet(isPresented: $showHowToPlay) {
                 HowToPlayView()
+                    .background(Color.white)
+                    .cornerRadius(24)
+                    .padding(80)
+                    .zIndex(1)
             }
             
             Button(action: {
                 showSettings.toggle()
+                AudioManager.shared.playSFX(filename: "ButtonClick", volume: sfxVolume)
             }) {
                 Text("Settings")
                     .font(.title)
@@ -58,8 +67,14 @@ struct MainMenuView: View {
                     .cornerRadius(10)
             }
             .padding()
-            .sheet(isPresented: $showSettings) {
-                SettingView(showSettings: $showSettings, bgmVolume: .constant(0.5), sfxVolume: .constant(0.5))
+            .sheet(isPresented: $showSettings){
+                NavigationView{
+                    SettingView(showSettings: $showSettings, bgmVolume: $bgmVolume, sfxVolume: $sfxVolume)
+                        .background(Color.white)
+                        .cornerRadius(24)
+                        .padding(UIScreen.main.bounds.width*3/16)
+                        .zIndex(1)
+                }
             }
         }
     }

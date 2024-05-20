@@ -46,17 +46,17 @@ struct GameEndView: View {
             }
             .padding()
             
-            Button(action: {
-                showGameEnd = false
-            }) {
-                Text("Close")
-                    .font(.title)
-                    .padding()
-                    .background(Color.red)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-            }
-            .padding()
+//            Button(action: {
+//                showGameEnd = false
+//            }) {
+//                Text("Close")
+//                    .font(.title)
+//                    .padding()
+//                    .background(Color.red)
+//                    .foregroundColor(.white)
+//                    .cornerRadius(10)
+//            }
+//            .padding()
         }
     }
 }

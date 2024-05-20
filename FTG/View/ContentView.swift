@@ -21,7 +21,11 @@ struct ContentView: View {
     
     var body: some View {
         if showMainMenu {
-            MainMenuView(arView: customARView, showMainMenu: $showMainMenu)
+            ZStack{
+                MainMenuView(arView: customARView, showMainMenu: $showMainMenu, bgmVolume: $bgmVolume, sfxVolume: $customARView.sfxVolume)
+            }.onAppear {
+                AudioManager.shared.playBGM(filename: "BGM", volume: bgmVolume)
+            }
         }else{
             ZStack {
                 ARContentView(arView: customARView)
@@ -226,11 +230,5 @@ struct ContentView: View {
                 AudioManager.shared.playBGM(filename: "BGM", volume: bgmVolume)
             }
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

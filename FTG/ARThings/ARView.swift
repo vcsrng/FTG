@@ -10,7 +10,6 @@ import FocusEntity
 import RealityKit
 import Combine
 import SwiftUI
-import UIKit
 import AVFoundation
 
 protocol CustomARViewDelegate {
@@ -21,26 +20,19 @@ class CustomARView: ARView, ObservableObject {
     @Published var sfxVolume: Float = 1.0
     @Published var isGuessCorrect: Bool = false
     @Published var correctAnswer: String = "Correct Answer"
-    
-    func showGameEnd(correct: Bool) {
-        // Implement your logic to show the game end view
-        print(correct ? "Correct Guess" : "Incorrect Guess")
-        // You may need to update some @Published properties to trigger UI updates
-        NotificationCenter.default.post(name: .gameEnded, object: nil, userInfo: ["correct": correct])
-    }
-    
+
     var itemManager: ItemManager = ItemManager.shared
     var inventory = Inventory()
-    
+
     var focusEntity: FocusEntity?
     var delegate: CustomARViewDelegate?
-    
+
     var collisionSubscription: Cancellable?
     private var cancellables: Set<AnyCancellable> = []
     var cancellable: AnyCancellable?
-    
+
     var collectedItems: Set<Entity> = []
-    
+
     var itemAssets: [String] = []
     var itemScales: [SIMD3<Float>] = []
     var itemDescriptions: [String] = []
@@ -48,48 +40,66 @@ class CustomARView: ARView, ObservableObject {
 
     var answerList: [String: [String]] = [:]  // Answer list with corresponding evidence
     var collectedEvidence: Set<String> = []   // Collected evidence
-    
+
     required init(frame frameRect: CGRect) {
         super.init(frame: frameRect)
-        
+
         setupFocusEntity()
         setupARView()
-        
+
         let configuration = selectConfiguration(caseNumber: Int.random(in: 1...2))
         applyConfiguration(configuration)
-        
+
         answerList = generateAnswerList() // Generate the answer list
-        
+
         spawnItems()
-        
+
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         addGestureRecognizer(tapGesture)
         isUserInteractionEnabled = true
     }
-    
+
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
     }
-    
+
     func resetGame() {
+        // Stop the current AR session
+        self.session.pause()
+
+        // Clear the current AR scene
+        self.scene.anchors.removeAll()
+
         // Clear inventory
         inventory.items.removeAll()
-        
+
         // Reset collected items
         collectedItems.removeAll()
-        
-        // Reset any other necessary game state
-        answerList = [:]
-        correctAnswer = "" // Set to the correct default or new game value
-        // Add additional reset logic as needed
+        collectedEvidence.removeAll()
+
+        // Reset answer list and correct answer
+        answerList = generateAnswerList()
+
+        // Reapply configuration
+        let configuration = selectConfiguration(caseNumber: Int.random(in: 1...2))
+        applyConfiguration(configuration)
+
+        // Start a new AR session
+        setupARView()
+
+        // Respawn items
+        spawnItems()
+
+        // Ensure UI updates
+        NotificationCenter.default.post(name: .gameEnded, object: nil)
     }
-    
+
     private func setupFocusEntity() {
         focusEntity = FocusEntity(on: self, style: .classic(color: .clear))
         focusEntity?.setAutoUpdate(to: true)
         focusEntity?.delegate = self
     }
-    
+
     private func setupARView() {
         let config = ARWorldTrackingConfiguration()
         config.planeDetection = .horizontal
@@ -98,11 +108,11 @@ class CustomARView: ARView, ObservableObject {
         if ARWorldTrackingConfiguration.supportsSceneReconstruction(.mesh) {
             config.sceneReconstruction = .mesh
         }
-        
+
         session.delegate = self
-        self.session.run(config)
+        self.session.run(config, options: [.resetTracking, .removeExistingAnchors])
     }
-    
+
     private func selectConfiguration(caseNumber: Int) -> ItemConfiguration {
         switch caseNumber {
         case 1:
@@ -116,45 +126,47 @@ class CustomARView: ARView, ObservableObject {
                     SIMD3<Float>(repeating: 0.0008)
                 ],
                 itemDescriptions: [
-                    "An eight ball",
-                    "A golf ball",
-                    "A soccer ball",
-                    "A basketball",
-                    "Crumpled paper"
+                    "An eight ball with black and white colors.",
+                    "A small golf ball, typically white with dimples.",
+                    "A classic soccer ball with black and white patches.",
+                    "A standard basketball with orange color.",
+                    "A piece of crumpled paper."
                 ],
-                answerKey: "Coach"
+                answerKey: "Basketball_Ball.usdz"
             )
         case 2:
             return ItemConfiguration(
-                itemAssets: ["Nine_Ball.usdz", "Bowling_Ball.usdz", "Rugby_Ball.usdz", "Basketball_Ball.usdz", "Crumpled_paper.usdz"],
+                itemAssets: ["Toothpaste.usdz", "Sandwich.usdz", "Sundae.usdz", "Cookies.usdz", "Coffee_Cup.usdz", "Crumpled_paper.usdz"],
                 itemScales: [
-                    SIMD3<Float>(repeating: 0.0005),
-                    SIMD3<Float>(repeating: 0.001),
-                    SIMD3<Float>(repeating: 0.0005),
-                    SIMD3<Float>(repeating: 0.015),
+                    SIMD3<Float>(repeating: 0.01),
+                    SIMD3<Float>(repeating: 0.01),
+                    SIMD3<Float>(repeating: 0.01),
+                    SIMD3<Float>(repeating: 0.01),
+                    SIMD3<Float>(repeating: 0.01),
                     SIMD3<Float>(repeating: 0.0008)
                 ],
                 itemDescriptions: [
-                    "A nine ball",
-                    "A bowling ball",
-                    "A rugby ball",
-                    "A basketball",
-                    "Crumpled paper"
+                    "A tube of toothpaste, often used for dental care.",
+                    "A sandwich with layers of ingredients between bread slices.",
+                    "A delicious sundae with ice cream and toppings.",
+                    "A plate of cookies, freshly baked and ready to eat.",
+                    "A cup of coffee, often enjoyed hot.",
+                    "A piece of crumpled paper."
                 ],
                 answerKey: "Coach 2"
             )
         default:
-            fatalError("Unknown case number")
+            fatalError("Invalid case number")
         }
     }
-    
+
     func generateAnswerList() -> [String: [String]] {
         // Generate a dummy answer list from ItemConfiguration or any other source
         return [
-            "Answer 1": ["Evidence 1", "Evidence 2"],
-            "Answer 2": ["Evidence 2", "Evidence 3"],
-            "Answer 3": ["Evidence 1", "Evidence 3"],
-            "Answer 4": ["Evidence 1", "Evidence 2", "Evidence 3"]
+            "Coach": ["Eight_Ball.usdz", "Golf_Ball.usdz", "Soccer_Ball.usdz", "Basketball_Ball.usdz", "Crumpled_paper.usdz"],
+            "Coach 2": ["Toothpaste.usdz", "Sandwich.usdz", "Sundae.usdz", "Cookies.usdz", "Coffee_Cup.usdz"],
+            "Answer 3": ["Soccer_Ball", "Basketball_Ball"],
+            "Answer 4": ["Crumpled_paper", "Basketball_Ball"]
         ]
     }
     
@@ -164,101 +176,108 @@ class CustomARView: ARView, ObservableObject {
         itemDescriptions = configuration.itemDescriptions
         answerKey = configuration.answerKey
     }
-    
+
     private func spawnItems() {
-        spawnItems(withScales: itemScales)
-    }
-    
-    private func spawnItems(withScales scales: [SIMD3<Float>]) {
-        guard itemAssets.count == scales.count else {
-            print("Number of scales provided does not match number of item assets.")
-            return
-        }
-        
+        let boundingBoxSize: Float = 0.5
+        let minX: Float = -boundingBoxSize / 2
+        let maxX: Float = boundingBoxSize / 2
+        let minZ: Float = -boundingBoxSize / 2
+        let maxZ: Float = boundingBoxSize / 2
+
         for (index, asset) in itemAssets.enumerated() {
-            let randomPosition = SIMD3<Float>(
-                Float.random(in: -1...1),
-                Float.random(in: 0...1),
-                Float.random(in: 0...1)
-            )
-            let scale = scales[index]
+            let randomX = Float.random(in: minX...maxX)
+            let randomZ = Float.random(in: minZ...maxZ)
+            let randomPosition = SIMD3<Float>(randomX, 0, randomZ)
+            let scale = itemScales[index]
+
             let itemName = asset.replacingOccurrences(of: ".usdz", with: "")
             spawnItem(named: asset, withName: itemName, at: randomPosition, scale: scale)
         }
     }
-    
+
     private func spawnItem(named assetName: String, withName name: String, at position: SIMD3<Float>, scale: SIMD3<Float>) {
         guard let modelEntity = try? ModelEntity.loadModel(named: assetName) else {
             return print("Failed to load 3D model \(assetName)")
         }
         modelEntity.generateCollisionShapes(recursive: true)
-        
+
         modelEntity.name = name
         modelEntity.transform.translation = position
         modelEntity.scale = scale
-        
+
         let anchorEntity = AnchorEntity(world: position)
         anchorEntity.addChild(modelEntity)
         scene.addAnchor(anchorEntity)
     }
-    
+
     @objc private func handleTap(_ gesture: UITapGestureRecognizer) {
         let tapLocation = gesture.location(in: self)
         guard let entity = self.entity(at: tapLocation) else { return }
-        
+
         if entity.name != "" && !collectedItems.contains(entity) {
             collectItem(entity)
             removeItemFromScene(entity)
         }
     }
-    
+
     private func collectItem(_ item: Entity) {
         collectedItems.insert(item)
         let itemName = item.name
         let itemURL = URL(string: "path/to/\(itemName).usdz")!
-        
+
         generateThumbnail(for: itemName) { [weak self] image in
             guard let self = self else { return }
             let inventoryItem = InventoryItem(name: itemName, modelURL: itemURL, thumbnail: image)
             self.inventory.addItem(inventoryItem)
-            
+
             // Play item collection sound effect
             AudioManager.shared.playSFX(filename: "ItemCollect", volume: self.sfxVolume)
-            
+
             self.showItemFoundProgress(itemName: itemName)
         }
     }
-    
+
     private func removeItemFromScene(_ item: Entity) {
         if let anchorEntity = item.anchor {
             scene.removeAnchor(anchorEntity)
         }
     }
-    
+
     private func showItemFoundProgress(itemName: String) {
         let alert = UIAlertController(title: "Item Found", message: "You found: \(itemName)", preferredStyle: .alert)
         self.window?.rootViewController?.present(alert, animated: true)
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             alert.dismiss(animated: true)
         }
     }
-    
+
     func generateThumbnail(for modelName: String, completion: @escaping (UIImage?) -> Void) {
         guard let modelEntity = try? ModelEntity.loadModel(named: modelName) else {
             return completion(nil)
         }
-        
+
         let thumbnailSize: CGFloat = 160
         let thumbnailView = ARView(frame: CGRect(x: 0, y: 0, width: thumbnailSize, height: thumbnailSize))
-        
+
         let anchor = AnchorEntity()
         anchor.addChild(modelEntity)
         thumbnailView.scene.addAnchor(anchor)
-        
+
         thumbnailView.snapshot(saveToHDR: false) { image in
             completion(image)
         }
+    }
+
+    func handleGuess(guess: String) {
+        isGuessCorrect = (guess == answerKey)
+        showGameEnd(correct: isGuessCorrect)
+    }
+
+    func showGameEnd(correct: Bool) {
+        // Implement your logic to show the game end view
+        print(correct ? "Correct Guess" : "Incorrect Guess")
+        NotificationCenter.default.post(name: .gameEnded, object: nil, userInfo: ["correct": correct])
     }
 }
 
@@ -268,7 +287,7 @@ extension Notification.Name {
 
 extension CustomARView: FocusEntityDelegate {
     func toTrackingState() { }
-    
+
     func toInitializingState() { }
 }
 
@@ -277,7 +296,7 @@ extension CustomARView: ARSessionDelegate {
         if frame.worldMappingStatus == .mapped {
         }
     }
-    
+
     func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
         for anchor in anchors {
             if let planeAnchor = anchor as? ARPlaneAnchor {

@@ -167,9 +167,9 @@ struct GuessNowView: View {
     
     private func submitGuess() {
         guard let selectedAnswer = selectedAnswer else { return }
-        let correctAnswer = arView.correctAnswer // This should be fetched from the game logic
+        arView.handleGuess(guess: selectedAnswer)
         
-        isCorrect = selectedAnswer == correctAnswer
+        isCorrect = arView.isGuessCorrect
         showGuessNow = false
         showGameEnd = true
     }
