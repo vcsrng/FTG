@@ -71,16 +71,6 @@ struct JournalView: View {
                                         .padding()
                                 }
                                 .padding(.bottom, 16)
-//                            RoundedRectangle(cornerRadius: 24)
-//                                .foregroundColor(Color.yellow.opacity(0.1))
-//                                .frame(width: 240, height: 80)
-//                                .overlay {
-//                                    Text("How to Play")
-//                                        .font(.title)
-//                                        .fontWeight(.bold)
-//                                        .padding()
-//                                }
-//                                .padding(.bottom, 16)
                             
                             Text("1. Explore the area and collect items.")
                                 .font(.title2)
@@ -186,6 +176,8 @@ struct JournalView: View {
                                         .font(.subheadline)
                                         .foregroundColor(.gray)
                                 }
+                                Spacer()
+                                Spacer()
                                 Spacer()
                             }
                             .padding()

@@ -64,24 +64,9 @@ struct SettingView: View {
                 .padding()
             }
             .padding(.bottom, 24)
-//            Spacer()
-//
-//            Button(action: {
-//                showMainMenu = true
-//                showSettings = false
-//            }) {
-//                Text("Back to Main Menu")
-//                    .font(.title2)
-//                    .padding()
-//                    .background(Color.red)
-//                    .foregroundColor(.white)
-//                    .cornerRadius(10)
-//            }
+
             .padding()
         }
-//        .fullScreenCover(isPresented: $showMainMenu) {
-//            MainMenuView(arView: customARView, showMainMenu: $showMainMenu)
-//        }
     }
 }
 

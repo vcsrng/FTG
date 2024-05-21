@@ -37,11 +37,15 @@ struct HowToPlayView: View {
             }
             
             ScrollView {
-                VStack(alignment: .leading, spacing: 8) {
+                VStack(alignment: .leading, spacing: 16) {
                     Text("1. Explore the area and collect items.")
+                        .font(.title2)
                     Text("2. Select evidence from the collected items and possible answers.")
+                        .font(.title2)
                     Text("3. Make your guess based on the selected evidence.")
+                        .font(.title2)
                     Text("4. Submit your guess and see if you're correct!")
+                        .font(.title2)
                 }
                 .padding()
                 .font(.title2)

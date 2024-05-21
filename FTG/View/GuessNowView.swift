@@ -130,13 +130,28 @@ struct GuessNowView: View {
             .padding()
             
             Button(action: submitGuess) {
-                Text("Submit Guess")
-                    .font(.title2)
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+                RoundedRectangle(cornerRadius: 10)
+                    .frame(width: UIScreen.main.bounds.width / 6, height: UIScreen.main.bounds.height / 24)
+                    .overlay{
+                        ZStack {
+                            VStack {
+                                RoundedRectangle(cornerRadius: 16)
+                                    .foregroundColor(.white.opacity(0.2))
+                                RoundedRectangle(cornerRadius: 24)
+                                    .opacity(0)
+                            }
+                            .padding(8)
+                            
+                            Text("Submit Guess")
+                                .font(.title2)
+                                .padding()
+                                .foregroundColor(.white)
+                        }
+                        .background(.blue)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
             }
+            .padding(.bottom, 24)
             .padding()
         }
         .onAppear(perform: updatePossibleAnswers)
