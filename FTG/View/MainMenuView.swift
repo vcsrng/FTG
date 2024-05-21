@@ -79,13 +79,6 @@ struct MainMenuView: View {
                             
                         }
                 }
-                .sheet(isPresented: $showHowToPlay) {
-                    HowToPlayView(showHowToPlay: $showHowToPlay, sfxVolume: $sfxVolume)
-                        .background(Color.white)
-                        .cornerRadius(24)
-                        .padding(80)
-                        .zIndex(1)
-                }
                 
                 Button(action: {
                     showSettings.toggle()
@@ -131,6 +124,13 @@ struct MainMenuView: View {
                     .frame(width: 1366, height: 1366)
                     .opacity(0.5)
             )
+            if showHowToPlay{
+                HowToPlayView(showHowToPlay: $showHowToPlay, sfxVolume: $sfxVolume)
+                    .background(Color.white)
+                    .cornerRadius(24)
+                    .padding(UIScreen.main.bounds.width*3/16)
+                    .zIndex(1)
+            }
             
             if showSettings{
                 SettingView(customARView: arView, showSettings: $showSettings, bgmVolume: $bgmVolume, sfxVolume: $sfxVolume)
