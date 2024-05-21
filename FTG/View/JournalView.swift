@@ -60,7 +60,8 @@ struct JournalView: View {
                     VStack {
                         Spacer()
                         VStack(alignment: .leading, spacing: 16) {
-                            RoundedRectangle(cornerRadius: 24)
+                            Rectangle()
+                                .clipShape(.rect(bottomTrailingRadius: 60, topTrailingRadius: 60))
                                 .foregroundColor(Color.yellow.opacity(0.1))
                                 .frame(width: 240, height: 80)
                                 .overlay {
@@ -70,6 +71,16 @@ struct JournalView: View {
                                         .padding()
                                 }
                                 .padding(.bottom, 16)
+//                            RoundedRectangle(cornerRadius: 24)
+//                                .foregroundColor(Color.yellow.opacity(0.1))
+//                                .frame(width: 240, height: 80)
+//                                .overlay {
+//                                    Text("How to Play")
+//                                        .font(.title)
+//                                        .fontWeight(.bold)
+//                                        .padding()
+//                                }
+//                                .padding(.bottom, 16)
                             
                             Text("1. Explore the area and collect items.")
                                 .font(.title2)
@@ -161,7 +172,7 @@ struct JournalView: View {
                                         ForEach(arView.answerList[selectedAnswer] ?? [], id: \.self) { evidence in
                                             RoundedRectangle(cornerRadius: 24)
                                                 .foregroundColor(.gray.opacity(0.1))
-                                                .frame(width: geometry.size.width / 2 - 16, height: 50)
+                                                .frame(width: geometry.size.width / 2 - 120, height: 50)
                                                 .overlay {
                                                     Text(evidence)
                                                         .font(.subheadline)
