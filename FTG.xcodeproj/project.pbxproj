@@ -38,6 +38,8 @@
 		BF76F1DE2BFA604200F512F3 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1DD2BFA604200F512F3 /* HowToPlayView.swift */; };
 		BF76F1E02BFB35E600F512F3 /* BGM2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1DF2BFB35E600F512F3 /* BGM2.mp3 */; };
 		BF76F1E22BFB362700F512F3 /* ButtonClick2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1E12BFB362700F512F3 /* ButtonClick2.mp3 */; };
+		BFD4F8462BFCF69E004AF67B /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4F8452BFCF69E004AF67B /* SplashScreen.swift */; };
+		BFD4F8522BFD0968004AF67B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFD4F8512BFD0968004AF67B /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,8 @@
 		BF76F1DD2BFA604200F512F3 /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
 		BF76F1DF2BFB35E600F512F3 /* BGM2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BGM2.mp3; sourceTree = "<group>"; };
 		BF76F1E12BFB362700F512F3 /* ButtonClick2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ButtonClick2.mp3; sourceTree = "<group>"; };
+		BFD4F8452BFCF69E004AF67B /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		BFD4F8512BFD0968004AF67B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +213,8 @@
 				BF76F1DB2BFA601F00F512F3 /* MainMenuView.swift */,
 				BF76F16E2BF656CF00F512F3 /* InventoryView.swift */,
 				BF76F1DD2BFA604200F512F3 /* HowToPlayView.swift */,
+				BFD4F8452BFCF69E004AF67B /* SplashScreen.swift */,
+				BFD4F8512BFD0968004AF67B /* Launch Screen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -361,6 +367,7 @@
 				BF76F1E22BFB362700F512F3 /* ButtonClick2.mp3 in Resources */,
 				BF76F1C32BF8D72600F512F3 /* ItemCollect.mp3 in Resources */,
 				BF76F1C12BF8D50D00F512F3 /* BGM.mp3 in Resources */,
+				BFD4F8522BFD0968004AF67B /* Launch Screen.storyboard in Resources */,
 				BF76F16D2BF63BEE00F512F3 /* Basketball_Ball.usdz in Resources */,
 				BF76F0E12BF5046B00F512F3 /* Soccer_Ball.usdz in Resources */,
 				BF76F0E42BF506FB00F512F3 /* Crumpled_paper.usdz in Resources */,
@@ -393,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFD4F8462BFCF69E004AF67B /* SplashScreen.swift in Sources */,
 				BF76F1632BF61F9000F512F3 /* ARContentView.swift in Sources */,
 				BF76F1672BF61FEC00F512F3 /* ItemManager.swift in Sources */,
 				BF76F1732BF657B800F512F3 /* ContentView.swift in Sources */,
@@ -573,11 +581,15 @@
 				DEVELOPMENT_TEAM = M45X2698V4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FTG/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -604,11 +616,15 @@
 				DEVELOPMENT_TEAM = M45X2698V4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FTG/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

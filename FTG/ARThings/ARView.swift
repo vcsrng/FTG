@@ -205,8 +205,9 @@ class CustomARView: ARView, ObservableObject {
 
         for (index, asset) in itemAssets.enumerated() {
             let randomX = Float.random(in: minX...maxX)
+            let randomY = Float.random(in: 0...2)
             let randomZ = Float.random(in: minZ...maxZ)
-            let randomPosition = SIMD3<Float>(randomX, 0, randomZ)
+            let randomPosition = SIMD3<Float>(randomX, randomY, randomZ)
             let scale = itemScales[index]
 
             let itemName = asset.replacingOccurrences(of: ".usdz", with: "")

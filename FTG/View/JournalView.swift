@@ -24,10 +24,15 @@ struct JournalView: View {
     var body: some View {
         VStack {
             ZStack {
-                Text("Journal")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                Image("GameGuide")
+                    .resizable()
+                    .frame(width: 198, height: 40)
                     .padding()
+                    .padding(.top)
+//                Text("Journal")
+//                    .font(.largeTitle)
+//                    .fontWeight(.bold)
+//                    .padding()
                 HStack {
                     Spacer()
                     Button(action: {
@@ -62,7 +67,7 @@ struct JournalView: View {
                         VStack(alignment: .leading, spacing: 16) {
                             Rectangle()
                                 .clipShape(.rect(bottomTrailingRadius: 60, topTrailingRadius: 60))
-                                .foregroundColor(Color.yellow.opacity(0.1))
+                                .foregroundColor(Color.white.opacity(0.4))
                                 .frame(width: 240, height: 80)
                                 .overlay {
                                     Text("How to Play")
@@ -72,14 +77,62 @@ struct JournalView: View {
                                 }
                                 .padding(.bottom, 16)
                             
-                            Text("1. Explore the area and collect items.")
-                                .font(.title2)
-                            Text("2. Select evidence from the collected items and possible answers.")
-                                .font(.title2)
-                            Text("3. Make your guess based on the selected evidence.")
-                                .font(.title2)
-                            Text("4. Submit your guess and see if you're correct!")
-                                .font(.title2)
+                            HStack{
+                                Circle()
+                                    .frame(width: 32)
+                                    .foregroundColor(Color.black)
+                                    .overlay{
+                                        Text("1")
+                                            .font(.title2)
+                                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                            .foregroundColor(.white)
+                                    }
+                                Text("Explore the area and collect items.")
+                                    .font(.title2)
+                                    .padding(.leading, 8)
+                            }
+                            HStack{
+                                Circle()
+                                    .frame(width: 32)
+                                    .foregroundColor(Color.black)
+                                    .overlay{
+                                        Text("2")
+                                            .font(.title2)
+                                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                            .foregroundColor(.white)
+                                    }
+                                Text("Select evidence from the collected items and possible answers.")
+                                    .font(.title2)
+                                    .padding(.leading, 8)
+                            }
+                            HStack{
+                                Circle()
+                                    .frame(width: 32)
+                                    .foregroundColor(Color.black)
+                                    .overlay{
+                                        Text("3")
+                                            .font(.title2)
+                                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                            .foregroundColor(.white)
+                                    }
+                                Text("Make your guess based on the selected evidence.")
+                                    .font(.title2)
+                                    .padding(.leading, 8)
+                            }
+                            HStack{
+                                Circle()
+                                    .frame(width: 32)
+                                    .foregroundColor(Color.black)
+                                    .overlay{
+                                        Text("4")
+                                            .font(.title2)
+                                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                            .foregroundColor(.white)
+                                    }
+                                Text("Submit your guess and see if you're correct!")
+                                    .font(.title2)
+                                    .padding(.leading, 8)
+                            }
                         }
                         .padding(40)
                         .cornerRadius(8)
@@ -87,35 +140,37 @@ struct JournalView: View {
                     }
                     
                 case .evidence:
-                    ForEach(arView.inventory.items, id: \.id) { item in
-                        HStack {
-                            if let thumbnail = item.thumbnail {
-                                Image(uiImage: thumbnail)
-                                    .resizable()
-                                    .frame(width: 80, height: 80)
-                                    .padding()
-                            } else {
-                                Image(systemName: "cube.box.fill")
-                                    .resizable()
-                                    .frame(width: 50, height: 50)
-                                    .padding()
+                    VStack {
+                        ForEach(arView.inventory.items, id: \.id) { item in
+                            HStack {
+                                if let thumbnail = item.thumbnail {
+                                    Image(uiImage: thumbnail)
+                                        .resizable()
+                                        .frame(width: 80, height: 80)
+                                        .padding()
+                                } else {
+                                    Image(systemName: "cube.box.fill")
+                                        .resizable()
+                                        .frame(width: 80, height: 80)
+                                        .padding()
+                                }
+                                
+                                VStack(alignment: .leading) {
+                                    Text(item.name)
+                                        .font(.headline)
+                                    Text(item.description)
+                                        .font(.subheadline)
+                                        .foregroundColor(.black.opacity(0.8))
+                                }
+                                Spacer()
                             }
-                            
-                            VStack(alignment: .leading) {
-                                Text(item.name)
-                                    .font(.headline)
-                                Text(item.description)
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
-                            }
-                            Spacer()
+                            .padding()
+                            .background(Color.gray.opacity(0.2))
+                            .cornerRadius(10)
+    //                        .shadow(radius: 5)
+                            .padding([.leading, .trailing, .top])
+                            .padding(.horizontal, 8)
                         }
-                        .padding()
-                        .background(Color.gray.opacity(0.1))
-                        .cornerRadius(10)
-                        .shadow(radius: 5)
-                        .padding([.leading, .trailing, .top])
-                        .padding(.horizontal, 8)
                     }
                     
                 case .answers:
@@ -124,8 +179,12 @@ struct JournalView: View {
                             // Answer list
                             VStack(alignment: .center) {
                                 Text("Answer List")
-                                    .font(.title2)
+                                    .font(.title)
+                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                                     .padding(.bottom, 24)
+                                Divider()
+                                    .frame(minHeight: 2)
+                                    .background(Color.black)
                                 Spacer()
                                 ScrollView {
                                     ForEach(Array(arView.answerList.keys), id: \.self) { answer in
@@ -139,49 +198,61 @@ struct JournalView: View {
                                                 .overlay {
                                                     Text(answer)
                                                         .font(.headline)
+                                                        .foregroundColor(Color.black)
+                                                        .padding()
                                                 }
                                         }
-                                        .padding(.vertical, 4)
+                                        .padding(.top)
                                     }
                                 }
                                 Spacer()
                             }
                             .padding()
                             .cornerRadius(8)
-                            .frame(width: geometry.size.width / 2)
+                            .frame(width: geometry.size.width / 2 - 25)
                             
                             Divider()
+                                .frame(minWidth: 2, minHeight: geometry.size.height)
+                                .background(Color.black)
+                            
                             // Evidence list
                             VStack(alignment: .center) {
                                 Text("Evidence List")
-                                    .font(.title2)
+                                    .font(.title)
+                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                                     .padding(.bottom, 24)
+                                Divider()
+                                    .frame(minHeight: 2)
+                                    .background(Color.black)
                                 Spacer()
                                 if let selectedAnswer = selectedAnswer {
                                     ScrollView {
                                         ForEach(arView.answerList[selectedAnswer] ?? [], id: \.self) { evidence in
-                                            RoundedRectangle(cornerRadius: 24)
-                                                .foregroundColor(.gray.opacity(0.1))
-                                                .frame(width: geometry.size.width / 2 - 120, height: 50)
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .strokeBorder(style: /*@START_MENU_TOKEN@*/StrokeStyle()/*@END_MENU_TOKEN@*/)
+                                                .foregroundColor(.black)
+                                                .background(Color.white.opacity(0.2))
+                                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                .frame(width: geometry.size.width / 3 - 120, height: 50)
                                                 .overlay {
                                                     Text(evidence)
-                                                        .font(.subheadline)
+                                                        .font(.headline)
                                                         .padding()
                                                 }
-                                                .padding(.vertical, 4)
+                                                .padding(.top)
                                         }
                                     }
                                 } else {
                                     Text("Select an answer to see the evidence.")
                                         .font(.subheadline)
-                                        .foregroundColor(.gray)
+                                        .foregroundColor(.black.opacity(0.8))
                                 }
                                 Spacer()
-                                Spacer()
-                                Spacer()
+//                                Spacer()
+//                                Spacer()
                             }
                             .padding()
-                            .frame(width: geometry.size.width / 2)
+                            .frame(width: geometry.size.width / 2 - 25)
                         }
                         .padding(.horizontal)
                     }
@@ -190,6 +261,11 @@ struct JournalView: View {
             }
             .padding(.horizontal)
         }
+        .background(
+            Image("BrownTexture2")
+                .resizable()
+                .frame(width: 1400, height: 1400)
+        )
     }
 }
 

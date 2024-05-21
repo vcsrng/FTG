@@ -64,7 +64,7 @@ struct InventoryView: View {
                     .padding()
                     .background(Color.gray.opacity(0.1))
                     .cornerRadius(10)
-                    .shadow(radius: 5)
+//                    .shadow(radius: 5)
                     .padding([.leading, .trailing, .top])
                 }
             }

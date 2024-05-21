@@ -32,7 +32,7 @@ struct GameEndView: View {
                     showMainMenu = true
                     showGameEnd = false
                 }) {
-                    RoundedRectangle(cornerRadius: 10)
+                    RoundedRectangle(cornerRadius: 24)
                         .frame(width: UIScreen.main.bounds.width / 6, height: UIScreen.main.bounds.height / 24)
                         .overlay{
                             ZStack {
@@ -50,7 +50,7 @@ struct GameEndView: View {
                                     .foregroundColor(.white)
                             }
                             .background(.blue)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .clipShape(RoundedRectangle(cornerRadius: 24))
                         }
                 }.padding(.trailing, 32)
                 
@@ -59,7 +59,7 @@ struct GameEndView: View {
                     showGameEnd = false
                     // Optionally set showGuessNow to true if you want to directly start guessing again
                 }) {
-                    RoundedRectangle(cornerRadius: 10)
+                    RoundedRectangle(cornerRadius: 24)
                         .frame(width: UIScreen.main.bounds.width / 6, height: UIScreen.main.bounds.height / 24)
                         .overlay{
                             ZStack {
@@ -77,7 +77,7 @@ struct GameEndView: View {
                                     .foregroundColor(.white)
                             }
                             .background(.green)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .clipShape(RoundedRectangle(cornerRadius: 24))
                         }
                 }
             }

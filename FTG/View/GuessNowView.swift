@@ -130,7 +130,7 @@ struct GuessNowView: View {
             .padding()
             
             Button(action: submitGuess) {
-                RoundedRectangle(cornerRadius: 10)
+                RoundedRectangle(cornerRadius: 24)
                     .frame(width: UIScreen.main.bounds.width / 6, height: UIScreen.main.bounds.height / 24)
                     .overlay{
                         ZStack {
@@ -148,7 +148,7 @@ struct GuessNowView: View {
                                 .foregroundColor(.white)
                         }
                         .background(.blue)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .clipShape(RoundedRectangle(cornerRadius: 24))
                     }
             }
             .padding(.bottom, 24)
