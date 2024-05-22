@@ -15,9 +15,9 @@ struct HowToPlayView: View {
         VStack {
             ZStack{
                 Text("How to Play")
-                    .font(.largeTitle)
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    .font(Font.custom("Koulen-Regular", size: 64))
                     .padding()
+                    .padding(.top)
                 
                 HStack {
                     Spacer()

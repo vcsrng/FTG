@@ -24,11 +24,12 @@ struct GuessNowView: View {
     
     var body: some View {
         VStack {
+            // Top Container
             ZStack {
                 Text("Guess Now")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                    .font(Font.custom("Koulen-Regular", size: 64))
                     .padding()
+                    .padding(.top)
                 HStack {
                     Spacer()
                     Button(action: {
@@ -49,11 +50,15 @@ struct GuessNowView: View {
             HStack {
                 VStack {
                     Text("Collected Items")
-                        .font(.headline)
-                        .padding()
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .padding(.vertical, 16)
+                        .padding(.top, 16)
                     Divider()
-                        .frame(minHeight: 2)
+                        .frame(minHeight: 4)
                         .background(Color.black)
+                        .padding(.leading, 32)
+                        .padding(.trailing, -8)
                     ScrollView {
                         ForEach(arView.inventory.items, id: \.id) { item in
                             HStack {
@@ -84,44 +89,41 @@ struct GuessNowView: View {
                             .shadow(radius: 5)
                             .padding([.leading, .trailing, .top])
                         }
+                        .padding(.leading, 32)
                     }
                     .frame(maxHeight: UIScreen.main.bounds.height * 2 / 3)
                 }
-                .padding()
                 
                 Divider()
-                    .frame(minWidth: 2)
+                    .frame(minWidth: 4)
                     .background(Color.black)
                 
                 VStack(alignment: .center) {
                     Text("Select Evidence")
-                        .font(.headline)
-                        .padding()
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .padding(.vertical, 16)
+                        .padding(.top, 16)
                     Divider()
-                        .frame(minHeight: 2)
+                        .frame(minHeight: 4)
                         .background(Color.black)
+                        .padding(.horizontal, -8)
                     ScrollView {
                         ForEach(allEvidence, id: \.self) { evidence in
                             RoundedRectangle(cornerRadius: 10)
                                 .frame(height: 48)
-                                .foregroundColor(Color.white)
-                                .opacity(0.2)
+                                .foregroundColor(Color.white.opacity(0.2))
                                 .overlay{
                                     EvidenceRow(evidence: evidence, isSelected: selectedEvidence.contains(evidence)) {
                                         toggleEvidenceSelection(evidence)
                                     }
-                                        .font(.body)
-                                        .padding()
-                                        .foregroundColor(.black)
+                                    .font(.body)
+                                    .padding()
+                                    .foregroundColor(.black)
                                 }
-//                            EvidenceRow(evidence: evidence, isSelected: selectedEvidence.contains(evidence)) {
-//                                toggleEvidenceSelection(evidence)
-//                            }
                         }
                     }
-                    .frame(maxHeight: UIScreen.main.bounds.height * 2 / 3)
                 }
-                .padding()
                 
                 Divider()
                     .frame(minWidth: 2)
@@ -129,11 +131,15 @@ struct GuessNowView: View {
                 
                 VStack(alignment: .center) {
                     Text("Possible Answers")
-                        .font(.headline)
-                        .padding()
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .padding(.vertical, 16)
+                        .padding(.top, 16)
                     Divider()
-                        .frame(minHeight: 2)
+                        .frame(minHeight: 4)
                         .background(Color.black)
+                        .padding(.trailing, 32)
+                        .padding(.leading, -8)
                     ScrollView {
                         ForEach(possibleAnswers, id: \.self) { answer in
                             Button(action: {
@@ -142,7 +148,6 @@ struct GuessNowView: View {
                                 RoundedRectangle(cornerRadius: 10)
                                     .frame(height: 48)
                                     .foregroundColor(selectedAnswer == answer ? Color.green.opacity(0.4) : Color.white.opacity(0.2))
-//                                    .opacity(0.2)
                                     .overlay{
                                         Text(answer)
                                             .font(.body)
@@ -151,10 +156,10 @@ struct GuessNowView: View {
                                     }
                             }
                         }
+                        .padding(.trailing, 32)
                     }
                     .frame(maxHeight: UIScreen.main.bounds.height * 2 / 3)
                 }
-                .padding()
             }
             .padding()
             
@@ -186,7 +191,7 @@ struct GuessNowView: View {
         .background(
             Image("BrownTexture2")
                 .resizable()
-                .frame(width: 1400, height: 1400)
+                .frame(width: 1384, height: 1384)
         )
         .onAppear(perform: updatePossibleAnswers)
     }
@@ -238,17 +243,19 @@ struct EvidenceRow: View {
                             .frame(width: 16, height: 16)
                             .foregroundColor(Color.white)
                         Image(systemName: "checkmark.circle.fill")
+                            .font(.title3)
                             .foregroundColor(.green)
                         Image(systemName: "circle")
-                            .foregroundColor(.black)
+                            .font(.title3)
+                            .foregroundColor(.black.opacity(0.6))
                     }
                 } else {
                     Image(systemName: "circle")
+                        .font(.title3)
                         .foregroundColor(.black)
                 }
             }
             .padding()
-            .background(Color.gray.opacity(0.1))
             .cornerRadius(8)
         }
     }

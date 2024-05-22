@@ -56,7 +56,7 @@ struct ContentView: View {
                                             }
                                             AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
                                         }) {
-                                            RoundedRectangle(cornerRadius: 12)
+                                            RoundedRectangle(cornerRadius: 24)
                                                 .frame(width: 72, height: 72)
                                                 .overlay {
                                                     ZStack {
@@ -108,9 +108,11 @@ struct ContentView: View {
                                                                 .font(.system(size: 20))
                                                         }
                                                         .foregroundColor(.black)
-                                                    }
+                                                    }.background(
+                                                    Image("BrownTexture"))
                                                 }
-                                                .foregroundColor(.white.opacity(0.6))
+//                                                .foregroundColor(.white.opacity(0.6))
+                                                .opacity(0.6)
                                                 .clipShape(RoundedRectangle(cornerRadius: 24))
                                                 .shadow(radius: 8, x: 4, y: 4)
                                         }
@@ -132,7 +134,7 @@ struct ContentView: View {
                                             }
                                             AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
                                         }) {
-                                            RoundedRectangle(cornerRadius: 12)
+                                            RoundedRectangle(cornerRadius: 24)
                                                 .frame(width: 72, height: 72)
                                                 .overlay {
                                                     ZStack {

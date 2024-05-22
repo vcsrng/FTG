@@ -25,6 +25,7 @@ struct JournalView: View {
 
     var body: some View {
         VStack {
+            // Top container
             ZStack {
                 Text("Game Guide")
                     .font(Font.custom("Koulen-Regular", size: 64))
@@ -68,7 +69,7 @@ struct JournalView: View {
                         .padding()
                 }
             }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)) // Hide the built-in indicator
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)) // Hide the built-in tabview indicator
             .background(Color.white.opacity(0.2))
             .clipShape(.rect(bottomLeadingRadius: 24, bottomTrailingRadius: 24))
             .padding(.horizontal, 40)
@@ -88,10 +89,11 @@ struct JournalView: View {
             }
             .padding()
         }
+        .scaleEffect(0.9)
         .background(
             Image("BrownTexture2")
                 .resizable()
-                .frame(width: 1400, height: 1400)
+                .frame(width: 1384, height: 1384)
         )
     }
 
@@ -151,7 +153,6 @@ struct JournalView: View {
             Divider()
                 .frame(minHeight: 4)
                 .background(Color.black)
-//            Spacer()
             ScrollView {
                 VStack {
                     ForEach(arView.inventory.items, id: \.id) { item in
@@ -177,15 +178,11 @@ struct JournalView: View {
                             }
                             Spacer()
                         }
-//                        .padding()
                         .background(Color.white.opacity(0.2))
                         .cornerRadius(10)
                         .padding(.top)
-//                        .padding([.horizontal, .top])
-//                        .padding(.horizontal, 8)
                     }
                 }
-//                .padding(.horizontal, 40)
             }
         }.padding(.horizontal, 32)
     }
@@ -314,7 +311,8 @@ struct BookmarkTab: View {
                 .frame(width: (UIScreen.main.bounds.width-80)/3,height: 4)
                 .padding(.horizontal, -4)
                 .padding(.bottom, -8)
-        }.padding(.bottom,-4)
+        }
+        .padding(.bottom,-4)
     }
 }
 

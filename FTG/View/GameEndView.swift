@@ -18,8 +18,8 @@ struct GameEndView: View {
             VStack {
                 Text(isCorrect ? "Congratulations!" : "Unfortunately")
 //                    .font(.largeTitle)
-                    .font(.system(size: 44))
-                    .fontWeight(.bold)
+                    .font(Font.custom("Koulen-Regular", size: 64))
+                    .padding(.bottom, -32)
                 Text(isCorrect ? "You guessed correctly!" : "Your guess was incorrect.")
                     .font(.title)
             }

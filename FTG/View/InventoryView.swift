@@ -16,9 +16,9 @@ struct InventoryView: View {
         VStack {
             ZStack {
                 Text("Found Items")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                    .font(Font.custom("Koulen-Regular", size: 64))
                     .padding()
+                    .padding(.top)
                 HStack {
                     Spacer()
                     Button(action: {
