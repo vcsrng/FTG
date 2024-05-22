@@ -40,6 +40,7 @@ struct SettingView: View {
 
             VStack(alignment: .leading) {
                 Text("Background Music Volume")
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .padding(.leading)
                 Slider(value: Binding(
                     get: { Double(bgmVolume) },
@@ -53,6 +54,7 @@ struct SettingView: View {
 
                 Text("Sound Effects Volume")
                     .padding(.leading)
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 Slider(value: Binding(
                     get: { Double(sfxVolume) },
                     set: { newValue in

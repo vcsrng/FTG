@@ -51,6 +51,9 @@ struct GuessNowView: View {
                     Text("Collected Items")
                         .font(.headline)
                         .padding()
+                    Divider()
+                        .frame(minHeight: 2)
+                        .background(Color.black)
                     ScrollView {
                         ForEach(arView.inventory.items, id: \.id) { item in
                             HStack {
@@ -87,16 +90,33 @@ struct GuessNowView: View {
                 .padding()
                 
                 Divider()
+                    .frame(minWidth: 2)
+                    .background(Color.black)
                 
                 VStack(alignment: .center) {
                     Text("Select Evidence")
                         .font(.headline)
                         .padding()
+                    Divider()
+                        .frame(minHeight: 2)
+                        .background(Color.black)
                     ScrollView {
                         ForEach(allEvidence, id: \.self) { evidence in
-                            EvidenceRow(evidence: evidence, isSelected: selectedEvidence.contains(evidence)) {
-                                toggleEvidenceSelection(evidence)
-                            }
+                            RoundedRectangle(cornerRadius: 10)
+                                .frame(height: 48)
+                                .foregroundColor(Color.white)
+                                .opacity(0.2)
+                                .overlay{
+                                    EvidenceRow(evidence: evidence, isSelected: selectedEvidence.contains(evidence)) {
+                                        toggleEvidenceSelection(evidence)
+                                    }
+                                        .font(.body)
+                                        .padding()
+                                        .foregroundColor(.black)
+                                }
+//                            EvidenceRow(evidence: evidence, isSelected: selectedEvidence.contains(evidence)) {
+//                                toggleEvidenceSelection(evidence)
+//                            }
                         }
                     }
                     .frame(maxHeight: UIScreen.main.bounds.height * 2 / 3)
@@ -104,22 +124,31 @@ struct GuessNowView: View {
                 .padding()
                 
                 Divider()
+                    .frame(minWidth: 2)
+                    .background(Color.black)
                 
                 VStack(alignment: .center) {
                     Text("Possible Answers")
                         .font(.headline)
                         .padding()
+                    Divider()
+                        .frame(minHeight: 2)
+                        .background(Color.black)
                     ScrollView {
                         ForEach(possibleAnswers, id: \.self) { answer in
                             Button(action: {
                                 selectedAnswer = answer
                             }) {
-                                Text(answer)
-                                    .font(.body)
-                                    .padding()
-                                    .background(selectedAnswer == answer ? Color.green : Color.gray)
-                                    .cornerRadius(8)
-                                    .foregroundColor(.white)
+                                RoundedRectangle(cornerRadius: 10)
+                                    .frame(height: 48)
+                                    .foregroundColor(selectedAnswer == answer ? Color.green.opacity(0.4) : Color.white.opacity(0.2))
+//                                    .opacity(0.2)
+                                    .overlay{
+                                        Text(answer)
+                                            .font(.body)
+                                            .padding()
+                                            .foregroundColor(.black)
+                                    }
                             }
                         }
                     }
@@ -154,6 +183,11 @@ struct GuessNowView: View {
             .padding(.bottom, 24)
             .padding()
         }
+        .background(
+            Image("BrownTexture2")
+                .resizable()
+                .frame(width: 1400, height: 1400)
+        )
         .onAppear(perform: updatePossibleAnswers)
     }
     
@@ -199,11 +233,18 @@ struct EvidenceRow: View {
                 Text(evidence)
                 Spacer()
                 if isSelected {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundColor(.green)
+                    ZStack {
+                        Circle()
+                            .frame(width: 16, height: 16)
+                            .foregroundColor(Color.white)
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.green)
+                        Image(systemName: "circle")
+                            .foregroundColor(.black)
+                    }
                 } else {
                     Image(systemName: "circle")
-                        .foregroundColor(.gray)
+                        .foregroundColor(.black)
                 }
             }
             .padding()

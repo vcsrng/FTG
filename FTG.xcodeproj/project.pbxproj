@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		BF2BDD562BFCA01E00FA1C75 /* SegmentedPicker in Frameworks */ = {isa = PBXBuildFile; productRef = BF2BDD552BFCA01E00FA1C75 /* SegmentedPicker */; };
+		BF4C8E222BFE35900039467F /* Koulen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E212BFE35900039467F /* Koulen-Regular.ttf */; };
+		BF4C8E232BFE35900039467F /* Koulen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E212BFE35900039467F /* Koulen-Regular.ttf */; };
+		BF4C8E242BFE35900039467F /* Koulen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E212BFE35900039467F /* Koulen-Regular.ttf */; };
 		BF76F0A62BF4F57100F512F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F0A52BF4F57100F512F3 /* AppDelegate.swift */; };
 		BF76F0AA2BF4F57200F512F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0A92BF4F57200F512F3 /* Assets.xcassets */; };
 		BF76F0AD2BF4F57200F512F3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0AC2BF4F57200F512F3 /* Preview Assets.xcassets */; };
@@ -39,7 +42,6 @@
 		BF76F1E02BFB35E600F512F3 /* BGM2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1DF2BFB35E600F512F3 /* BGM2.mp3 */; };
 		BF76F1E22BFB362700F512F3 /* ButtonClick2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1E12BFB362700F512F3 /* ButtonClick2.mp3 */; };
 		BFD4F8462BFCF69E004AF67B /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4F8452BFCF69E004AF67B /* SplashScreen.swift */; };
-		BFD4F8522BFD0968004AF67B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFD4F8512BFD0968004AF67B /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF4C8E212BFE35900039467F /* Koulen-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Koulen-Regular.ttf"; sourceTree = "<group>"; };
 		BF76F0A22BF4F57100F512F3 /* FTG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FTG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF76F0A52BF4F57100F512F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF76F0A92BF4F57200F512F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -93,7 +96,6 @@
 		BF76F1DF2BFB35E600F512F3 /* BGM2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BGM2.mp3; sourceTree = "<group>"; };
 		BF76F1E12BFB362700F512F3 /* ButtonClick2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ButtonClick2.mp3; sourceTree = "<group>"; };
 		BFD4F8452BFCF69E004AF67B /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
-		BFD4F8512BFD0968004AF67B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF4C8E1E2BFE23B10039467F /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				BF4C8E212BFE35900039467F /* Koulen-Regular.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		BF76F0992BF4F57100F512F3 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				BF76F0A52BF4F57100F512F3 /* AppDelegate.swift */,
+				BF4C8E1E2BFE23B10039467F /* Font */,
 				BF76F1BF2BF8D4EA00F512F3 /* BGM */,
 				BF76F1772BF65C0700F512F3 /* Model */,
 				BF76F1C42BF8D7C000F512F3 /* Audio */,
@@ -214,7 +225,6 @@
 				BF76F16E2BF656CF00F512F3 /* InventoryView.swift */,
 				BF76F1DD2BFA604200F512F3 /* HowToPlayView.swift */,
 				BFD4F8452BFCF69E004AF67B /* SplashScreen.swift */,
-				BFD4F8512BFD0968004AF67B /* Launch Screen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -367,9 +377,9 @@
 				BF76F1E22BFB362700F512F3 /* ButtonClick2.mp3 in Resources */,
 				BF76F1C32BF8D72600F512F3 /* ItemCollect.mp3 in Resources */,
 				BF76F1C12BF8D50D00F512F3 /* BGM.mp3 in Resources */,
-				BFD4F8522BFD0968004AF67B /* Launch Screen.storyboard in Resources */,
 				BF76F16D2BF63BEE00F512F3 /* Basketball_Ball.usdz in Resources */,
 				BF76F0E12BF5046B00F512F3 /* Soccer_Ball.usdz in Resources */,
+				BF4C8E222BFE35900039467F /* Koulen-Regular.ttf in Resources */,
 				BF76F0E42BF506FB00F512F3 /* Crumpled_paper.usdz in Resources */,
 				BF76F0E22BF5046B00F512F3 /* Eight_Ball.usdz in Resources */,
 				BF76F1E02BFB35E600F512F3 /* BGM2.mp3 in Resources */,
@@ -383,6 +393,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF4C8E232BFE35900039467F /* Koulen-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +401,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF4C8E242BFE35900039467F /* Koulen-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

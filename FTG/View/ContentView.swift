@@ -18,236 +18,255 @@ struct ContentView: View {
     @State private var isCorrect = false
 
     @State private var bgmVolume: Float = 1
-    
+    @State private var showSplashScreen = true // State variable for splash screen
+
     var body: some View {
-        if showMainMenu {
-            ZStack{
-                MainMenuView(arView: customARView, showMainMenu: $showMainMenu, bgmVolume: $bgmVolume, sfxVolume: $customARView.sfxVolume)
-            }.onAppear {
-                AudioManager.shared.playBGM(filename: "BGM2", volume: bgmVolume)
-            }
-        } else {
-            ZStack {
-                ARContentView(arView: customARView)
-                    .edgesIgnoringSafeArea(.all)
-                
-                VStack {
-                    Text("\(customARView.collectedItems.count)")
-                        .font(.system(size: 104))
-                    Spacer()
-                }
-                .padding(.top, 80)
-                
-                VStack {
-                    Spacer()
-                    HStack {
-                        // Left buttons
+        Group {
+            if showSplashScreen {
+                SplashScreen()
+            } else {
+                if showMainMenu {
+                    ZStack {
+                        MainMenuView(arView: customARView, showMainMenu: $showMainMenu, bgmVolume: $bgmVolume, sfxVolume: $customARView.sfxVolume)
+                    }
+                    .onAppear {
+                        AudioManager.shared.playBGM(filename: "BGM2", volume: bgmVolume)
+                    }
+                } else {
+                    ZStack {
+                        ARContentView(arView: customARView)
+                            .edgesIgnoringSafeArea(.all)
+                        
                         VStack {
-                            HStack {
-                                Button(action: {
-                                    withAnimation {
-                                        showJournal.toggle()
-                                    }
-                                    AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
-                                }) {
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .frame(width: 72, height: 72)
-                                        .overlay {
-                                            ZStack {
-                                                VStack {
-                                                    RoundedRectangle(cornerRadius: 16)
-                                                        .foregroundColor(.white.opacity(0.2))
-                                                    RoundedRectangle(cornerRadius: 12)
-                                                        .opacity(0)
-                                                }
-                                                .padding(8)
-                                                VStack {
-                                                    Image(systemName: "list.bullet.clipboard")
-                                                        .font(.system(size: 40))
-                                                }
-                                                .foregroundColor(.black)
-                                            }
-                                        }
-                                        .foregroundColor(.white.opacity(0.6))
-                                        .clipShape(RoundedRectangle(cornerRadius: 24))
-                                        .shadow(radius: 4, x: 2, y: 2)
-                                }
-                                .padding(.leading, 20)
-                                Spacer()
-                            }
-                            .padding(.bottom, 12)
-                            
-                            HStack {
-                                Button(action: {
-                                    withAnimation {
-                                        showGuessNow.toggle()
-                                    }
-                                    AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
-                                }) {
-                                    RoundedRectangle(cornerRadius: 24)
-                                        .frame(width: 144, height: 144)
-                                        .overlay {
-                                            ZStack {
-                                                VStack {
-                                                    RoundedRectangle(cornerRadius: 16)
-                                                        .foregroundColor(.white.opacity(0.2))
-                                                    RoundedRectangle(cornerRadius: 24)
-                                                        .opacity(0)
-                                                }
-                                                .padding(8)
-                                                VStack {
-                                                    Image(systemName: "sparkle.magnifyingglass")
-                                                        .font(.system(size: 80))
-                                                    Text("Guess now!")
-                                                        .font(.system(size: 20))
-                                                }
-                                                .foregroundColor(.black)
-                                            }
-                                        }
-                                        .foregroundColor(.white.opacity(0.6))
-                                        .clipShape(RoundedRectangle(cornerRadius: 24))
-                                        .shadow(radius: 8, x: 4, y: 4)
-                                }
-                                .padding(.leading, 20)
-                                Spacer()
-                            }
+                            Text("\(customARView.collectedItems.count)")
+                                .font(.system(size: 104))
+                            Spacer()
                         }
+                        .padding(.top, 80)
                         
-                        Spacer()
-                        
-                        // Right buttons
                         VStack {
+                            Spacer()
                             HStack {
-                                Spacer()
-                                
-                                Button(action: {
-                                    withAnimation {
-                                        showSettings.toggle()
-                                    }
-                                    AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
-                                }) {
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .frame(width: 72, height: 72)
-                                        .overlay {
-                                            ZStack {
-                                                VStack {
-                                                    RoundedRectangle(cornerRadius: 16)
-                                                        .foregroundColor(.white.opacity(0.2))
-                                                    RoundedRectangle(cornerRadius: 12)
-                                                        .opacity(0)
-                                                }
-                                                .padding(8)
-                                                VStack {
+                                // Left buttons
+                                VStack {
+                                    HStack {
+                                        Button(action: {
+                                            withAnimation {
+                                                showJournal.toggle()
+                                            }
+                                            AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
+                                        }) {
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .frame(width: 72, height: 72)
+                                                .overlay {
                                                     ZStack {
-                                                        Image(systemName: "gearshape")
-                                                            .font(.system(size: 32))
-                                                            .position(x: 30, y: 46)
-                                                        Image(systemName: "gearshape.2")
-                                                            .font(.system(size: 32))
-                                                            .position(x: 42, y: 26)
+                                                        VStack {
+                                                            RoundedRectangle(cornerRadius: 16)
+                                                                .foregroundColor(.white.opacity(0.2))
+                                                            RoundedRectangle(cornerRadius: 12)
+                                                                .opacity(0)
+                                                        }
+                                                        .padding(8)
+                                                        VStack {
+                                                            Image(systemName: "list.bullet.clipboard")
+                                                                .font(.system(size: 40))
+                                                        }
+                                                        .foregroundColor(.black)
                                                     }
                                                 }
-                                                .foregroundColor(.black)
-                                            }
+                                                .foregroundColor(.white.opacity(0.6))
+                                                .clipShape(RoundedRectangle(cornerRadius: 24))
+                                                .shadow(radius: 4, x: 2, y: 2)
                                         }
-                                        .foregroundColor(.white.opacity(0.6))
-                                        .clipShape(RoundedRectangle(cornerRadius: 24))
-                                        .shadow(radius: 4, x: 2, y: 2)
-                                }
-                                .padding(.trailing, 20)
-                            }
-                            .padding(.bottom, 12)
-                            
-                            HStack {
-                                Spacer()
-                                Button(action: {
-                                    withAnimation {
-                                        showInventory.toggle()
+                                        .padding(.leading, 20)
+                                        Spacer()
                                     }
-                                    AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
-                                }) {
-                                    RoundedRectangle(cornerRadius: 24)
-                                        .frame(width: 144, height: 144)
-                                        .overlay {
-                                            ZStack {
-                                                VStack {
-                                                    RoundedRectangle(cornerRadius: 16)
-                                                        .foregroundColor(.white.opacity(0.2))
-                                                    RoundedRectangle(cornerRadius: 24)
-                                                        .opacity(0)
-                                                }
-                                                .padding(8)
-                                                VStack {
-                                                    Image(systemName: "bag")
-                                                        .font(.system(size: 80))
-                                                    Text("Item found")
-                                                        .font(.system(size: 20))
-                                                }
-                                                .foregroundColor(.black)
+                                    .padding(.bottom, 12)
+                                    
+                                    HStack {
+                                        Button(action: {
+                                            withAnimation {
+                                                showGuessNow.toggle()
                                             }
+                                            AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
+                                        }) {
+                                            RoundedRectangle(cornerRadius: 24)
+                                                .frame(width: 144, height: 144)
+                                                .overlay {
+                                                    ZStack {
+                                                        VStack {
+                                                            RoundedRectangle(cornerRadius: 16)
+                                                                .foregroundColor(.white.opacity(0.2))
+                                                            RoundedRectangle(cornerRadius: 24)
+                                                                .opacity(0)
+                                                        }
+                                                        .padding(8)
+                                                        VStack {
+                                                            Image(systemName: "sparkle.magnifyingglass")
+                                                                .font(.system(size: 80))
+                                                            Text("Guess now!")
+                                                                .font(.system(size: 20))
+                                                        }
+                                                        .foregroundColor(.black)
+                                                    }
+                                                }
+                                                .foregroundColor(.white.opacity(0.6))
+                                                .clipShape(RoundedRectangle(cornerRadius: 24))
+                                                .shadow(radius: 8, x: 4, y: 4)
                                         }
-                                        .foregroundColor(.white.opacity(0.6))
-                                        .clipShape(RoundedRectangle(cornerRadius: 24))
-                                        .shadow(radius: 8, x: 4, y: 4)
+                                        .padding(.leading, 20)
+                                        Spacer()
+                                    }
                                 }
-                                .padding(.trailing, 20)
+                                
+                                Spacer()
+                                
+                                // Right buttons
+                                VStack {
+                                    HStack {
+                                        Spacer()
+                                        
+                                        Button(action: {
+                                            withAnimation {
+                                                showSettings.toggle()
+                                            }
+                                            AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
+                                        }) {
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .frame(width: 72, height: 72)
+                                                .overlay {
+                                                    ZStack {
+                                                        VStack {
+                                                            RoundedRectangle(cornerRadius: 16)
+                                                                .foregroundColor(.white.opacity(0.2))
+                                                            RoundedRectangle(cornerRadius: 12)
+                                                                .opacity(0)
+                                                        }
+                                                        .padding(8)
+                                                        VStack {
+                                                            ZStack {
+                                                                Image(systemName: "gearshape")
+                                                                    .font(.system(size: 32))
+                                                                    .position(x: 30, y: 46)
+                                                                Image(systemName: "gearshape.2")
+                                                                    .font(.system(size: 32))
+                                                                    .position(x: 42, y: 26)
+                                                            }
+                                                        }
+                                                        .foregroundColor(.black)
+                                                    }
+                                                }
+                                                .foregroundColor(.white.opacity(0.6))
+                                                .clipShape(RoundedRectangle(cornerRadius: 24))
+                                                .shadow(radius: 4, x: 2, y: 2)
+                                        }
+                                        .padding(.trailing, 20)
+                                    }
+                                    .padding(.bottom, 12)
+                                    
+                                    HStack {
+                                        Spacer()
+                                        Button(action: {
+                                            withAnimation {
+                                                showInventory.toggle()
+                                            }
+                                            AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
+                                        }) {
+                                            RoundedRectangle(cornerRadius: 24)
+                                                .frame(width: 144, height: 144)
+                                                .overlay {
+                                                    ZStack {
+                                                        VStack {
+                                                            RoundedRectangle(cornerRadius: 16)
+                                                                .foregroundColor(.white.opacity(0.2))
+                                                            RoundedRectangle(cornerRadius: 24)
+                                                                .opacity(0)
+                                                        }
+                                                        .padding(8)
+                                                        VStack {
+                                                            Image(systemName: "bag")
+                                                                .font(.system(size: 80))
+                                                            Text("Item found")
+                                                                .font(.system(size: 20))
+                                                        }
+                                                        .foregroundColor(.black)
+                                                    }
+                                                }
+                                                .foregroundColor(.white.opacity(0.6))
+                                                .clipShape(RoundedRectangle(cornerRadius: 24))
+                                                .shadow(radius: 8, x: 4, y: 4)
+                                        }
+                                        .padding(.trailing, 20)
+                                    }
+                                }
                             }
+                            .padding(.bottom, 8)
+                        }
+                        
+                        if showInventory || showSettings || showJournal || showGuessNow || showGameEnd {
+                            Color.black.opacity(0.4)
+                                .edgesIgnoringSafeArea(.all)
+                                .onTapGesture {
+                                    // Disable tap outside to close the popup
+                                }
+                        }
+                        
+                        if showInventory {
+                            InventoryView(inventory: customARView.inventory, showInventory: $showInventory, sfxVolume: $customARView.sfxVolume)
+                                .background(Color.white)
+                                .cornerRadius(24)
+                                .padding(80)
+                                .zIndex(2)
+                        }
+                        
+                        if showSettings {
+                            SettingView(customARView: customARView, showSettings: $showSettings, bgmVolume: $bgmVolume, sfxVolume: $customARView.sfxVolume)
+                                .background(Color.white)
+                                .cornerRadius(24)
+                                .padding(UIScreen.main.bounds.width * 3 / 16)
+                                .zIndex(1)
+                        }
+                        
+                        if showJournal {
+                            JournalView(arView: customARView, showJournal: $showJournal)
+                                .background(Color.white)
+                                .cornerRadius(24)
+                                .padding(80)
+                                .zIndex(1)
+                        }
+                        
+                        if showGuessNow {
+                            GuessNowView(arView: customARView, showGuessNow: $showGuessNow, showGameEnd: $showGameEnd, isCorrect: $isCorrect)
+                                .background(Color.white)
+                                .cornerRadius(24)
+                                .padding(80)
+                                .zIndex(2)
+                        }
+                        
+                        if showGameEnd {
+                            GameEndView(showMainMenu: $showMainMenu, showGameEnd: $showGameEnd, isCorrect: $isCorrect, arView: customARView)
+                                .background(Color.white)
+                                .cornerRadius(24)
+                                .padding(80)
+                                .zIndex(3)
                         }
                     }
-                    .padding(.bottom, 8)
-                }
-                
-                if showInventory || showSettings || showJournal || showGuessNow || showGameEnd {
-                    Color.black.opacity(0.4)
-                        .edgesIgnoringSafeArea(.all)
-                        .onTapGesture {
-                            // Disable tap outside to close the popup
-                        }
-                }
-                
-                if showInventory {
-                    InventoryView(inventory: customARView.inventory, showInventory: $showInventory, sfxVolume: $customARView.sfxVolume)
-                        .background(Color.white)
-                        .cornerRadius(24)
-                        .padding(80)
-                        .zIndex(2)
-                }
-                
-                if showSettings {
-                    SettingView(customARView: customARView, showSettings: $showSettings, bgmVolume: $bgmVolume, sfxVolume: $customARView.sfxVolume)
-                        .background(Color.white)
-                        .cornerRadius(24)
-                        .padding(UIScreen.main.bounds.width * 3 / 16)
-                        .zIndex(1)
-                }
-                
-                if showJournal {
-                    JournalView(arView: customARView, showJournal: $showJournal)
-                        .background(Color.white)
-                        .cornerRadius(24)
-                        .padding(80)
-                        .zIndex(1)
-                }
-                
-                if showGuessNow {
-                    GuessNowView(arView: customARView, showGuessNow: $showGuessNow, showGameEnd: $showGameEnd, isCorrect: $isCorrect)
-                        .background(Color.white)
-                        .cornerRadius(24)
-                        .padding(80)
-                        .zIndex(2)
-                }
-                
-                if showGameEnd {
-                    GameEndView(showMainMenu: $showMainMenu, showGameEnd: $showGameEnd, isCorrect: $isCorrect, arView: customARView)
-                        .background(Color.white)
-                        .cornerRadius(24)
-                        .padding(80)
-                        .zIndex(3)
+                    .onAppear {
+                        AudioManager.shared.playBGM(filename: "BGM", volume: bgmVolume)
+                    }
                 }
             }
-            .onAppear {
-                AudioManager.shared.playBGM(filename: "BGM", volume: bgmVolume)
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    showSplashScreen = false
+                }
             }
         }
     }
+}
+
+#Preview {
+    ContentView()
 }
