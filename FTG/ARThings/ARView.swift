@@ -81,7 +81,7 @@ class CustomARView: ARView, ObservableObject {
         answerList = generateAnswerList()
 
         // Reapply configuration
-        let configuration = selectConfiguration(caseNumber: Int.random(in: 1...3))
+        let configuration = selectConfiguration(caseNumber: Int.random(in: 1...9))
         applyConfiguration(configuration)
 
         // Start a new AR session
@@ -117,62 +117,192 @@ class CustomARView: ARView, ObservableObject {
         switch caseNumber {
         case 1:
             return ItemConfiguration(
-                itemAssets: ["Eight_Ball.usdz", "Golf_Ball.usdz", "Soccer_Ball.usdz", "Basketball_Ball.usdz", "Crumpled_paper.usdz"],
+                itemAssets: ["Bag.usdz", "Macbook.usdz", "Notebook.usdz", "iPhone.usdz", "Lanyard.usdz", "Pen.usdz"],
                 itemScales: [
+                    SIMD3<Float>(repeating: 0.001),
+                    SIMD3<Float>(repeating: 0.001),
                     SIMD3<Float>(repeating: 0.0005),
-                    SIMD3<Float>(repeating: 0.00012),
-                    SIMD3<Float>(repeating: 0.0012),
-                    SIMD3<Float>(repeating: 0.015),
-                    SIMD3<Float>(repeating: 0.0008)
+                    SIMD3<Float>(repeating: 0.01),
+                    SIMD3<Float>(repeating: 0.0005),
+                    SIMD3<Float>(repeating: 0.0005)
                 ],
                 itemDescriptions: [
-                    "An eight ball with black and white colors.",
-                    "A small golf ball, typically white with dimples.",
-                    "A classic soccer ball with black and white patches.",
-                    "A standard basketball with orange color.",
-                    "A piece of crumpled paper."
+                    "A sturdy, multi-compartment backpack used to carry books, electronics, and other personal items.",
+                    "A sleek, high-performance laptop commonly used for software development, graphic design, and professional tasks.",
+                    "A portable writing pad or clipboard used for taking notes, organizing tasks, and recording information.",
+                    "A smartphone with various apps and functionalities used for communication, internet access, and productivity.",
+                    "A strap worn around the neck to hold ID cards, keys, or small devices, often used for identification or security purposes.",
+                    "A writing instrument used for jotting down notes, signing documents, and other writing tasks."
                 ],
-                answerKey: "Answer 1"
+                answerKey: "Apple Developer Student"
             )
         case 2:
             return ItemConfiguration(
-                itemAssets: ["Toothpaste.usdz", "Sandwich.usdz", "Sundae.usdz", "Cookies.usdz", "Coffee_Cup.usdz", "Crumpled_paper.usdz"],
-                itemScales: [
-                    SIMD3<Float>(repeating: 0.01),
-                    SIMD3<Float>(repeating: 0.01),
-                    SIMD3<Float>(repeating: 0.01),
-                    SIMD3<Float>(repeating: 0.01),
-                    SIMD3<Float>(repeating: 0.01),
-                    SIMD3<Float>(repeating: 0.0008)
-                ],
-                itemDescriptions: [
-                    "A tube of toothpaste, often used for dental care.",
-                    "A sandwich with layers of ingredients between bread slices.",
-                    "A delicious sundae with ice cream and toppings.",
-                    "A plate of cookies, freshly baked and ready to eat.",
-                    "A cup of coffee, often enjoyed hot.",
-                    "A piece of crumpled paper."
-                ],
-                answerKey: "Answer 2"
-            )
-        case 3:
-            return ItemConfiguration(
-                itemAssets: ["Eight_Ball.usdz", "Sandwich.usdz", "Soccer_Ball.usdz", "Basketball_Ball.usdz", "Coffee_Cup.usdz"],
+                itemAssets: ["Notebook.usdz", "iPhone.usdz", "Lanyard.usdz", "Watch.usdz", "Pen.usdz"],
                 itemScales: [
                     SIMD3<Float>(repeating: 0.0005),
                     SIMD3<Float>(repeating: 0.01),
-                    SIMD3<Float>(repeating: 0.0012),
-                    SIMD3<Float>(repeating: 0.015),
-                    SIMD3<Float>(repeating: 0.01)
+                    SIMD3<Float>(repeating: 0.0005),
+                    SIMD3<Float>(repeating: 0.01),
+                    SIMD3<Float>(repeating: 0.0005)
                 ],
                 itemDescriptions: [
-                    "An eight ball with black and white colors.",
-                    "A sandwich with layers of ingredients between bread slices.",
-                    "A classic soccer ball with black and white patches.",
-                    "A standard basketball with orange color.",
-                    "A cup of coffee, often enjoyed hot."
+                    "A portable writing pad or clipboard used for taking notes, organizing tasks, and recording information.",
+                    "A smartphone with various apps and functionalities used for communication, internet access, and productivity.",
+                    "A strap worn around the neck to hold ID cards, keys, or small devices, often used for identification or security purposes.",
+                    "A device worn on the wrist to keep track of time, often with additional features for timing events or activities.",
+                    "A writing instrument used for jotting down notes, signing documents, and other writing tasks."
                 ],
-                answerKey: "Answer 3"
+                answerKey: "Personal Trainer"
+            )
+        case 3:
+            return ItemConfiguration(
+                itemAssets: ["Bag.usdz", "Notebook.usdz", "iPhone.usdz", "Pen.usdz", "Lunchbox.usdz"],
+                itemScales: [
+                    SIMD3<Float>(repeating: 0.001),
+                    SIMD3<Float>(repeating: 0.0005),
+                    SIMD3<Float>(repeating: 0.01),
+                    SIMD3<Float>(repeating: 0.0005),
+                    SIMD3<Float>(repeating: 0.0005)
+                ],
+                itemDescriptions: [
+                    "A sturdy, multi-compartment backpack used to carry books, electronics, and other personal items.",
+                    "A portable writing pad or clipboard used for taking notes, organizing tasks, and recording information.",
+                    "A smartphone with various apps and functionalities used for communication, internet access, and productivity.",
+                    "A writing instrument used for jotting down notes, signing documents, and other writing tasks.",
+                    "A container used to carry meals and snacks, often used by students, office workers, and field professionals."
+                ],
+                answerKey: "General Student"
+            )
+        case 4:
+            return ItemConfiguration(
+                itemAssets: ["Bag.usdz", "Macbook.usdz", "iPhone.usdz", "Lanyard.usdz", "Lunchbox.usdz"],
+                itemScales: [
+                    SIMD3<Float>(repeating: 0.001),
+                    SIMD3<Float>(repeating: 0.001),
+                    SIMD3<Float>(repeating: 0.01),
+                    SIMD3<Float>(repeating: 0.0005),
+                    SIMD3<Float>(repeating: 0.0005)
+                ],
+                itemDescriptions: [
+                    "A sturdy, multi-compartment backpack used to carry books, electronics, and other personal items.",
+                    "A sleek, high-performance laptop commonly used for software development, graphic design, and professional tasks.",
+                    "A smartphone with various apps and functionalities used for communication, internet access, and productivity.",
+                    "A strap worn around the neck to hold ID cards, keys, or small devices, often used for identification or security purposes.",
+                    "A container used to carry meals and snacks, often used by students, office workers, and field professionals."
+                ],
+                answerKey: "Office Worker"
+            )
+        case 5:
+            return ItemConfiguration(
+                itemAssets: ["Bag.usdz", "Macbook.usdz", "Notebook.usdz", "Lanyard.usdz", "Pen.usdz", "Scissors.usdz", "WhiteCoat.usdz", "Mask.usdz", "Glove.usdz"],
+                itemScales: [
+                    SIMD3<Float>(repeating: 0.001),
+                    SIMD3<Float>(repeating: 0.001),
+                    SIMD3<Float>(repeating: 0.0005),
+                    SIMD3<Float>(repeating: 0.0005),
+                    SIMD3<Float>(repeating: 0.0005),
+                    SIMD3<Float>(repeating: 0.0001),
+                    SIMD3<Float>(repeating: 0.002),
+                    SIMD3<Float>(repeating: 0.001),
+                    SIMD3<Float>(repeating: 0.005)
+                ],
+                itemDescriptions: [
+                    "A sturdy, multi-compartment backpack used to carry books, electronics, and other personal items.",
+                    "A sleek, high-performance laptop commonly used for software development, graphic design, and professional tasks.",
+                    "A portable writing pad or clipboard used for taking notes, organizing tasks, and recording information.",
+                    "A strap worn around the neck to hold ID cards, keys, or small devices, often used for identification or security purposes.",
+                    "A writing instrument used for jotting down notes, signing documents, and other writing tasks.",
+                    "A tool with two blades used for cutting paper, fabric, and other materials, essential in various professions.",
+                    "A knee-length coat worn by doctors and scientists, symbolizing cleanliness and professionalism.",
+                    "A protective face covering used to prevent the spread of germs and exposure to harmful substances.",
+                    "Protective hand coverings used to maintain hygiene and safety in various tasks and professions."
+                ],
+                answerKey: "Doctor"
+            )
+        case 6:
+            return ItemConfiguration(
+                itemAssets: ["Notebook.usdz", "Lanyard.usdz", "Watch.usdz", "Pen.usdz", "Scissors.usdz", "WhiteCoat.usdz", "Mask.usdz", "Glove.usdz"],
+                itemScales: [
+                    SIMD3<Float>(repeating: 0.0005),
+                    SIMD3<Float>(repeating: 0.0005),
+                    SIMD3<Float>(repeating: 0.01),
+                    SIMD3<Float>(repeating: 0.0005),
+                    SIMD3<Float>(repeating: 0.0001),
+                    SIMD3<Float>(repeating: 0.002),
+                    SIMD3<Float>(repeating: 0.001),
+                    SIMD3<Float>(repeating: 0.005)
+                ],
+                itemDescriptions: [
+                    "A portable writing pad or clipboard used for taking notes, organizing tasks, and recording information.",
+                    "A strap worn around the neck to hold ID cards, keys, or small devices, often used for identification or security purposes.",
+                    "A device worn on the wrist to keep track of time, often with additional features for timing events or activities.",
+                    "A writing instrument used for jotting down notes, signing documents, and other writing tasks.",
+                    "A tool with two blades used for cutting paper, fabric, and other materials, essential in various professions.",
+                    "A knee-length coat worn by doctors and scientists, symbolizing cleanliness and professionalism.",
+                    "A protective face covering used to prevent the spread of germs and exposure to harmful substances.",
+                    "Protective hand coverings used to maintain hygiene and safety in various tasks and professions."
+                ],
+                answerKey: "Scientist"
+            )
+        case 7:
+            return ItemConfiguration(
+                itemAssets: ["Notebook.usdz", "iPhone.usdz", "Watch.usdz", "Pen.usdz", "Whistle.usdz"],
+                itemScales: [
+                    SIMD3<Float>(repeating: 0.0005),
+                    SIMD3<Float>(repeating: 0.01),
+                    SIMD3<Float>(repeating: 0.01),
+                    SIMD3<Float>(repeating: 0.0005),
+                    SIMD3<Float>(repeating: 0.00005)
+                ],
+                itemDescriptions: [
+                    "A portable writing pad or clipboard used for taking notes, organizing tasks, and recording information.",
+                    "A smartphone with various apps and functionalities used for communication, internet access, and productivity.",
+                    "A device worn on the wrist to keep track of time, often with additional features for timing events or activities.",
+                    "A writing instrument used for jotting down notes, signing documents, and other writing tasks.",
+                    "A small, handheld device used to produce a loud sound for signaling or commanding attention, often used in sports and training."
+                ],
+                answerKey: "Physical Education Teacher"
+            )
+        case 8:
+            return ItemConfiguration(
+                itemAssets: ["Notebook.usdz", "Watch.usdz", "Pen.usdz", "Hat.usdz", "Whistle.usdz"],
+                itemScales: [
+                    SIMD3<Float>(repeating: 0.0005),
+                    SIMD3<Float>(repeating: 0.01),
+                    SIMD3<Float>(repeating: 0.0005),
+                    SIMD3<Float>(repeating: 0.0003),
+                    SIMD3<Float>(repeating: 0.00005)
+                ],
+                itemDescriptions: [
+                    "A portable writing pad or clipboard used for taking notes, organizing tasks, and recording information.",
+                    "A device worn on the wrist to keep track of time, often with additional features for timing events or activities.",
+                    "A writing instrument used for jotting down notes, signing documents, and other writing tasks.",
+                    "A head covering worn for protection against the elements, as part of a uniform, or for fashion.",
+                    "A small, handheld device used to produce a loud sound for signaling or commanding attention, often used in sports and training."
+                ],
+                answerKey: "Referee"
+            )
+        case 9:
+            return ItemConfiguration(
+                itemAssets: ["Bag.usdz", "Scissors.usdz", "Mask.usdz", "Glove.usdz", "Lunchbox.usdz", "Hat.usdz"],
+                itemScales: [
+                    SIMD3<Float>(repeating: 0.001),
+                    SIMD3<Float>(repeating: 0.0001),
+                    SIMD3<Float>(repeating: 0.001),
+                    SIMD3<Float>(repeating: 0.005),
+                    SIMD3<Float>(repeating: 0.0005),
+                    SIMD3<Float>(repeating: 0.0003)
+                ],
+                itemDescriptions: [
+                    "A sturdy, multi-compartment backpack used to carry books, electronics, and other personal items.",
+                    "A tool with two blades used for cutting paper, fabric, and other materials, essential in various professions.",
+                    "A protective face covering used to prevent the spread of germs and exposure to harmful substances.",
+                    "Protective hand coverings used to maintain hygiene and safety in various tasks and professions.",
+                    "A container used to carry meals and snacks, often used by students, office workers, and field professionals.",
+                    "A head covering worn for protection against the elements, as part of a uniform, or for fashion."
+                ],
+                answerKey: "Gardener"
             )
         default:
             fatalError("Invalid case number")
@@ -180,12 +310,25 @@ class CustomARView: ARView, ObservableObject {
     }
 
     func generateAnswerList() -> [String: [String]] {
-        // Generate a dummy answer list from ItemConfiguration or any other source
         return [
-            "Answer 1": ["Eight_Ball.usdz", "Golf_Ball.usdz", "Soccer_Ball.usdz", "Basketball_Ball.usdz", "Crumpled_paper.usdz"],
-            "Answer 2": ["Toothpaste.usdz", "Sandwich.usdz", "Sundae.usdz", "Cookies.usdz", "Coffee_Cup.usdz", "Crumpled_paper.usdz"],
-            "Answer 3": ["Eight_Ball.usdz", "Sandwich.usdz", "Soccer_Ball.usdz", "Basketball_Ball.usdz", "Coffee_Cup.usdz"],
-            "Answer 4": ["Eight_Ball.usdz", "Soccer_Ball.usdz", "Basketball_Ball.usdz", "Crumpled_paper.usdz", "Cookies.usdz"]
+            // 1
+            "Apple Developer Student": ["Bag", "Macbook", "Notebook/Clipboard", "iPhone", "Lanyard", "Pen"],
+            // 2
+            "Personal Trainer": ["Notebook/Clipboard", "iPhone", "Lanyard", "Watch/Stopwatch", "Pen"],
+            // 3
+            "General Student": ["Bag", "Notebook/Clipboard", "iPhone", "Pen", "Lunchbox"],
+            // 4
+            "Office Worker": ["Bag", "Macbook", "iPhone", "Lanyard", "Lunchbox"],
+            // 5
+            "Doctor": ["Bag", "Macbook", "Notebook/Clipboard", "Lanyard", "Pen", "Scissors", "White Coat", "Mask", "Glove"],
+            // 6
+            "Scientist": ["Notebook/Clipboard", "Lanyard", "Watch/Stopwatch", "Pen", "Scissors", "White Coat", "Mask", "Glove"],
+            // 7
+            "Physical Education Teacher": ["Notebook/Clipboard", "iPhone", "Watch/Stopwatch", "Pen", "Whistle"],
+            // 8
+            "Referee": ["Notebook/Clipboard", "Watch/Stopwatch", "Pen", "Hat", "Whistle"],
+            // 9
+            "Gardener": ["Bag", "Scissors", "Mask", "Glove", "Lunchbox", "Hat"]
         ]
     }
     
@@ -197,7 +340,7 @@ class CustomARView: ARView, ObservableObject {
     }
 
     private func spawnItems() {
-        let boundingBoxSize: Float = 0.5
+        let boundingBoxSize: Float = 1
         let minX: Float = -boundingBoxSize / 2
         let maxX: Float = boundingBoxSize / 2
         let minZ: Float = -boundingBoxSize / 2
@@ -260,7 +403,7 @@ class CustomARView: ARView, ObservableObject {
     }
 
     private func formatItemName(_ itemName: String) -> String {
-        return itemName.replacingOccurrences(of: "_", with: " ").capitalized
+        return itemName.replacingOccurrences(of: "_", with: " ")/*.capitalized*/
     }
     
     private func getItemDescription(for itemName: String) -> String {

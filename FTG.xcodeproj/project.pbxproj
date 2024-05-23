@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF2BDD562BFCA01E00FA1C75 /* SegmentedPicker in Frameworks */ = {isa = PBXBuildFile; productRef = BF2BDD552BFCA01E00FA1C75 /* SegmentedPicker */; };
 		BF4C8E222BFE35900039467F /* Koulen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E212BFE35900039467F /* Koulen-Regular.ttf */; };
 		BF4C8E232BFE35900039467F /* Koulen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E212BFE35900039467F /* Koulen-Regular.ttf */; };
 		BF4C8E242BFE35900039467F /* Koulen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E212BFE35900039467F /* Koulen-Regular.ttf */; };
@@ -17,9 +16,6 @@
 		BF4C8E372BFF8FD00039467F /* Lunchbox.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E262BFF8FCF0039467F /* Lunchbox.usdz */; };
 		BF4C8E382BFF8FD00039467F /* Lunchbox.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E262BFF8FCF0039467F /* Lunchbox.usdz */; };
 		BF4C8E392BFF8FD00039467F /* Lunchbox.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E262BFF8FCF0039467F /* Lunchbox.usdz */; };
-		BF4C8E3A2BFF8FD00039467F /* Lanyard.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E272BFF8FCF0039467F /* Lanyard.usdz */; };
-		BF4C8E3B2BFF8FD00039467F /* Lanyard.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E272BFF8FCF0039467F /* Lanyard.usdz */; };
-		BF4C8E3C2BFF8FD00039467F /* Lanyard.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E272BFF8FCF0039467F /* Lanyard.usdz */; };
 		BF4C8E3D2BFF8FD00039467F /* Pen.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E282BFF8FCF0039467F /* Pen.usdz */; };
 		BF4C8E3E2BFF8FD00039467F /* Pen.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E282BFF8FCF0039467F /* Pen.usdz */; };
 		BF4C8E3F2BFF8FD00039467F /* Pen.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E282BFF8FCF0039467F /* Pen.usdz */; };
@@ -56,6 +52,8 @@
 		BF4C8E622BFF919F0039467F /* iPhone.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E612BFF919F0039467F /* iPhone.usdz */; };
 		BF4C8E632BFF919F0039467F /* iPhone.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E612BFF919F0039467F /* iPhone.usdz */; };
 		BF4C8E642BFF919F0039467F /* iPhone.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E612BFF919F0039467F /* iPhone.usdz */; };
+		BF4C8E8D2BFFA07E0039467F /* Lanyard.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E8C2BFFA07E0039467F /* Lanyard.usdz */; };
+		BF4C8E912BFFA3BE0039467F /* SegmentedPicker in Frameworks */ = {isa = PBXBuildFile; productRef = BF4C8E902BFFA3BE0039467F /* SegmentedPicker */; };
 		BF76F0A62BF4F57100F512F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F0A52BF4F57100F512F3 /* AppDelegate.swift */; };
 		BF76F0AA2BF4F57200F512F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0A92BF4F57200F512F3 /* Assets.xcassets */; };
 		BF76F0AD2BF4F57200F512F3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0AC2BF4F57200F512F3 /* Preview Assets.xcassets */; };
@@ -110,7 +108,6 @@
 		BF4C8E212BFE35900039467F /* Koulen-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Koulen-Regular.ttf"; sourceTree = "<group>"; };
 		BF4C8E252BFF8FCF0039467F /* Mask.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Mask.usdz; sourceTree = "<group>"; };
 		BF4C8E262BFF8FCF0039467F /* Lunchbox.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Lunchbox.usdz; sourceTree = "<group>"; };
-		BF4C8E272BFF8FCF0039467F /* Lanyard.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Lanyard.usdz; sourceTree = "<group>"; };
 		BF4C8E282BFF8FCF0039467F /* Pen.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Pen.usdz; sourceTree = "<group>"; };
 		BF4C8E292BFF8FCF0039467F /* Stopwatch.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Stopwatch.usdz; sourceTree = "<group>"; };
 		BF4C8E2A2BFF8FCF0039467F /* Watch.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Watch.usdz; sourceTree = "<group>"; };
@@ -123,6 +120,7 @@
 		BF4C8E322BFF8FD00039467F /* Notebook.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Notebook.usdz; sourceTree = "<group>"; };
 		BF4C8E332BFF8FD00039467F /* Hat.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Hat.usdz; sourceTree = "<group>"; };
 		BF4C8E612BFF919F0039467F /* iPhone.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = iPhone.usdz; sourceTree = "<group>"; };
+		BF4C8E8C2BFFA07E0039467F /* Lanyard.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Lanyard.usdz; sourceTree = "<group>"; };
 		BF76F0A22BF4F57100F512F3 /* FTG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FTG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF76F0A52BF4F57100F512F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF76F0A92BF4F57200F512F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -164,7 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF76F1B82BF7052C00F512F3 /* FocusEntity in Frameworks */,
-				BF2BDD562BFCA01E00FA1C75 /* SegmentedPicker in Frameworks */,
+				BF4C8E912BFFA3BE0039467F /* SegmentedPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +294,7 @@
 				BF4C8E2D2BFF8FCF0039467F /* Macbook.usdz */,
 				BF4C8E322BFF8FD00039467F /* Notebook.usdz */,
 				BF4C8E612BFF919F0039467F /* iPhone.usdz */,
-				BF4C8E272BFF8FCF0039467F /* Lanyard.usdz */,
+				BF4C8E8C2BFFA07E0039467F /* Lanyard.usdz */,
 				BF4C8E2A2BFF8FCF0039467F /* Watch.usdz */,
 				BF4C8E292BFF8FCF0039467F /* Stopwatch.usdz */,
 				BF4C8E282BFF8FCF0039467F /* Pen.usdz */,
@@ -354,7 +352,7 @@
 			name = FTG;
 			packageProductDependencies = (
 				BF76F1B72BF7052C00F512F3 /* FocusEntity */,
-				BF2BDD552BFCA01E00FA1C75 /* SegmentedPicker */,
+				BF4C8E902BFFA3BE0039467F /* SegmentedPicker */,
 			);
 			productName = FTG;
 			productReference = BF76F0A22BF4F57100F512F3 /* FTG.app */;
@@ -430,7 +428,7 @@
 			mainGroup = BF76F0992BF4F57100F512F3;
 			packageReferences = (
 				BF76F1B62BF7052C00F512F3 /* XCRemoteSwiftPackageReference "FocusEntity" */,
-				BF2BDD542BFCA01E00FA1C75 /* XCRemoteSwiftPackageReference "SwiftySegmentedPicker" */,
+				BF4C8E8F2BFFA3BE0039467F /* XCRemoteSwiftPackageReference "SwiftySegmentedPicker" */,
 			);
 			productRefGroup = BF76F0A32BF4F57100F512F3 /* Products */;
 			projectDirPath = "";
@@ -466,12 +464,12 @@
 				BF4C8E372BFF8FD00039467F /* Lunchbox.usdz in Resources */,
 				BF4C8E3D2BFF8FD00039467F /* Pen.usdz in Resources */,
 				BF76F0E22BF5046B00F512F3 /* Eight_Ball.usdz in Resources */,
-				BF4C8E3A2BFF8FD00039467F /* Lanyard.usdz in Resources */,
 				BF76F1E02BFB35E600F512F3 /* BGM2.mp3 in Resources */,
 				BF76F0AD2BF4F57200F512F3 /* Preview Assets.xcassets in Resources */,
 				BF4C8E4C2BFF8FD00039467F /* Macbook.usdz in Resources */,
 				BF4C8E522BFF8FD00039467F /* White Coat.usdz in Resources */,
 				BF4C8E5B2BFF8FD00039467F /* Notebook.usdz in Resources */,
+				BF4C8E8D2BFFA07E0039467F /* Lanyard.usdz in Resources */,
 				BF76F1D22BF9237D00F512F3 /* ButtonClick.mp3 in Resources */,
 				BF4C8E4F2BFF8FD00039467F /* Bag.usdz in Resources */,
 				BF4C8E622BFF919F0039467F /* iPhone.usdz in Resources */,
@@ -494,7 +492,6 @@
 				BF4C8E532BFF8FD00039467F /* White Coat.usdz in Resources */,
 				BF4C8E592BFF8FD00039467F /* Glove.usdz in Resources */,
 				BF4C8E352BFF8FD00039467F /* Mask.usdz in Resources */,
-				BF4C8E3B2BFF8FD00039467F /* Lanyard.usdz in Resources */,
 				BF4C8E4A2BFF8FD00039467F /* Whistle.usdz in Resources */,
 				BF4C8E5C2BFF8FD00039467F /* Notebook.usdz in Resources */,
 				BF4C8E5F2BFF8FD00039467F /* Hat.usdz in Resources */,
@@ -517,7 +514,6 @@
 				BF4C8E542BFF8FD00039467F /* White Coat.usdz in Resources */,
 				BF4C8E5A2BFF8FD00039467F /* Glove.usdz in Resources */,
 				BF4C8E362BFF8FD00039467F /* Mask.usdz in Resources */,
-				BF4C8E3C2BFF8FD00039467F /* Lanyard.usdz in Resources */,
 				BF4C8E4B2BFF8FD00039467F /* Whistle.usdz in Resources */,
 				BF4C8E5D2BFF8FD00039467F /* Notebook.usdz in Resources */,
 				BF4C8E602BFF8FD00039467F /* Hat.usdz in Resources */,
@@ -892,7 +888,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BF2BDD542BFCA01E00FA1C75 /* XCRemoteSwiftPackageReference "SwiftySegmentedPicker" */ = {
+		BF4C8E8F2BFFA3BE0039467F /* XCRemoteSwiftPackageReference "SwiftySegmentedPicker" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/KazaiMazai/SwiftySegmentedPicker.git";
 			requirement = {
@@ -911,9 +907,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BF2BDD552BFCA01E00FA1C75 /* SegmentedPicker */ = {
+		BF4C8E902BFFA3BE0039467F /* SegmentedPicker */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BF2BDD542BFCA01E00FA1C75 /* XCRemoteSwiftPackageReference "SwiftySegmentedPicker" */;
+			package = BF4C8E8F2BFFA3BE0039467F /* XCRemoteSwiftPackageReference "SwiftySegmentedPicker" */;
 			productName = SegmentedPicker;
 		};
 		BF76F1B72BF7052C00F512F3 /* FocusEntity */ = {
