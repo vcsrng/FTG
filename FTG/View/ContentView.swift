@@ -73,6 +73,9 @@ struct ContentView: View {
                                                         }
                                                         .foregroundColor(.black)
                                                     }
+                                                    .background(
+                                                        Image("BrownTexture2")
+                                                    )
                                                 }
                                                 .foregroundColor(.white.opacity(0.6))
                                                 .clipShape(RoundedRectangle(cornerRadius: 24))
@@ -108,11 +111,12 @@ struct ContentView: View {
                                                                 .font(.system(size: 20))
                                                         }
                                                         .foregroundColor(.black)
-                                                    }.background(
-                                                    Image("BrownTexture"))
+                                                    }
+                                                    .background(
+                                                        Image("BrownTexture2")
+                                                    )
                                                 }
-//                                                .foregroundColor(.white.opacity(0.6))
-                                                .opacity(0.6)
+                                                .foregroundColor(.white.opacity(0.6))
                                                 .clipShape(RoundedRectangle(cornerRadius: 24))
                                                 .shadow(radius: 8, x: 4, y: 4)
                                         }
@@ -157,6 +161,9 @@ struct ContentView: View {
                                                         }
                                                         .foregroundColor(.black)
                                                     }
+                                                    .background(
+                                                        Image("BrownTexture2")
+                                                    )
                                                 }
                                                 .foregroundColor(.white.opacity(0.6))
                                                 .clipShape(RoundedRectangle(cornerRadius: 24))
@@ -193,6 +200,9 @@ struct ContentView: View {
                                                         }
                                                         .foregroundColor(.black)
                                                     }
+                                                    .background(
+                                                        Image("BrownTexture2")
+                                                    )
                                                 }
                                                 .foregroundColor(.white.opacity(0.6))
                                                 .clipShape(RoundedRectangle(cornerRadius: 24))

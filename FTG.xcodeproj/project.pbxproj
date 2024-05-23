@@ -61,14 +61,9 @@
 		BF76F0B72BF4F57200F512F3 /* FTGTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F0B62BF4F57200F512F3 /* FTGTests.swift */; };
 		BF76F0C12BF4F57200F512F3 /* FTGUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F0C02BF4F57200F512F3 /* FTGUITests.swift */; };
 		BF76F0C32BF4F57200F512F3 /* FTGUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F0C22BF4F57200F512F3 /* FTGUITestsLaunchTests.swift */; };
-		BF76F0E02BF5046B00F512F3 /* Golf_Ball.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0DD2BF5046B00F512F3 /* Golf_Ball.usdz */; };
-		BF76F0E12BF5046B00F512F3 /* Soccer_Ball.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0DE2BF5046B00F512F3 /* Soccer_Ball.usdz */; };
-		BF76F0E22BF5046B00F512F3 /* Eight_Ball.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0DF2BF5046B00F512F3 /* Eight_Ball.usdz */; };
-		BF76F0E42BF506FB00F512F3 /* Crumpled_paper.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0E32BF506FB00F512F3 /* Crumpled_paper.usdz */; };
 		BF76F1632BF61F9000F512F3 /* ARContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1622BF61F9000F512F3 /* ARContentView.swift */; };
 		BF76F1652BF61FAC00F512F3 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1642BF61FAC00F512F3 /* ARView.swift */; };
 		BF76F1672BF61FEC00F512F3 /* ItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1662BF61FEC00F512F3 /* ItemManager.swift */; };
-		BF76F16D2BF63BEE00F512F3 /* Basketball_Ball.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF76F16C2BF63BEE00F512F3 /* Basketball_Ball.usdz */; };
 		BF76F16F2BF656CF00F512F3 /* InventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F16E2BF656CF00F512F3 /* InventoryView.swift */; };
 		BF76F1712BF6575300F512F3 /* InventoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1702BF6575300F512F3 /* InventoryItem.swift */; };
 		BF76F1732BF657B800F512F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1722BF657B800F512F3 /* ContentView.swift */; };
@@ -132,14 +127,9 @@
 		BF76F0BC2BF4F57200F512F3 /* FTGUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FTGUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF76F0C02BF4F57200F512F3 /* FTGUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTGUITests.swift; sourceTree = "<group>"; };
 		BF76F0C22BF4F57200F512F3 /* FTGUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTGUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		BF76F0DD2BF5046B00F512F3 /* Golf_Ball.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Golf_Ball.usdz; sourceTree = "<group>"; };
-		BF76F0DE2BF5046B00F512F3 /* Soccer_Ball.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Soccer_Ball.usdz; sourceTree = "<group>"; };
-		BF76F0DF2BF5046B00F512F3 /* Eight_Ball.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Eight_Ball.usdz; sourceTree = "<group>"; };
-		BF76F0E32BF506FB00F512F3 /* Crumpled_paper.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Crumpled_paper.usdz; sourceTree = "<group>"; };
 		BF76F1622BF61F9000F512F3 /* ARContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARContentView.swift; sourceTree = "<group>"; };
 		BF76F1642BF61FAC00F512F3 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		BF76F1662BF61FEC00F512F3 /* ItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemManager.swift; sourceTree = "<group>"; };
-		BF76F16C2BF63BEE00F512F3 /* Basketball_Ball.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Basketball_Ball.usdz; sourceTree = "<group>"; };
 		BF76F16E2BF656CF00F512F3 /* InventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryView.swift; sourceTree = "<group>"; };
 		BF76F1702BF6575300F512F3 /* InventoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryItem.swift; sourceTree = "<group>"; };
 		BF76F1722BF657B800F512F3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -308,11 +298,6 @@
 				BF4C8E262BFF8FCF0039467F /* Lunchbox.usdz */,
 				BF4C8E332BFF8FD00039467F /* Hat.usdz */,
 				BF4C8E2C2BFF8FCF0039467F /* Whistle.usdz */,
-				BF76F0DF2BF5046B00F512F3 /* Eight_Ball.usdz */,
-				BF76F0DD2BF5046B00F512F3 /* Golf_Ball.usdz */,
-				BF76F0DE2BF5046B00F512F3 /* Soccer_Ball.usdz */,
-				BF76F0E32BF506FB00F512F3 /* Crumpled_paper.usdz */,
-				BF76F16C2BF63BEE00F512F3 /* Basketball_Ball.usdz */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -449,24 +434,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF76F0E02BF5046B00F512F3 /* Golf_Ball.usdz in Resources */,
 				BF76F1E22BFB362700F512F3 /* ButtonClick2.mp3 in Resources */,
 				BF76F1C32BF8D72600F512F3 /* ItemCollect.mp3 in Resources */,
 				BF76F1C12BF8D50D00F512F3 /* BGM.mp3 in Resources */,
 				BF4C8E492BFF8FD00039467F /* Whistle.usdz in Resources */,
 				BF4C8E552BFF8FD00039467F /* Scissor.usdz in Resources */,
-				BF76F16D2BF63BEE00F512F3 /* Basketball_Ball.usdz in Resources */,
 				BF4C8E582BFF8FD00039467F /* Glove.usdz in Resources */,
 				BF4C8E402BFF8FD00039467F /* Stopwatch.usdz in Resources */,
 				BF4C8E342BFF8FD00039467F /* Mask.usdz in Resources */,
 				BF4C8E432BFF8FD00039467F /* Watch.usdz in Resources */,
-				BF76F0E12BF5046B00F512F3 /* Soccer_Ball.usdz in Resources */,
 				BF4C8E222BFE35900039467F /* Koulen-Regular.ttf in Resources */,
-				BF76F0E42BF506FB00F512F3 /* Crumpled_paper.usdz in Resources */,
 				BF4C8E5E2BFF8FD00039467F /* Hat.usdz in Resources */,
 				BF4C8E372BFF8FD00039467F /* Lunchbox.usdz in Resources */,
 				BF4C8E3D2BFF8FD00039467F /* Pen.usdz in Resources */,
-				BF76F0E22BF5046B00F512F3 /* Eight_Ball.usdz in Resources */,
 				BF76F1E02BFB35E600F512F3 /* BGM2.mp3 in Resources */,
 				BF76F0AD2BF4F57200F512F3 /* Preview Assets.xcassets in Resources */,
 				BF4C8E4C2BFF8FD00039467F /* Macbook.usdz in Resources */,
