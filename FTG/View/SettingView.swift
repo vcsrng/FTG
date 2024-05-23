@@ -29,10 +29,26 @@ struct SettingView: View {
                         }
                         AudioManager.shared.playSFX(filename: "ButtonClick", volume: sfxVolume)
                     }) {
-                        Image(systemName: "x.square.fill")
-                            .font(.system(size: 40))
+                        RoundedRectangle(cornerRadius: 10)
+                            .frame(width: 40, height: 40)
                             .foregroundColor(.red)
-                            .padding()
+                            .overlay{
+                                ZStack{
+                                    VStack{
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .foregroundColor(.white.opacity(0.2))
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .opacity(0)
+                                    }
+                                    .padding(4)
+                                    Image("CloseIcon")
+                                        .resizable()
+                                        .frame(width: 24, height: 24)
+                                        .shadow(radius: 4)
+                                    
+                                }
+                            }
+                            .padding(.trailing, 24)
                     }
                     .padding()
                 }
@@ -77,7 +93,7 @@ struct CustomSlider: View {
     var icon: String
     var onEditingChanged: () -> Void
     @State private var thumbSize: CGFloat = 32
-    @State private var isMuted: Bool = false
+    @State private var lastNonZeroValue: Float = 0
 
     var body: some View {
         GeometryReader { geometry in
@@ -110,12 +126,16 @@ struct CustomSlider: View {
                                     .onChanged { gesture in
                                         let newValue = min(max(0, Float(gesture.location.x / sliderRange)), 1)
                                         value = newValue
-                                        isMuted = false
                                         onEditingChanged()
                                     }
                             )
                             .onTapGesture {
-                                isMuted.toggle()
+                                if value == 0 {
+                                    value = lastNonZeroValue
+                                } else {
+                                    lastNonZeroValue = value
+                                    value = 0
+                                }
                                 onEditingChanged()
                             }
                         // Circle stroke + icon
@@ -124,7 +144,7 @@ struct CustomSlider: View {
                             .frame(width: thumbSize)
                             .foregroundColor(Color.black)
                             .overlay {
-                                Image(systemName: isMuted ? "speaker.slash.fill" : icon)
+                                Image(systemName: value == 0 ? "speaker.slash.fill" : icon)
                                     .font(.system(size: 16))
                                     .fontWeight(.bold)
                                     .foregroundColor(.black)
@@ -135,13 +155,19 @@ struct CustomSlider: View {
                                     .onChanged { gesture in
                                         let newValue = min(max(0, Float(gesture.location.x / sliderRange)), 1)
                                         value = newValue
-                                        if !isMuted {
-                                            onEditingChanged()
+                                        if value != 0 {
+                                            lastNonZeroValue = value
                                         }
+                                        onEditingChanged()
                                     }
                             )
                             .onTapGesture {
-                                isMuted.toggle()
+                                if value == 0 {
+                                    value = lastNonZeroValue
+                                } else {
+                                    lastNonZeroValue = value
+                                    value = 0
+                                }
                                 onEditingChanged()
                             }
                     }

@@ -38,10 +38,26 @@ struct GuessNowView: View {
                         }
                         AudioManager.shared.playSFX(filename: "ButtonClick", volume: arView.sfxVolume)
                     }) {
-                        Image(systemName: "x.square.fill")
-                            .font(.system(size: 40))
+                        RoundedRectangle(cornerRadius: 10)
+                            .frame(width: 40, height: 40)
                             .foregroundColor(.red)
-                            .padding()
+                            .overlay{
+                                ZStack{
+                                    VStack{
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .foregroundColor(.white.opacity(0.2))
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .opacity(0)
+                                    }
+                                    .padding(4)
+                                    Image("CloseIcon")
+                                        .resizable()
+                                        .frame(width: 24, height: 24)
+                                        .shadow(radius: 4)
+                                    
+                                }
+                            }
+                            .padding(.trailing, 24)
                     }
                     .padding()
                 }
@@ -59,7 +75,7 @@ struct GuessNowView: View {
                         .background(Color.black)
                         .padding(.leading, 32)
                         .padding(.trailing, -8)
-                    ScrollView {
+                    ScrollView(showsIndicators: false) {
                         VStack {
                             ForEach(arView.inventory.items, id: \.id) { item in
                                 HStack {
@@ -82,6 +98,7 @@ struct GuessNowView: View {
                                             .font(.subheadline)
                                             .foregroundColor(.black.opacity(0.8))
                                     }
+                                    .padding(.vertical)
                                     Spacer()
                                 }
                                 .background(Color.white.opacity(0.2))
@@ -106,7 +123,7 @@ struct GuessNowView: View {
                         .frame(minHeight: 4)
                         .background(Color.black)
                         .padding(.horizontal, -8)
-                    ScrollView {
+                    ScrollView(showsIndicators: false) {
                         ForEach(allEvidence, id: \.self) { evidence in
                             RoundedRectangle(cornerRadius: 10)
                                 .frame(height: 48)
@@ -138,7 +155,7 @@ struct GuessNowView: View {
                         .background(Color.black)
                         .padding(.trailing, 32)
                         .padding(.leading, -8)
-                    ScrollView {
+                    ScrollView(showsIndicators: false) {
                         ForEach(possibleAnswers, id: \.self) { answer in
                             Button(action: {
                                 selectedAnswer = answer

@@ -39,10 +39,26 @@ struct JournalView: View {
                         }
                         AudioManager.shared.playSFX(filename: "ButtonClick", volume: arView.sfxVolume)
                     }) {
-                        Image(systemName: "x.square.fill")
-                            .font(.system(size: 40))
+                        RoundedRectangle(cornerRadius: 10)
+                            .frame(width: 40, height: 40)
                             .foregroundColor(.red)
-                            .padding()
+                            .overlay{
+                                ZStack{
+                                    VStack{
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .foregroundColor(.white.opacity(0.2))
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .opacity(0)
+                                    }
+                                    .padding(4)
+                                    Image("CloseIcon")
+                                        .resizable()
+                                        .frame(width: 24, height: 24)
+                                        .shadow(radius: 4)
+                                    
+                                }
+                            }
+                            .padding(.trailing, 24)
                     }
                     .padding()
                 }
@@ -153,7 +169,7 @@ struct JournalView: View {
             Divider()
                 .frame(minHeight: 4)
                 .background(Color.black)
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack {
                     ForEach(arView.inventory.items, id: \.id) { item in
                         HStack {

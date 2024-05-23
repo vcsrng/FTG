@@ -23,7 +23,7 @@ struct ItemFoundAlertView: View {
                                 .font(Font.custom("Koulen-Regular", size: 64))
                                 .padding(.bottom, -32)
                             HStack{
-                                Text("You found: ")
+                                Text("You found ")
                                     .font(.title)
                                     .foregroundColor(.black)
                                     .padding(.trailing,-8)

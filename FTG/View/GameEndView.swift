@@ -84,6 +84,11 @@ struct GameEndView: View {
             .padding(24)
         }
         .padding(40)
+        .background(
+            Image("BrownTexture2")
+                .resizable()
+                .frame(width: 1384, height: 1384)
+            )
     }
 }
 
