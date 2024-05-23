@@ -56,30 +56,41 @@ struct ContentView: View {
                                             }
                                             AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
                                         }) {
-                                            RoundedRectangle(cornerRadius: 24)
-                                                .frame(width: 72, height: 72)
-                                                .overlay {
-                                                    ZStack {
-                                                        VStack {
-                                                            RoundedRectangle(cornerRadius: 16)
-                                                                .foregroundColor(.white.opacity(0.2))
-                                                            RoundedRectangle(cornerRadius: 12)
-                                                                .opacity(0)
+                                            ZStack {
+                                                // Invis box
+                                                RoundedRectangle(cornerRadius: 24)
+                                                    .frame(width: 72, height: 72)
+                                                    .overlay {
+                                                        ZStack {
+                                                            VStack {
+                                                                RoundedRectangle(cornerRadius: 16)
+                                                                    .foregroundColor(.white.opacity(0.2))
+                                                                RoundedRectangle(cornerRadius: 12)
+                                                                    .opacity(0)
+                                                            }
+                                                            .padding(8)
                                                         }
-                                                        .padding(8)
+                                                        .background(
+                                                            Image("BrownTexture2")
+                                                        )
+                                                    }
+                                                    .foregroundColor(.white.opacity(0.6))
+                                                    .clipShape(RoundedRectangle(cornerRadius: 24))
+                                                    .shadow(radius: 4, x: 2, y: 2)
+                                                    .opacity(0.4)
+                                                // Icon
+                                                RoundedRectangle(cornerRadius: 24)
+                                                    .frame(width: 72, height: 72)
+                                                    .opacity(0)
+                                                    .overlay {
                                                         VStack {
                                                             Image(systemName: "list.bullet.clipboard")
                                                                 .font(.system(size: 40))
                                                         }
                                                         .foregroundColor(.black)
                                                     }
-                                                    .background(
-                                                        Image("BrownTexture2")
-                                                    )
-                                                }
-                                                .foregroundColor(.white.opacity(0.6))
-                                                .clipShape(RoundedRectangle(cornerRadius: 24))
-                                                .shadow(radius: 4, x: 2, y: 2)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 24))
+                                            }
                                         }
                                         .padding(.leading, 20)
                                         Spacer()
@@ -93,17 +104,33 @@ struct ContentView: View {
                                             }
                                             AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
                                         }) {
-                                            RoundedRectangle(cornerRadius: 24)
-                                                .frame(width: 144, height: 144)
-                                                .overlay {
-                                                    ZStack {
-                                                        VStack {
-                                                            RoundedRectangle(cornerRadius: 16)
-                                                                .foregroundColor(.white.opacity(0.2))
-                                                            RoundedRectangle(cornerRadius: 24)
-                                                                .opacity(0)
+                                            // Invis box
+                                            ZStack {
+                                                RoundedRectangle(cornerRadius: 24)
+                                                    .frame(width: 144, height: 144)
+                                                    .overlay {
+                                                        ZStack {
+                                                            VStack {
+                                                                RoundedRectangle(cornerRadius: 16)
+                                                                    .foregroundColor(.white.opacity(0.2))
+                                                                RoundedRectangle(cornerRadius: 24)
+                                                                    .opacity(0)
+                                                            }
+                                                            .padding(8)
                                                         }
-                                                        .padding(8)
+                                                        .background(
+                                                            Image("BrownTexture2")
+                                                        )
+                                                    }
+                                                    .foregroundColor(.white.opacity(0.6))
+                                                    .clipShape(RoundedRectangle(cornerRadius: 24))
+                                                    .shadow(radius: 8, x: 4, y: 4)
+                                                    .opacity(0.4)
+                                                // Icon + text
+                                                RoundedRectangle(cornerRadius: 24)
+                                                    .frame(width: 144, height: 144)
+                                                    .opacity(0)
+                                                    .overlay {
                                                         VStack {
                                                             Image(systemName: "sparkle.magnifyingglass")
                                                                 .font(.system(size: 80))
@@ -112,13 +139,8 @@ struct ContentView: View {
                                                         }
                                                         .foregroundColor(.black)
                                                     }
-                                                    .background(
-                                                        Image("BrownTexture2")
-                                                    )
-                                                }
-                                                .foregroundColor(.white.opacity(0.6))
-                                                .clipShape(RoundedRectangle(cornerRadius: 24))
-                                                .shadow(radius: 8, x: 4, y: 4)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 24))
+                                            }
                                         }
                                         .padding(.leading, 20)
                                         Spacer()
@@ -138,17 +160,33 @@ struct ContentView: View {
                                             }
                                             AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
                                         }) {
-                                            RoundedRectangle(cornerRadius: 24)
-                                                .frame(width: 72, height: 72)
-                                                .overlay {
-                                                    ZStack {
-                                                        VStack {
-                                                            RoundedRectangle(cornerRadius: 16)
-                                                                .foregroundColor(.white.opacity(0.2))
-                                                            RoundedRectangle(cornerRadius: 12)
-                                                                .opacity(0)
+                                            ZStack{
+                                                // Invis box
+                                                RoundedRectangle(cornerRadius: 24)
+                                                    .frame(width: 72, height: 72)
+                                                    .overlay {
+                                                        ZStack {
+                                                            VStack {
+                                                                RoundedRectangle(cornerRadius: 16)
+                                                                    .foregroundColor(.white.opacity(0.2))
+                                                                RoundedRectangle(cornerRadius: 12)
+                                                                    .opacity(0)
+                                                            }
+                                                            .padding(8)
                                                         }
-                                                        .padding(8)
+                                                        .background(
+                                                            Image("BrownTexture2")
+                                                        )
+                                                    }
+                                                    .foregroundColor(.white.opacity(0.6))
+                                                    .clipShape(RoundedRectangle(cornerRadius: 24))
+                                                    .shadow(radius: 4, x: 2, y: 2)
+                                                    .opacity(0.4)
+                                                // Icon
+                                                RoundedRectangle(cornerRadius: 24)
+                                                    .frame(width: 72, height: 72)
+                                                    .opacity(0)
+                                                    .overlay {
                                                         VStack {
                                                             ZStack {
                                                                 Image(systemName: "gearshape")
@@ -161,13 +199,8 @@ struct ContentView: View {
                                                         }
                                                         .foregroundColor(.black)
                                                     }
-                                                    .background(
-                                                        Image("BrownTexture2")
-                                                    )
-                                                }
-                                                .foregroundColor(.white.opacity(0.6))
-                                                .clipShape(RoundedRectangle(cornerRadius: 24))
-                                                .shadow(radius: 4, x: 2, y: 2)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 24))
+                                            }
                                         }
                                         .padding(.trailing, 20)
                                     }
@@ -181,17 +214,34 @@ struct ContentView: View {
                                             }
                                             AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
                                         }) {
-                                            RoundedRectangle(cornerRadius: 24)
-                                                .frame(width: 144, height: 144)
-                                                .overlay {
-                                                    ZStack {
-                                                        VStack {
-                                                            RoundedRectangle(cornerRadius: 16)
-                                                                .foregroundColor(.white.opacity(0.2))
-                                                            RoundedRectangle(cornerRadius: 24)
-                                                                .opacity(0)
+                                            ZStack{
+                                                // Invis box
+                                                RoundedRectangle(cornerRadius: 24)
+                                                    .frame(width: 144, height: 144)
+                                                    .overlay {
+                                                        ZStack {
+                                                            VStack {
+                                                                RoundedRectangle(cornerRadius: 16)
+                                                                    .foregroundColor(.white.opacity(0.2))
+                                                                RoundedRectangle(cornerRadius: 24)
+                                                                    .opacity(0)
+                                                            }
+                                                            .padding(8)
                                                         }
-                                                        .padding(8)
+                                                        .background(
+                                                            Image("BrownTexture2")
+                                                        )
+                                                    }
+                                                    .foregroundColor(.white.opacity(0.6))
+                                                    .clipShape(RoundedRectangle(cornerRadius: 24))
+                                                    .shadow(radius: 8, x: 4, y: 4)
+                                                    .opacity(0.4)
+                                                
+                                                // Icon + text
+                                                RoundedRectangle(cornerRadius: 24)
+                                                    .frame(width: 144, height: 144)
+                                                    .opacity(0)
+                                                    .overlay {
                                                         VStack {
                                                             Image(systemName: "bag")
                                                                 .font(.system(size: 80))
@@ -200,13 +250,8 @@ struct ContentView: View {
                                                         }
                                                         .foregroundColor(.black)
                                                     }
-                                                    .background(
-                                                        Image("BrownTexture2")
-                                                    )
-                                                }
-                                                .foregroundColor(.white.opacity(0.6))
-                                                .clipShape(RoundedRectangle(cornerRadius: 24))
-                                                .shadow(radius: 8, x: 4, y: 4)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 24))
+                                            }
                                         }
                                         .padding(.trailing, 20)
                                     }
