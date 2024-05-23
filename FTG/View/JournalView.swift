@@ -59,7 +59,7 @@ struct JournalView: View {
                         }
                 }
             }
-            .padding(.horizontal, 48)
+            .padding(.horizontal, 44)
 
             // Page View
             TabView(selection: $selectedPage) {
@@ -69,7 +69,7 @@ struct JournalView: View {
                         .padding()
                 }
             }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)) // Hide the built-in tabview indicator
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)) // Hide built-in tabview indicator
             .background(Color.white.opacity(0.2))
             .clipShape(.rect(bottomLeadingRadius: 24, bottomTrailingRadius: 24))
             .padding(.horizontal, 40)
@@ -262,7 +262,7 @@ struct JournalView: View {
                     } else {
                         VStack(alignment: .center){
                             Text("Select an answer to see the evidence.")
-                                .font(.subheadline)
+                                .font(.headline)
                                 .foregroundColor(.black.opacity(0.8))
                         }
                     }

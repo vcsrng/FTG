@@ -217,14 +217,14 @@
 			isa = PBXGroup;
 			children = (
 				BF76F1722BF657B800F512F3 /* ContentView.swift */,
+				BFD4F8452BFCF69E004AF67B /* SplashScreen.swift */,
+				BF76F1DB2BFA601F00F512F3 /* MainMenuView.swift */,
 				BF76F1C92BF91E8E00F512F3 /* JournalView.swift */,
 				BF76F1CB2BF91EC400F512F3 /* GuessNowView.swift */,
 				BF76F1B92BF8C62700F512F3 /* SettingView.swift */,
-				BF76F1D92BFA5FFB00F512F3 /* GameEndView.swift */,
-				BF76F1DB2BFA601F00F512F3 /* MainMenuView.swift */,
 				BF76F16E2BF656CF00F512F3 /* InventoryView.swift */,
+				BF76F1D92BFA5FFB00F512F3 /* GameEndView.swift */,
 				BF76F1DD2BFA604200F512F3 /* HowToPlayView.swift */,
-				BFD4F8452BFCF69E004AF67B /* SplashScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

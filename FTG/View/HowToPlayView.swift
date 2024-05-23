@@ -112,6 +112,11 @@ struct HowToPlayView: View {
             .padding()
 //            .padding(.vertical, 40)
         }
+        .background(
+            Image("BrownTexture2")
+                .resizable()
+                .frame(width: 1384, height: 1384)
+        )
     }
 }
 

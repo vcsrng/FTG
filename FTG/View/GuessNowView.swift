@@ -60,38 +60,36 @@ struct GuessNowView: View {
                         .padding(.leading, 32)
                         .padding(.trailing, -8)
                     ScrollView {
-                        ForEach(arView.inventory.items, id: \.id) { item in
-                            HStack {
-                                if let thumbnail = item.thumbnail {
-                                    Image(uiImage: thumbnail)
-                                        .resizable()
-                                        .frame(width: 80, height: 80)
-                                        .padding()
-                                } else {
-                                    Image(systemName: "cube.box.fill")
-                                        .resizable()
-                                        .frame(width: 50, height: 50)
-                                        .padding()
+                        VStack {
+                            ForEach(arView.inventory.items, id: \.id) { item in
+                                HStack {
+                                    if let thumbnail = item.thumbnail {
+                                        Image(uiImage: thumbnail)
+                                            .resizable()
+                                            .frame(width: 80, height: 80)
+                                            .padding()
+                                    } else {
+                                        Image(systemName: "cube.box.fill")
+                                            .resizable()
+                                            .frame(width: 80, height: 80)
+                                            .padding()
+                                    }
+                                    
+                                    VStack(alignment: .leading) {
+                                        Text(item.name)
+                                            .font(.headline)
+                                        Text(item.description)
+                                            .font(.subheadline)
+                                            .foregroundColor(.black.opacity(0.8))
+                                    }
+                                    Spacer()
                                 }
-                                
-                                VStack(alignment: .leading) {
-                                    Text(item.name)
-                                        .font(.headline)
-                                    Text(item.description)
-                                        .font(.subheadline)
-                                        .foregroundColor(.gray)
-                                }
-                                Spacer()
+                                .background(Color.white.opacity(0.2))
+                                .cornerRadius(10)
                             }
-                            .padding()
-                            .background(Color.gray.opacity(0.1))
-                            .cornerRadius(10)
-                            .shadow(radius: 5)
-                            .padding([.leading, .trailing, .top])
                         }
                         .padding(.leading, 32)
                     }
-                    .frame(maxHeight: UIScreen.main.bounds.height * 2 / 3)
                 }
                 
                 Divider()

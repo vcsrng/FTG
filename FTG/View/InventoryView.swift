@@ -56,19 +56,23 @@ struct InventoryView: View {
                                 .font(.headline)
                             Text(item.description)
                                 .font(.subheadline)
-                                .foregroundColor(.gray)
+                                .foregroundColor(.black.opacity(0.8))
                         }
 
                         Spacer()
                     }
                     .padding()
-                    .background(Color.gray.opacity(0.1))
+                    .background(Color.white.opacity(0.2))
                     .cornerRadius(10)
-//                    .shadow(radius: 5)
-                    .padding([.leading, .trailing, .top])
+                    .padding([.horizontal, .top])
                 }
             }
             .padding(.horizontal, 24)
         }
+        .background(
+            Image("BrownTexture2")
+                .resizable()
+                .frame(width: 1384, height: 1384)
+        )
     }
 }
