@@ -54,6 +54,7 @@ struct InventoryView: View {
                         VStack(alignment: .leading) {
                             Text(item.name)
                                 .font(.headline)
+                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                             Text(item.description)
                                 .font(.subheadline)
                                 .foregroundColor(.black.opacity(0.8))

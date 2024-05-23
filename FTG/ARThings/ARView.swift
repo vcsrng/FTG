@@ -420,11 +420,15 @@ class CustomARView: ARView, ObservableObject {
     }
 
     private func showItemFoundProgress(itemName: String) {
-        let alert = UIAlertController(title: "Item Found", message: "You found: \(itemName)", preferredStyle: .alert)
-        self.window?.rootViewController?.present(alert, animated: true)
-
+        let alertView = ItemFoundAlertView(itemName: itemName)
+        let hostingController = UIHostingController(rootView: alertView)
+            
+        hostingController.view.frame = self.bounds
+        hostingController.view.backgroundColor = UIColor.clear
+        self.addSubview(hostingController.view)
+            
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            alert.dismiss(animated: true)
+            hostingController.view.removeFromSuperview()
         }
     }
 

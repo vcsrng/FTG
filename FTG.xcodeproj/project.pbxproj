@@ -54,6 +54,7 @@
 		BF4C8E642BFF919F0039467F /* iPhone.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E612BFF919F0039467F /* iPhone.usdz */; };
 		BF4C8E8D2BFFA07E0039467F /* Lanyard.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E8C2BFFA07E0039467F /* Lanyard.usdz */; };
 		BF4C8E912BFFA3BE0039467F /* SegmentedPicker in Frameworks */ = {isa = PBXBuildFile; productRef = BF4C8E902BFFA3BE0039467F /* SegmentedPicker */; };
+		BF4C8E992BFFAB330039467F /* ItemFoundAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C8E982BFFAB330039467F /* ItemFoundAlertView.swift */; };
 		BF76F0A62BF4F57100F512F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F0A52BF4F57100F512F3 /* AppDelegate.swift */; };
 		BF76F0AA2BF4F57200F512F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0A92BF4F57200F512F3 /* Assets.xcassets */; };
 		BF76F0AD2BF4F57200F512F3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0AC2BF4F57200F512F3 /* Preview Assets.xcassets */; };
@@ -121,6 +122,7 @@
 		BF4C8E332BFF8FD00039467F /* Hat.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Hat.usdz; sourceTree = "<group>"; };
 		BF4C8E612BFF919F0039467F /* iPhone.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = iPhone.usdz; sourceTree = "<group>"; };
 		BF4C8E8C2BFFA07E0039467F /* Lanyard.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Lanyard.usdz; sourceTree = "<group>"; };
+		BF4C8E982BFFAB330039467F /* ItemFoundAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFoundAlertView.swift; sourceTree = "<group>"; };
 		BF76F0A22BF4F57100F512F3 /* FTG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FTG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF76F0A52BF4F57100F512F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF76F0A92BF4F57200F512F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				BF76F16E2BF656CF00F512F3 /* InventoryView.swift */,
 				BF76F1D92BFA5FFB00F512F3 /* GameEndView.swift */,
 				BF76F1DD2BFA604200F512F3 /* HowToPlayView.swift */,
+				BF4C8E982BFFAB330039467F /* ItemFoundAlertView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFD4F8462BFCF69E004AF67B /* SplashScreen.swift in Sources */,
+				BF4C8E992BFFAB330039467F /* ItemFoundAlertView.swift in Sources */,
 				BF76F1632BF61F9000F512F3 /* ARContentView.swift in Sources */,
 				BF76F1672BF61FEC00F512F3 /* ItemManager.swift in Sources */,
 				BF76F1732BF657B800F512F3 /* ContentView.swift in Sources */,

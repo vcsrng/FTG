@@ -172,6 +172,7 @@ struct JournalView: View {
                             VStack(alignment: .leading) {
                                 Text(item.name)
                                     .font(.headline)
+                                    .fontWeight(.bold)
                                 Text(item.description)
                                     .font(.subheadline)
                                     .foregroundColor(.black.opacity(0.8))
@@ -202,20 +203,30 @@ struct JournalView: View {
                         .background(Color.black)
                         .padding(.leading, 32)
                         .padding(.trailing, -8)
-                    ScrollView {
+                    ScrollView(showsIndicators: false) {
                         ForEach(Array(arView.answerList.keys), id: \.self) { answer in
                             Button(action: {
                                 selectedAnswer = answer
                             }) {
-                                Ellipse()
-                                    .strokeBorder()
-                                    .foregroundColor(selectedAnswer == answer ? Color.black : Color.clear)
-                                    .frame(width: 160, height: 56)
-                                    .overlay {
+                                Image("EllipseMarker")
+                                    .resizable()
+                                    .frame(width: 160, height: 80)
+                                    .opacity(selectedAnswer == answer ? 1 : 0)
+                                    .overlay{
                                         Text(answer)
                                             .font(.headline)
                                             .foregroundColor(Color.black)
+                                            .padding(.top)
                                     }
+//                                Ellipse()
+//                                    .strokeBorder()
+//                                    .foregroundColor(selectedAnswer == answer ? Color.black : Color.clear)
+//                                    .frame(width: 160, height: 56)
+//                                    .overlay {
+//                                        Text(answer)
+//                                            .font(.headline)
+//                                            .foregroundColor(Color.black)
+//                                    }
                             }
                             .padding(.top)
                         }
@@ -243,7 +254,7 @@ struct JournalView: View {
                         .padding(.leading, -8)
                     Spacer()
                     if let selectedAnswer = selectedAnswer {
-                        ScrollView {
+                        ScrollView(showsIndicators: false) {
                             ForEach(arView.answerList[selectedAnswer] ?? [], id: \.self) { evidence in
                                 RoundedRectangle(cornerRadius: 10)
                                     .strokeBorder()
