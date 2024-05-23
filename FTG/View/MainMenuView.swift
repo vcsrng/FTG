@@ -105,16 +105,6 @@ struct MainMenuView: View {
                         }
                 }
                 Spacer()
-                
-    //            .sheet(isPresented: $showSettings){
-    //                NavigationView{
-    //                    SettingView(customARView: arView, showSettings: $showSettings, bgmVolume: $bgmVolume, sfxVolume: $sfxVolume)
-    //                        .background(Color.white)
-    //                        .cornerRadius(24)
-    //                        .padding(UIScreen.main.bounds.width*3/16)
-    //                        .zIndex(1)
-    //                }
-    //            }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.horizontal)

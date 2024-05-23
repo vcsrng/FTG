@@ -124,7 +124,7 @@ struct GuessNowView: View {
                 }
                 
                 Divider()
-                    .frame(minWidth: 2)
+                    .frame(minWidth: 4)
                     .background(Color.black)
                 
                 VStack(alignment: .center) {

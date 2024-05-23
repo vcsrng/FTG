@@ -11,6 +11,51 @@
 		BF4C8E222BFE35900039467F /* Koulen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E212BFE35900039467F /* Koulen-Regular.ttf */; };
 		BF4C8E232BFE35900039467F /* Koulen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E212BFE35900039467F /* Koulen-Regular.ttf */; };
 		BF4C8E242BFE35900039467F /* Koulen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E212BFE35900039467F /* Koulen-Regular.ttf */; };
+		BF4C8E342BFF8FD00039467F /* Mask.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E252BFF8FCF0039467F /* Mask.usdz */; };
+		BF4C8E352BFF8FD00039467F /* Mask.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E252BFF8FCF0039467F /* Mask.usdz */; };
+		BF4C8E362BFF8FD00039467F /* Mask.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E252BFF8FCF0039467F /* Mask.usdz */; };
+		BF4C8E372BFF8FD00039467F /* Lunchbox.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E262BFF8FCF0039467F /* Lunchbox.usdz */; };
+		BF4C8E382BFF8FD00039467F /* Lunchbox.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E262BFF8FCF0039467F /* Lunchbox.usdz */; };
+		BF4C8E392BFF8FD00039467F /* Lunchbox.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E262BFF8FCF0039467F /* Lunchbox.usdz */; };
+		BF4C8E3A2BFF8FD00039467F /* Lanyard.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E272BFF8FCF0039467F /* Lanyard.usdz */; };
+		BF4C8E3B2BFF8FD00039467F /* Lanyard.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E272BFF8FCF0039467F /* Lanyard.usdz */; };
+		BF4C8E3C2BFF8FD00039467F /* Lanyard.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E272BFF8FCF0039467F /* Lanyard.usdz */; };
+		BF4C8E3D2BFF8FD00039467F /* Pen.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E282BFF8FCF0039467F /* Pen.usdz */; };
+		BF4C8E3E2BFF8FD00039467F /* Pen.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E282BFF8FCF0039467F /* Pen.usdz */; };
+		BF4C8E3F2BFF8FD00039467F /* Pen.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E282BFF8FCF0039467F /* Pen.usdz */; };
+		BF4C8E402BFF8FD00039467F /* Stopwatch.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E292BFF8FCF0039467F /* Stopwatch.usdz */; };
+		BF4C8E412BFF8FD00039467F /* Stopwatch.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E292BFF8FCF0039467F /* Stopwatch.usdz */; };
+		BF4C8E422BFF8FD00039467F /* Stopwatch.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E292BFF8FCF0039467F /* Stopwatch.usdz */; };
+		BF4C8E432BFF8FD00039467F /* Watch.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E2A2BFF8FCF0039467F /* Watch.usdz */; };
+		BF4C8E442BFF8FD00039467F /* Watch.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E2A2BFF8FCF0039467F /* Watch.usdz */; };
+		BF4C8E452BFF8FD00039467F /* Watch.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E2A2BFF8FCF0039467F /* Watch.usdz */; };
+		BF4C8E492BFF8FD00039467F /* Whistle.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E2C2BFF8FCF0039467F /* Whistle.usdz */; };
+		BF4C8E4A2BFF8FD00039467F /* Whistle.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E2C2BFF8FCF0039467F /* Whistle.usdz */; };
+		BF4C8E4B2BFF8FD00039467F /* Whistle.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E2C2BFF8FCF0039467F /* Whistle.usdz */; };
+		BF4C8E4C2BFF8FD00039467F /* Macbook.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E2D2BFF8FCF0039467F /* Macbook.usdz */; };
+		BF4C8E4D2BFF8FD00039467F /* Macbook.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E2D2BFF8FCF0039467F /* Macbook.usdz */; };
+		BF4C8E4E2BFF8FD00039467F /* Macbook.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E2D2BFF8FCF0039467F /* Macbook.usdz */; };
+		BF4C8E4F2BFF8FD00039467F /* Bag.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E2E2BFF8FD00039467F /* Bag.usdz */; };
+		BF4C8E502BFF8FD00039467F /* Bag.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E2E2BFF8FD00039467F /* Bag.usdz */; };
+		BF4C8E512BFF8FD00039467F /* Bag.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E2E2BFF8FD00039467F /* Bag.usdz */; };
+		BF4C8E522BFF8FD00039467F /* White Coat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E2F2BFF8FD00039467F /* White Coat.usdz */; };
+		BF4C8E532BFF8FD00039467F /* White Coat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E2F2BFF8FD00039467F /* White Coat.usdz */; };
+		BF4C8E542BFF8FD00039467F /* White Coat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E2F2BFF8FD00039467F /* White Coat.usdz */; };
+		BF4C8E552BFF8FD00039467F /* Scissor.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E302BFF8FD00039467F /* Scissor.usdz */; };
+		BF4C8E562BFF8FD00039467F /* Scissor.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E302BFF8FD00039467F /* Scissor.usdz */; };
+		BF4C8E572BFF8FD00039467F /* Scissor.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E302BFF8FD00039467F /* Scissor.usdz */; };
+		BF4C8E582BFF8FD00039467F /* Glove.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E312BFF8FD00039467F /* Glove.usdz */; };
+		BF4C8E592BFF8FD00039467F /* Glove.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E312BFF8FD00039467F /* Glove.usdz */; };
+		BF4C8E5A2BFF8FD00039467F /* Glove.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E312BFF8FD00039467F /* Glove.usdz */; };
+		BF4C8E5B2BFF8FD00039467F /* Notebook.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E322BFF8FD00039467F /* Notebook.usdz */; };
+		BF4C8E5C2BFF8FD00039467F /* Notebook.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E322BFF8FD00039467F /* Notebook.usdz */; };
+		BF4C8E5D2BFF8FD00039467F /* Notebook.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E322BFF8FD00039467F /* Notebook.usdz */; };
+		BF4C8E5E2BFF8FD00039467F /* Hat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E332BFF8FD00039467F /* Hat.usdz */; };
+		BF4C8E5F2BFF8FD00039467F /* Hat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E332BFF8FD00039467F /* Hat.usdz */; };
+		BF4C8E602BFF8FD00039467F /* Hat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E332BFF8FD00039467F /* Hat.usdz */; };
+		BF4C8E622BFF919F0039467F /* iPhone.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E612BFF919F0039467F /* iPhone.usdz */; };
+		BF4C8E632BFF919F0039467F /* iPhone.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E612BFF919F0039467F /* iPhone.usdz */; };
+		BF4C8E642BFF919F0039467F /* iPhone.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E612BFF919F0039467F /* iPhone.usdz */; };
 		BF76F0A62BF4F57100F512F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F0A52BF4F57100F512F3 /* AppDelegate.swift */; };
 		BF76F0AA2BF4F57200F512F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0A92BF4F57200F512F3 /* Assets.xcassets */; };
 		BF76F0AD2BF4F57200F512F3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0AC2BF4F57200F512F3 /* Preview Assets.xcassets */; };
@@ -63,6 +108,21 @@
 
 /* Begin PBXFileReference section */
 		BF4C8E212BFE35900039467F /* Koulen-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Koulen-Regular.ttf"; sourceTree = "<group>"; };
+		BF4C8E252BFF8FCF0039467F /* Mask.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Mask.usdz; sourceTree = "<group>"; };
+		BF4C8E262BFF8FCF0039467F /* Lunchbox.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Lunchbox.usdz; sourceTree = "<group>"; };
+		BF4C8E272BFF8FCF0039467F /* Lanyard.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Lanyard.usdz; sourceTree = "<group>"; };
+		BF4C8E282BFF8FCF0039467F /* Pen.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Pen.usdz; sourceTree = "<group>"; };
+		BF4C8E292BFF8FCF0039467F /* Stopwatch.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Stopwatch.usdz; sourceTree = "<group>"; };
+		BF4C8E2A2BFF8FCF0039467F /* Watch.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Watch.usdz; sourceTree = "<group>"; };
+		BF4C8E2C2BFF8FCF0039467F /* Whistle.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Whistle.usdz; sourceTree = "<group>"; };
+		BF4C8E2D2BFF8FCF0039467F /* Macbook.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Macbook.usdz; sourceTree = "<group>"; };
+		BF4C8E2E2BFF8FD00039467F /* Bag.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Bag.usdz; sourceTree = "<group>"; };
+		BF4C8E2F2BFF8FD00039467F /* White Coat.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "White Coat.usdz"; sourceTree = "<group>"; };
+		BF4C8E302BFF8FD00039467F /* Scissor.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Scissor.usdz; sourceTree = "<group>"; };
+		BF4C8E312BFF8FD00039467F /* Glove.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Glove.usdz; sourceTree = "<group>"; };
+		BF4C8E322BFF8FD00039467F /* Notebook.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Notebook.usdz; sourceTree = "<group>"; };
+		BF4C8E332BFF8FD00039467F /* Hat.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Hat.usdz; sourceTree = "<group>"; };
+		BF4C8E612BFF919F0039467F /* iPhone.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = iPhone.usdz; sourceTree = "<group>"; };
 		BF76F0A22BF4F57100F512F3 /* FTG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FTG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF76F0A52BF4F57100F512F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF76F0A92BF4F57200F512F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -232,6 +292,21 @@
 		BF76F1772BF65C0700F512F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BF4C8E2E2BFF8FD00039467F /* Bag.usdz */,
+				BF4C8E2D2BFF8FCF0039467F /* Macbook.usdz */,
+				BF4C8E322BFF8FD00039467F /* Notebook.usdz */,
+				BF4C8E612BFF919F0039467F /* iPhone.usdz */,
+				BF4C8E272BFF8FCF0039467F /* Lanyard.usdz */,
+				BF4C8E2A2BFF8FCF0039467F /* Watch.usdz */,
+				BF4C8E292BFF8FCF0039467F /* Stopwatch.usdz */,
+				BF4C8E282BFF8FCF0039467F /* Pen.usdz */,
+				BF4C8E302BFF8FD00039467F /* Scissor.usdz */,
+				BF4C8E2F2BFF8FD00039467F /* White Coat.usdz */,
+				BF4C8E252BFF8FCF0039467F /* Mask.usdz */,
+				BF4C8E312BFF8FD00039467F /* Glove.usdz */,
+				BF4C8E262BFF8FCF0039467F /* Lunchbox.usdz */,
+				BF4C8E332BFF8FD00039467F /* Hat.usdz */,
+				BF4C8E2C2BFF8FCF0039467F /* Whistle.usdz */,
 				BF76F0DF2BF5046B00F512F3 /* Eight_Ball.usdz */,
 				BF76F0DD2BF5046B00F512F3 /* Golf_Ball.usdz */,
 				BF76F0DE2BF5046B00F512F3 /* Soccer_Ball.usdz */,
@@ -377,14 +452,29 @@
 				BF76F1E22BFB362700F512F3 /* ButtonClick2.mp3 in Resources */,
 				BF76F1C32BF8D72600F512F3 /* ItemCollect.mp3 in Resources */,
 				BF76F1C12BF8D50D00F512F3 /* BGM.mp3 in Resources */,
+				BF4C8E492BFF8FD00039467F /* Whistle.usdz in Resources */,
+				BF4C8E552BFF8FD00039467F /* Scissor.usdz in Resources */,
 				BF76F16D2BF63BEE00F512F3 /* Basketball_Ball.usdz in Resources */,
+				BF4C8E582BFF8FD00039467F /* Glove.usdz in Resources */,
+				BF4C8E402BFF8FD00039467F /* Stopwatch.usdz in Resources */,
+				BF4C8E342BFF8FD00039467F /* Mask.usdz in Resources */,
+				BF4C8E432BFF8FD00039467F /* Watch.usdz in Resources */,
 				BF76F0E12BF5046B00F512F3 /* Soccer_Ball.usdz in Resources */,
 				BF4C8E222BFE35900039467F /* Koulen-Regular.ttf in Resources */,
 				BF76F0E42BF506FB00F512F3 /* Crumpled_paper.usdz in Resources */,
+				BF4C8E5E2BFF8FD00039467F /* Hat.usdz in Resources */,
+				BF4C8E372BFF8FD00039467F /* Lunchbox.usdz in Resources */,
+				BF4C8E3D2BFF8FD00039467F /* Pen.usdz in Resources */,
 				BF76F0E22BF5046B00F512F3 /* Eight_Ball.usdz in Resources */,
+				BF4C8E3A2BFF8FD00039467F /* Lanyard.usdz in Resources */,
 				BF76F1E02BFB35E600F512F3 /* BGM2.mp3 in Resources */,
 				BF76F0AD2BF4F57200F512F3 /* Preview Assets.xcassets in Resources */,
+				BF4C8E4C2BFF8FD00039467F /* Macbook.usdz in Resources */,
+				BF4C8E522BFF8FD00039467F /* White Coat.usdz in Resources */,
+				BF4C8E5B2BFF8FD00039467F /* Notebook.usdz in Resources */,
 				BF76F1D22BF9237D00F512F3 /* ButtonClick.mp3 in Resources */,
+				BF4C8E4F2BFF8FD00039467F /* Bag.usdz in Resources */,
+				BF4C8E622BFF919F0039467F /* iPhone.usdz in Resources */,
 				BF76F0AA2BF4F57200F512F3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,7 +483,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF4C8E562BFF8FD00039467F /* Scissor.usdz in Resources */,
+				BF4C8E3E2BFF8FD00039467F /* Pen.usdz in Resources */,
+				BF4C8E632BFF919F0039467F /* iPhone.usdz in Resources */,
+				BF4C8E382BFF8FD00039467F /* Lunchbox.usdz in Resources */,
 				BF4C8E232BFE35900039467F /* Koulen-Regular.ttf in Resources */,
+				BF4C8E502BFF8FD00039467F /* Bag.usdz in Resources */,
+				BF4C8E4D2BFF8FD00039467F /* Macbook.usdz in Resources */,
+				BF4C8E442BFF8FD00039467F /* Watch.usdz in Resources */,
+				BF4C8E532BFF8FD00039467F /* White Coat.usdz in Resources */,
+				BF4C8E592BFF8FD00039467F /* Glove.usdz in Resources */,
+				BF4C8E352BFF8FD00039467F /* Mask.usdz in Resources */,
+				BF4C8E3B2BFF8FD00039467F /* Lanyard.usdz in Resources */,
+				BF4C8E4A2BFF8FD00039467F /* Whistle.usdz in Resources */,
+				BF4C8E5C2BFF8FD00039467F /* Notebook.usdz in Resources */,
+				BF4C8E5F2BFF8FD00039467F /* Hat.usdz in Resources */,
+				BF4C8E412BFF8FD00039467F /* Stopwatch.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +506,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF4C8E572BFF8FD00039467F /* Scissor.usdz in Resources */,
+				BF4C8E3F2BFF8FD00039467F /* Pen.usdz in Resources */,
+				BF4C8E642BFF919F0039467F /* iPhone.usdz in Resources */,
+				BF4C8E392BFF8FD00039467F /* Lunchbox.usdz in Resources */,
 				BF4C8E242BFE35900039467F /* Koulen-Regular.ttf in Resources */,
+				BF4C8E512BFF8FD00039467F /* Bag.usdz in Resources */,
+				BF4C8E4E2BFF8FD00039467F /* Macbook.usdz in Resources */,
+				BF4C8E452BFF8FD00039467F /* Watch.usdz in Resources */,
+				BF4C8E542BFF8FD00039467F /* White Coat.usdz in Resources */,
+				BF4C8E5A2BFF8FD00039467F /* Glove.usdz in Resources */,
+				BF4C8E362BFF8FD00039467F /* Mask.usdz in Resources */,
+				BF4C8E3C2BFF8FD00039467F /* Lanyard.usdz in Resources */,
+				BF4C8E4B2BFF8FD00039467F /* Whistle.usdz in Resources */,
+				BF4C8E5D2BFF8FD00039467F /* Notebook.usdz in Resources */,
+				BF4C8E602BFF8FD00039467F /* Hat.usdz in Resources */,
+				BF4C8E422BFF8FD00039467F /* Stopwatch.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
