@@ -17,15 +17,23 @@ struct GameEndView: View {
         VStack {
             VStack {
                 Text(isCorrect ? "Congratulations!" : "Unfortunately")
-//                    .font(.largeTitle)
                     .font(Font.custom("Koulen-Regular", size: 64))
                     .padding(.bottom, -32)
                 Text(isCorrect ? "You guessed correctly!" : "Your guess was incorrect.")
                     .font(.title)
+                HStack {
+                    Text("Experience ")
+                        .font(.title2)
+                    Text(isCorrect ? "+5" : "+0")
+                        .font(.title2)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        .padding(.leading, -8)
+                }
+                .padding(.top, 8)
             }
             .padding()
-            .padding(.vertical, 16)
-            .padding(.bottom, 16)
+            .padding(.vertical)
+            .padding(.bottom, 8)
             
             HStack {
                 Button(action: {
@@ -57,7 +65,6 @@ struct GameEndView: View {
                 Button(action: {
                     arView.resetGame()
                     showGameEnd = false
-                    // Optionally set showGuessNow to true if you want to directly start guessing again
                 }) {
                     RoundedRectangle(cornerRadius: 24)
                         .frame(width: UIScreen.main.bounds.width / 6, height: UIScreen.main.bounds.height / 24)

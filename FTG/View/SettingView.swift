@@ -106,7 +106,6 @@ struct CustomSlider: View {
                     .frame(height: thumbSize / 2)
 
                 RoundedRectangle(cornerRadius: 10)
-//                    .fill(Color.black.opacity(0.8))
                     .frame(width: CGFloat(value) * sliderRange + thumbSize / 2, height: thumbSize / 2)
                     .overlay{
                         Image("ScribbleTexture")
@@ -116,7 +115,7 @@ struct CustomSlider: View {
 
                 HStack {
                     ZStack {
-                        // White circle
+                        // Slider white circle
                         Circle()
                             .foregroundColor(.white)
                             .frame(width: thumbSize)
@@ -138,7 +137,7 @@ struct CustomSlider: View {
                                 }
                                 onEditingChanged()
                             }
-                        // Circle stroke + icon
+                        // Circle strokeBorder + icon
                         Circle()
                             .stroke(.black, lineWidth: 1)
                             .frame(width: thumbSize)

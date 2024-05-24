@@ -31,10 +31,19 @@ struct ItemFoundAlertView: View {
                                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                             }
+                            .padding(.bottom, 8)
+                            HStack {
+                                Text("Experience ")
+                                    .font(.title2)
+                                Text("+1")
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                    .padding(.leading,-8)
+                            }
                         }
                         .padding()
-                        .padding(.vertical, 16)
-                        .padding(.bottom, 16)
+                        .padding(.vertical)
+                        .padding(.bottom, 8)
                         .background(
                             Image("BrownTexture2")
                                 .resizable()

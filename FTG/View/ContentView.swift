@@ -9,16 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var customARView = CustomARView(frame: .zero)
+    @State private var showSplashScreen = true
     @State private var showMainMenu = true
     @State private var showGameEnd = false
+    
     @State private var showInventory = false
     @State private var showSettings = false
     @State private var showJournal = false
     @State private var showGuessNow = false
+    @State private var showProfile = false
+    
     @State private var isCorrect = false
-
     @State private var bgmVolume: Float = 1
-    @State private var showSplashScreen = true // State variable for splash screen
 
     var body: some View {
         Group {
@@ -45,6 +47,70 @@ struct ContentView: View {
                         .padding(.top, 80)
                         
                         VStack {
+                            // Top Button
+                            HStack{
+                                ZStack {
+                                    // Exp progress indicator box
+                                    HStack {
+                                        ProgressBar(value: Float(customARView.exp) / Float(customARView.level * 100))
+                                        Spacer()
+                                    }
+                                    .padding(.leading, 64)
+                                    
+                                    // Level icon button
+                                    HStack{
+                                        Button(action: {
+                                            withAnimation {
+                                                showProfile.toggle()
+                                            }
+                                            AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
+                                        }){
+                                            ZStack {
+                                                // Invis box
+                                                RoundedRectangle(cornerRadius: 24)
+                                                    .frame(width: 72, height: 72)
+                                                    .overlay {
+                                                        ZStack {
+                                                            VStack {
+                                                                RoundedRectangle(cornerRadius: 16)
+                                                                    .foregroundColor(.white.opacity(0.2))
+                                                                RoundedRectangle(cornerRadius: 12)
+                                                                    .opacity(0)
+                                                            }
+                                                            .padding(8)
+                                                        }
+                                                        .background(
+                                                            Image("BrownTexture2")
+                                                        )
+                                                    }
+                                                    .foregroundColor(.white.opacity(0.6))
+                                                    .clipShape(RoundedRectangle(cornerRadius: 24))
+                                                    .shadow(radius: 4, x: 2, y: 2)
+                                                    .opacity(0.6)
+                                                // Icon + text
+                                                RoundedRectangle(cornerRadius: 24)
+                                                    .frame(width: 72, height: 72)
+                                                    .opacity(0)
+                                                    .overlay {
+                                                        VStack {
+                                                            Image(systemName: "person.crop.circle")
+                                                                .font(.system(size: 32))
+                                                            Text("Level \(customARView.level)")
+                                                                .font(.subheadline)
+                                                        }
+                                                        .foregroundColor(.black)
+                                                        .padding(8)
+                                                    }
+                                                    .clipShape(RoundedRectangle(cornerRadius: 24))
+                                            }
+                                        }
+                                        Spacer()
+                                    }
+                                
+                                }
+                                .padding(.leading, 20)
+                                Spacer()
+                            }
                             Spacer()
                             HStack {
                                 // Left buttons
@@ -260,12 +326,20 @@ struct ContentView: View {
                             .padding(.bottom, 8)
                         }
                         
-                        if showInventory || showSettings || showJournal || showGuessNow || showGameEnd {
+                        if showProfile || showInventory || showSettings || showJournal || showGuessNow || showGameEnd {
                             Color.black.opacity(0.4)
                                 .edgesIgnoringSafeArea(.all)
                                 .onTapGesture {
                                     // Disable tap outside to close the popup
                                 }
+                        }
+                        
+                        if showProfile {
+                            ProfileView(customARView: customARView, showProfile: $showProfile, sfxVolume: $customARView.sfxVolume)
+                                .background(Color.white)
+                                .cornerRadius(24)
+                                .padding(UIScreen.main.bounds.width * 3 / 16)
+                                .zIndex(1)
                         }
                         
                         if showInventory {
@@ -285,7 +359,7 @@ struct ContentView: View {
                         }
                         
                         if showJournal {
-                            JournalView(arView: customARView, showJournal: $showJournal)
+                            JournalView(customARView: customARView, showJournal: $showJournal)
                                 .background(Color.white)
                                 .cornerRadius(24)
                                 .padding(80)
@@ -293,7 +367,7 @@ struct ContentView: View {
                         }
                         
                         if showGuessNow {
-                            GuessNowView(arView: customARView, showGuessNow: $showGuessNow, showGameEnd: $showGameEnd, isCorrect: $isCorrect)
+                            GuessNowView(customARView: customARView, showGuessNow: $showGuessNow, showGameEnd: $showGameEnd, isCorrect: $isCorrect)
                                 .background(Color.white)
                                 .cornerRadius(24)
                                 .padding(80)

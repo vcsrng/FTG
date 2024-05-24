@@ -20,6 +20,17 @@ class CustomARView: ARView, ObservableObject {
     @Published var sfxVolume: Float = 1.0
     @Published var isGuessCorrect: Bool = false
     @Published var correctAnswer: String = "Correct Answer"
+    
+    @Published var exp: Int = UserDefaults.standard.integer(forKey: "exp") {
+        didSet {
+            UserDefaults.standard.set(exp, forKey: "exp")
+        }
+    }
+    @Published var level: Int = UserDefaults.standard.integer(forKey: "level") {
+        didSet {
+            UserDefaults.standard.set(level, forKey: "level")
+        }
+    }
 
     var itemManager: ItemManager = ItemManager.shared
     var inventory = Inventory()
@@ -38,8 +49,8 @@ class CustomARView: ARView, ObservableObject {
     var itemDescriptions: [String] = []
     var answerKey: String = ""
 
-    var answerList: [String: [String]] = [:]  // Answer list with corresponding evidence
-    var collectedEvidence: Set<String> = []   // Collected evidence
+    var answerList: [String: [String]] = [:]
+    var collectedEvidence: Set<String> = []
 
     required init(frame frameRect: CGRect) {
         super.init(frame: frameRect)
@@ -50,7 +61,7 @@ class CustomARView: ARView, ObservableObject {
         let configuration = selectConfiguration(caseNumber: Int.random(in: 1...3))
         applyConfiguration(configuration)
 
-        answerList = generateAnswerList() // Generate the answer list
+        answerList = generateAnswerList()
 
         spawnItems()
 
@@ -195,7 +206,7 @@ class CustomARView: ARView, ObservableObject {
             )
         case 5:
             return ItemConfiguration(
-                itemAssets: ["Bag.usdz", "Macbook.usdz", "Notebook.usdz", "Lanyard.usdz", "Pen.usdz", "Scissors.usdz", "WhiteCoat.usdz", "Mask.usdz", "Glove.usdz"],
+                itemAssets: ["Bag.usdz", "Macbook.usdz", "Notebook.usdz", "Lanyard.usdz", "Pen.usdz", "Scissor.usdz", "White Coat.usdz", "Mask.usdz", "Glove.usdz"],
                 itemScales: [
                     SIMD3<Float>(repeating: 0.001),
                     SIMD3<Float>(repeating: 0.001),
@@ -222,7 +233,7 @@ class CustomARView: ARView, ObservableObject {
             )
         case 6:
             return ItemConfiguration(
-                itemAssets: ["Notebook.usdz", "Lanyard.usdz", "Watch.usdz", "Pen.usdz", "Scissors.usdz", "WhiteCoat.usdz", "Mask.usdz", "Glove.usdz"],
+                itemAssets: ["Notebook.usdz", "Lanyard.usdz", "Watch.usdz", "Pen.usdz", "Scissor.usdz", "White Coat.usdz", "Mask.usdz", "Glove.usdz"],
                 itemScales: [
                     SIMD3<Float>(repeating: 0.0005),
                     SIMD3<Float>(repeating: 0.0005),
@@ -285,7 +296,7 @@ class CustomARView: ARView, ObservableObject {
             )
         case 9:
             return ItemConfiguration(
-                itemAssets: ["Bag.usdz", "Scissors.usdz", "Mask.usdz", "Glove.usdz", "Lunchbox.usdz", "Hat.usdz"],
+                itemAssets: ["Bag.usdz", "Scissor.usdz", "Mask.usdz", "Glove.usdz", "Lunchbox.usdz", "Hat.usdz"],
                 itemScales: [
                     SIMD3<Float>(repeating: 0.001),
                     SIMD3<Float>(repeating: 0.0001),
@@ -320,15 +331,15 @@ class CustomARView: ARView, ObservableObject {
             // 4
             "Office Worker": ["Bag", "Macbook", "iPhone", "Lanyard", "Lunchbox"],
             // 5
-            "Doctor": ["Bag", "Macbook", "Notebook/Clipboard", "Lanyard", "Pen", "Scissors", "White Coat", "Mask", "Glove"],
+            "Doctor": ["Bag", "Macbook", "Notebook/Clipboard", "Lanyard", "Pen", "Scissor", "White Coat", "Mask", "Glove"],
             // 6
-            "Scientist": ["Notebook/Clipboard", "Lanyard", "Watch/Stopwatch", "Pen", "Scissors", "White Coat", "Mask", "Glove"],
+            "Scientist": ["Notebook/Clipboard", "Lanyard", "Watch/Stopwatch", "Pen", "Scissor", "White Coat", "Mask", "Glove"],
             // 7
             "Physical Education Teacher": ["Notebook/Clipboard", "iPhone", "Watch/Stopwatch", "Pen", "Whistle"],
             // 8
             "Referee": ["Notebook/Clipboard", "Watch/Stopwatch", "Pen", "Hat", "Whistle"],
             // 9
-            "Gardener": ["Bag", "Scissors", "Mask", "Glove", "Lunchbox", "Hat"]
+            "Gardener": ["Bag", "Scissor", "Mask", "Glove", "Lunchbox", "Hat"]
         ]
     }
     
@@ -383,6 +394,19 @@ class CustomARView: ARView, ObservableObject {
         }
     }
 
+    func addExp(points: Int) {
+        exp += points
+        checkLevelUp()
+    }
+    
+    private func checkLevelUp() {
+        let levelUpExp = (level + 4) * 20
+        if exp >= levelUpExp {
+            exp -= levelUpExp
+            level += 1
+        }
+    }
+    
     private func collectItem(_ item: Entity) {
         collectedItems.insert(item)
         let itemName = item.name
@@ -395,10 +419,11 @@ class CustomARView: ARView, ObservableObject {
             let inventoryItem = InventoryItem(name: formattedItemName, modelURL: itemURL, thumbnail: image, description: itemDescription)
             self.inventory.addItem(inventoryItem)
 
-            // Play item collection sound effect
             AudioManager.shared.playSFX(filename: "ItemCollect", volume: self.sfxVolume)
 
             self.showItemFoundProgress(itemName: formattedItemName)
+            
+            self.addExp(points: 1)
         }
     }
 
@@ -452,6 +477,9 @@ class CustomARView: ARView, ObservableObject {
     func handleGuess(guess: String) {
         isGuessCorrect = (guess == answerKey)
         showGameEnd(correct: isGuessCorrect)
+        if isGuessCorrect {
+            addExp(points: 5)
+        }
     }
 
     func showGameEnd(correct: Bool) {

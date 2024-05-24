@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct JournalView: View {
-    @ObservedObject var arView: CustomARView
+    @ObservedObject var customARView: CustomARView
     @Binding var showJournal: Bool
     @State private var selectedPage: Int = 0
     @State private var selectedAnswer: String? = nil
@@ -37,7 +37,7 @@ struct JournalView: View {
                         withAnimation {
                             showJournal.toggle()
                         }
-                        AudioManager.shared.playSFX(filename: "ButtonClick", volume: arView.sfxVolume)
+                        AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
                     }) {
                         RoundedRectangle(cornerRadius: 10)
                             .frame(width: 40, height: 40)
@@ -171,7 +171,7 @@ struct JournalView: View {
                 .background(Color.black)
             ScrollView(showsIndicators: false) {
                 VStack {
-                    ForEach(arView.inventory.items, id: \.id) { item in
+                    ForEach(customARView.inventory.items, id: \.id) { item in
                         HStack {
                             if let thumbnail = item.thumbnail {
                                 Image(uiImage: thumbnail)
@@ -220,7 +220,7 @@ struct JournalView: View {
                         .padding(.leading, 32)
                         .padding(.trailing, -8)
                     ScrollView(showsIndicators: false) {
-                        ForEach(Array(arView.answerList.keys), id: \.self) { answer in
+                        ForEach(Array(customARView.answerList.keys), id: \.self) { answer in
                             Button(action: {
                                 selectedAnswer = answer
                             }) {
@@ -271,7 +271,7 @@ struct JournalView: View {
                     Spacer()
                     if let selectedAnswer = selectedAnswer {
                         ScrollView(showsIndicators: false) {
-                            ForEach(arView.answerList[selectedAnswer] ?? [], id: \.self) { evidence in
+                            ForEach(customARView.answerList[selectedAnswer] ?? [], id: \.self) { evidence in
                                 RoundedRectangle(cornerRadius: 10)
                                     .strokeBorder()
                                     .foregroundColor(.black)
@@ -344,5 +344,5 @@ struct BookmarkTab: View {
 }
 
 #Preview {
-    JournalView(arView: CustomARView(frame: .zero), showJournal: .constant(true))
+    JournalView(customARView: CustomARView(frame: .zero), showJournal: .constant(true))
 }

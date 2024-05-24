@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GuessNowView: View {
-    @ObservedObject var arView: CustomARView
+    @ObservedObject var customARView: CustomARView
     @Environment(\.presentationMode) var presentationMode
     
     @State private var selectedEvidence: Set<String> = []
@@ -19,7 +19,7 @@ struct GuessNowView: View {
     @Binding var isCorrect: Bool
     
     private var allEvidence: [String] {
-        Array(Set(arView.answerList.values.flatMap { $0 })).sorted()
+        Array(Set(customARView.answerList.values.flatMap { $0 })).sorted()
     }
     
     var body: some View {
@@ -36,7 +36,7 @@ struct GuessNowView: View {
                         withAnimation {
                             showGuessNow.toggle()
                         }
-                        AudioManager.shared.playSFX(filename: "ButtonClick", volume: arView.sfxVolume)
+                        AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
                     }) {
                         RoundedRectangle(cornerRadius: 10)
                             .frame(width: 40, height: 40)
@@ -77,7 +77,7 @@ struct GuessNowView: View {
                         .padding(.trailing, -8)
                     ScrollView(showsIndicators: false) {
                         VStack {
-                            ForEach(arView.inventory.items, id: \.id) { item in
+                            ForEach(customARView.inventory.items, id: \.id) { item in
                                 HStack {
                                     if let thumbnail = item.thumbnail {
                                         Image(uiImage: thumbnail)
@@ -221,7 +221,7 @@ struct GuessNowView: View {
     }
     
     private func updatePossibleAnswers() {
-        possibleAnswers = arView.answerList.filter { answer, evidences in
+        possibleAnswers = customARView.answerList.filter { answer, evidences in
             selectedEvidence.isSubset(of: evidences)
         }.map { $0.key }.sorted()
         
@@ -234,9 +234,9 @@ struct GuessNowView: View {
     
     private func submitGuess() {
         guard let selectedAnswer = selectedAnswer else { return }
-        arView.handleGuess(guess: selectedAnswer)
+        customARView.handleGuess(guess: selectedAnswer)
         
-        isCorrect = arView.isGuessCorrect
+        isCorrect = customARView.isGuessCorrect
         showGuessNow = false
         showGameEnd = true
     }
@@ -277,5 +277,5 @@ struct EvidenceRow: View {
 }
 
 #Preview {
-    GuessNowView(arView: CustomARView(frame: .zero), showGuessNow: .constant(true), showGameEnd: .constant(false), isCorrect: .constant(true))
+    GuessNowView(customARView: CustomARView(frame: .zero), showGuessNow: .constant(true), showGameEnd: .constant(false), isCorrect: .constant(true))
 }

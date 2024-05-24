@@ -35,7 +35,6 @@ struct SplashScreen: View {
         }
     }
 
-    // Custom transition modifier
     private func anchorTransition() -> AnyTransition {
         AnyTransition.asymmetric(
             insertion: AnyTransition.scale(scale: 0.0, anchor: .center).combined(with: .opacity),
