@@ -25,14 +25,16 @@ struct ContentView: View {
     var body: some View {
         Group {
             if showSplashScreen {
-                SplashScreen()
+                SplashScreen(customARView: customARView)
             } else {
                 if showMainMenu {
                     ZStack {
                         MainMenuView(arView: customARView, showMainMenu: $showMainMenu, bgmVolume: $bgmVolume, sfxVolume: $customARView.sfxVolume)
                     }
                     .onAppear {
-                        AudioManager.shared.playBGM(filename: "BGM2", volume: bgmVolume)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                            AudioManager.shared.playBGM(filename: "BGM2", volume: bgmVolume)
+                        }
                     }
                 } else {
                     ZStack {
@@ -52,10 +54,10 @@ struct ContentView: View {
                                 ZStack {
                                     // Exp progress indicator box
                                     HStack {
-                                        ProgressBar(value: Float(customARView.exp) / Float(customARView.level * 100))
+                                        ProgressBar(value: Float(customARView.exp) / Float((customARView.level + 4) * 20))
                                         Spacer()
                                     }
-                                    .padding(.leading, 64)
+                                    .padding(.leading, 70)
                                     
                                     // Level icon button
                                     HStack{
@@ -375,7 +377,7 @@ struct ContentView: View {
                         }
                         
                         if showGameEnd {
-                            GameEndView(showMainMenu: $showMainMenu, showGameEnd: $showGameEnd, isCorrect: $isCorrect, arView: customARView)
+                            GameEndView(showMainMenu: $showMainMenu, showGameEnd: $showGameEnd, isCorrect: $isCorrect, customARView: customARView)
                                 .background(Color.white)
                                 .cornerRadius(24)
                                 .padding(80)

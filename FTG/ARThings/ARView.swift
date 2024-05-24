@@ -404,6 +404,7 @@ class CustomARView: ARView, ObservableObject {
         if exp >= levelUpExp {
             exp -= levelUpExp
             level += 1
+            AudioManager.shared.playSFX(filename: "sfxLevelUp", volume: sfxVolume)
         }
     }
     

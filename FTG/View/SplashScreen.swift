@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SplashScreen: View {
+    @ObservedObject var customARView: CustomARView
     @State private var splashTime: Bool = false
 
     var body: some View {
@@ -28,7 +29,8 @@ struct SplashScreen: View {
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                withAnimation(.easeInOut(duration: 0.5)) {
+                AudioManager.shared.playSFX(filename: "sfxSplashScreen", volume: customARView.sfxVolume)
+                withAnimation(.easeInOut(duration: 0.6)) {
                     splashTime = true
                 }
             }
@@ -44,5 +46,5 @@ struct SplashScreen: View {
 }
 
 #Preview {
-    SplashScreen()
+    SplashScreen(customARView: CustomARView(frame: .zero))
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProgressBar: View {
-    @State private var barSize: CGFloat = 56
+    @State private var barSize: CGFloat = 40
     var value: Float
 
     var body: some View {
@@ -24,7 +24,6 @@ struct ProgressBar: View {
                         .frame(height: barSize)
                     
                     Rectangle()
-                        .clipShape(.rect(bottomTrailingRadius: 24, topTrailingRadius: 24))
                         .frame(width: progressBarWidth, height: barSize)
                         .foregroundColor(Color(hex:"#32C1FE"))
                         .clipShape(.rect(bottomTrailingRadius: 24, topTrailingRadius: 24))

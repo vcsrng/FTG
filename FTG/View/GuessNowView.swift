@@ -129,7 +129,7 @@ struct GuessNowView: View {
                                 .frame(height: 48)
                                 .foregroundColor(Color.white.opacity(0.2))
                                 .overlay{
-                                    EvidenceRow(evidence: evidence, isSelected: selectedEvidence.contains(evidence)) {
+                                    EvidenceRow(customARView: customARView, evidence: evidence, isSelected: selectedEvidence.contains(evidence)) {
                                         toggleEvidenceSelection(evidence)
                                     }
                                     .font(.body)
@@ -159,6 +159,7 @@ struct GuessNowView: View {
                         ForEach(possibleAnswers, id: \.self) { answer in
                             Button(action: {
                                 selectedAnswer = answer
+                                AudioManager.shared.playSFX(filename: "sfxClick3", volume: customARView.sfxVolume)
                             }) {
                                 RoundedRectangle(cornerRadius: 10)
                                     .frame(height: 48)
@@ -178,7 +179,10 @@ struct GuessNowView: View {
             }
             .padding()
             
-            Button(action: submitGuess) {
+            Button(action: {
+                submitGuess()
+                AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
+            }) {
                 RoundedRectangle(cornerRadius: 24)
                     .frame(width: UIScreen.main.bounds.width / 6, height: UIScreen.main.bounds.height / 24)
                     .overlay{
@@ -243,12 +247,16 @@ struct GuessNowView: View {
 }
 
 struct EvidenceRow: View {
+    @ObservedObject var customARView: CustomARView
     let evidence: String
     let isSelected: Bool
     let action: () -> Void
     
     var body: some View {
-        Button(action: action) {
+        Button(action: {
+            action()
+            AudioManager.shared.playSFX(filename: "sfxClick3", volume: customARView.sfxVolume)
+        }) {
             HStack {
                 Text(evidence)
                 Spacer()

@@ -57,6 +57,13 @@
 		BF4C8E992BFFAB330039467F /* ItemFoundAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C8E982BFFAB330039467F /* ItemFoundAlertView.swift */; };
 		BF4C8E9D2C0061300039467F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C8E9C2C0061300039467F /* ProfileView.swift */; };
 		BF4C8E9F2C0068450039467F /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C8E9E2C0068450039467F /* ProgressBar.swift */; };
+		BF4C8EA12C0105330039467F /* sfxMarkerCircle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8EA02C0105330039467F /* sfxMarkerCircle.mp3 */; };
+		BF4C8EA32C0107D80039467F /* sfxBookmarkChange.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8EA22C0107D80039467F /* sfxBookmarkChange.mp3 */; };
+		BF4C8EA72C010CD00039467F /* sfxGuessCorrect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8EA52C010CD00039467F /* sfxGuessCorrect.mp3 */; };
+		BF4C8EA92C0112940039467F /* sfxSplashScreen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8EA82C0112930039467F /* sfxSplashScreen.mp3 */; };
+		BF4C8EAB2C0119B50039467F /* sfxGuessIncorrect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8EAA2C0119B50039467F /* sfxGuessIncorrect.mp3 */; };
+		BF4C8EAD2C011C520039467F /* sfxClick3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8EAC2C011C520039467F /* sfxClick3.mp3 */; };
+		BF4C8EAF2C0122240039467F /* sfxLevelUp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8EAE2C0122240039467F /* sfxLevelUp.mp3 */; };
 		BF76F0A62BF4F57100F512F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F0A52BF4F57100F512F3 /* AppDelegate.swift */; };
 		BF76F0AA2BF4F57200F512F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0A92BF4F57200F512F3 /* Assets.xcassets */; };
 		BF76F0AD2BF4F57200F512F3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0AC2BF4F57200F512F3 /* Preview Assets.xcassets */; };
@@ -122,6 +129,13 @@
 		BF4C8E982BFFAB330039467F /* ItemFoundAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFoundAlertView.swift; sourceTree = "<group>"; };
 		BF4C8E9C2C0061300039467F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		BF4C8E9E2C0068450039467F /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		BF4C8EA02C0105330039467F /* sfxMarkerCircle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sfxMarkerCircle.mp3; sourceTree = "<group>"; };
+		BF4C8EA22C0107D80039467F /* sfxBookmarkChange.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sfxBookmarkChange.mp3; sourceTree = "<group>"; };
+		BF4C8EA52C010CD00039467F /* sfxGuessCorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sfxGuessCorrect.mp3; sourceTree = "<group>"; };
+		BF4C8EA82C0112930039467F /* sfxSplashScreen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sfxSplashScreen.mp3; sourceTree = "<group>"; };
+		BF4C8EAA2C0119B50039467F /* sfxGuessIncorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sfxGuessIncorrect.mp3; sourceTree = "<group>"; };
+		BF4C8EAC2C011C520039467F /* sfxClick3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sfxClick3.mp3; sourceTree = "<group>"; };
+		BF4C8EAE2C0122240039467F /* sfxLevelUp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sfxLevelUp.mp3; sourceTree = "<group>"; };
 		BF76F0A22BF4F57100F512F3 /* FTG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FTG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF76F0A52BF4F57100F512F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF76F0A92BF4F57200F512F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -316,6 +330,13 @@
 				BF76F1C22BF8D72600F512F3 /* ItemCollect.mp3 */,
 				BF76F1D12BF9237D00F512F3 /* ButtonClick.mp3 */,
 				BF76F1E12BFB362700F512F3 /* ButtonClick2.mp3 */,
+				BF4C8EA02C0105330039467F /* sfxMarkerCircle.mp3 */,
+				BF4C8EA22C0107D80039467F /* sfxBookmarkChange.mp3 */,
+				BF4C8EA52C010CD00039467F /* sfxGuessCorrect.mp3 */,
+				BF4C8EAA2C0119B50039467F /* sfxGuessIncorrect.mp3 */,
+				BF4C8EA82C0112930039467F /* sfxSplashScreen.mp3 */,
+				BF4C8EAC2C011C520039467F /* sfxClick3.mp3 */,
+				BF4C8EAE2C0122240039467F /* sfxLevelUp.mp3 */,
 			);
 			path = BGM;
 			sourceTree = "<group>";
@@ -440,15 +461,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF4C8EAF2C0122240039467F /* sfxLevelUp.mp3 in Resources */,
 				BF76F1E22BFB362700F512F3 /* ButtonClick2.mp3 in Resources */,
 				BF76F1C32BF8D72600F512F3 /* ItemCollect.mp3 in Resources */,
+				BF4C8EA72C010CD00039467F /* sfxGuessCorrect.mp3 in Resources */,
 				BF76F1C12BF8D50D00F512F3 /* BGM.mp3 in Resources */,
 				BF4C8E492BFF8FD00039467F /* Whistle.usdz in Resources */,
 				BF4C8E552BFF8FD00039467F /* Scissor.usdz in Resources */,
 				BF4C8E582BFF8FD00039467F /* Glove.usdz in Resources */,
+				BF4C8EA12C0105330039467F /* sfxMarkerCircle.mp3 in Resources */,
+				BF4C8EAB2C0119B50039467F /* sfxGuessIncorrect.mp3 in Resources */,
+				BF4C8EA32C0107D80039467F /* sfxBookmarkChange.mp3 in Resources */,
 				BF4C8E402BFF8FD00039467F /* Stopwatch.usdz in Resources */,
 				BF4C8E342BFF8FD00039467F /* Mask.usdz in Resources */,
 				BF4C8E432BFF8FD00039467F /* Watch.usdz in Resources */,
+				BF4C8EAD2C011C520039467F /* sfxClick3.mp3 in Resources */,
 				BF4C8E222BFE35900039467F /* Koulen-Regular.ttf in Resources */,
 				BF4C8E5E2BFF8FD00039467F /* Hat.usdz in Resources */,
 				BF4C8E372BFF8FD00039467F /* Lunchbox.usdz in Resources */,
@@ -457,6 +484,7 @@
 				BF76F0AD2BF4F57200F512F3 /* Preview Assets.xcassets in Resources */,
 				BF4C8E4C2BFF8FD00039467F /* Macbook.usdz in Resources */,
 				BF4C8E522BFF8FD00039467F /* White Coat.usdz in Resources */,
+				BF4C8EA92C0112940039467F /* sfxSplashScreen.mp3 in Resources */,
 				BF4C8E5B2BFF8FD00039467F /* Notebook.usdz in Resources */,
 				BF4C8E8D2BFFA07E0039467F /* Lanyard.usdz in Resources */,
 				BF76F1D22BF9237D00F512F3 /* ButtonClick.mp3 in Resources */,

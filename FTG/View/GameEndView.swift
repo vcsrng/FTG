@@ -11,7 +11,7 @@ struct GameEndView: View {
     @Binding var showMainMenu: Bool
     @Binding var showGameEnd: Bool
     @Binding var isCorrect: Bool
-    @ObservedObject var arView: CustomARView
+    @ObservedObject var customARView: CustomARView
 
     var body: some View {
         VStack {
@@ -21,15 +21,9 @@ struct GameEndView: View {
                     .padding(.bottom, -32)
                 Text(isCorrect ? "You guessed correctly!" : "Your guess was incorrect.")
                     .font(.title)
-                HStack {
-                    Text("Experience ")
-                        .font(.title2)
-                    Text(isCorrect ? "+5" : "+0")
-                        .font(.title2)
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                        .padding(.leading, -8)
-                }
-                .padding(.top, 8)
+                Text(isCorrect ? "Experience +5" : "Experience +0")
+                    .font(.title2)
+                    .padding(.top, 8)
             }
             .padding()
             .padding(.vertical)
@@ -37,12 +31,13 @@ struct GameEndView: View {
             
             HStack {
                 Button(action: {
+                    AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
                     showMainMenu = true
                     showGameEnd = false
                 }) {
                     RoundedRectangle(cornerRadius: 24)
                         .frame(width: UIScreen.main.bounds.width / 6, height: UIScreen.main.bounds.height / 24)
-                        .overlay{
+                        .overlay {
                             ZStack {
                                 VStack {
                                     RoundedRectangle(cornerRadius: 16)
@@ -63,12 +58,13 @@ struct GameEndView: View {
                 }.padding(.trailing, 32)
                 
                 Button(action: {
-                    arView.resetGame()
+                    AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
+                    customARView.resetGame()
                     showGameEnd = false
                 }) {
                     RoundedRectangle(cornerRadius: 24)
                         .frame(width: UIScreen.main.bounds.width / 6, height: UIScreen.main.bounds.height / 24)
-                        .overlay{
+                        .overlay {
                             ZStack {
                                 VStack {
                                     RoundedRectangle(cornerRadius: 16)
@@ -95,10 +91,14 @@ struct GameEndView: View {
             Image("BrownTexture2")
                 .resizable()
                 .frame(width: 1384, height: 1384)
-            )
+        )
+        .onAppear {
+            let soundEffect = isCorrect ? "sfxGuessCorrect" : "sfxGuessIncorrect"
+            AudioManager.shared.playSFX(filename: soundEffect, volume: customARView.sfxVolume)
+        }
     }
 }
 
 #Preview {
-    GameEndView(showMainMenu: .constant(true), showGameEnd: .constant(true), isCorrect: .constant(true), arView: CustomARView(frame: .zero))
+    GameEndView(showMainMenu: .constant(true), showGameEnd: .constant(true), isCorrect: .constant(true), customARView: CustomARView(frame: .zero))
 }

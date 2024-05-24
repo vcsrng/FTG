@@ -72,6 +72,7 @@ struct JournalView: View {
                             withAnimation {
                                 selectedPage = index
                             }
+                            AudioManager.shared.playSFX(filename: "sfxBookmarkChange", volume: customARView.sfxVolume)
                         }
                 }
             }
@@ -89,6 +90,9 @@ struct JournalView: View {
             .background(Color.white.opacity(0.2))
             .clipShape(.rect(bottomLeadingRadius: 24, bottomTrailingRadius: 24))
             .padding(.horizontal, 40)
+            .onChange(of: selectedPage) {
+                AudioManager.shared.playSFX(filename: "sfxBookmarkChange", volume: customARView.sfxVolume)
+            }
 
             // Custom Page Control
             HStack {
@@ -100,6 +104,7 @@ struct JournalView: View {
                             withAnimation {
                                 selectedPage = index
                             }
+                            AudioManager.shared.playSFX(filename: "sfxBookmarkChange", volume: customARView.sfxVolume)
                         }
                 }
             }
@@ -223,6 +228,7 @@ struct JournalView: View {
                         ForEach(Array(customARView.answerList.keys), id: \.self) { answer in
                             Button(action: {
                                 selectedAnswer = answer
+                                AudioManager.shared.playSFX(filename: "sfxMarkerCircle", volume: customARView.sfxVolume)
                             }) {
                                 Image("EllipseMarker")
                                     .resizable()
@@ -234,15 +240,6 @@ struct JournalView: View {
                                             .foregroundColor(Color.black)
                                             .padding(.top)
                                     }
-//                                Ellipse()
-//                                    .strokeBorder()
-//                                    .foregroundColor(selectedAnswer == answer ? Color.black : Color.clear)
-//                                    .frame(width: 160, height: 56)
-//                                    .overlay {
-//                                        Text(answer)
-//                                            .font(.headline)
-//                                            .foregroundColor(Color.black)
-//                                    }
                             }
                             .padding(.top)
                         }

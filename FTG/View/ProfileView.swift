@@ -55,10 +55,46 @@ struct ProfileView: View {
                 .font(.title)
                 .fontWeight(.semibold)
                 .padding()
-            Text("EXP: \(customARView.exp) / \((customARView.level + 4) * 20)")
-                .font(.title2)
-                .fontWeight(.semibold)
-                .padding()
+            ZStack{
+                let barSize: CGFloat = 40
+                let value = Float(customARView.exp) / Float((customARView.level + 4) * 20)
+                
+                GeometryReader { geometry in
+                    let width = geometry.size.width
+                    let progressBarWidth = CGFloat(value) * width
+
+                    ZStack(alignment: .leading) {
+                        RoundedRectangle(cornerRadius: 24)
+                            .foregroundColor(Color.gray.opacity(0.2))
+                            .frame(height: barSize)
+                        
+                        RoundedRectangle(cornerRadius: 24)
+                            .frame(width: progressBarWidth, height: barSize)
+                            .foregroundColor(Color(hex:"#32C1FE"))
+                            .clipShape(.rect(bottomTrailingRadius: 24, topTrailingRadius: 24))
+                        
+                        ZStack{
+                            VStack {
+                                RoundedRectangle(cornerRadius: 24)
+                                    .foregroundColor(.white.opacity(0.2))
+                                RoundedRectangle(cornerRadius: 24)
+                                    .opacity(0)
+                            }
+                            .padding(8)
+                            .padding(.top, 4)
+                            
+                            Text("EXP: \(customARView.exp) / \((customARView.level + 4) * 20)")
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                                .padding()
+                        }
+                    }
+                    .frame(height: barSize)
+                }
+                .frame(width: UIScreen.main.bounds.width/3, height: barSize)
+                
+                
+            }
         }
         .padding()
         .padding(.vertical, 16)
@@ -71,3 +107,6 @@ struct ProfileView: View {
     }
 }
 
+#Preview {
+    ProfileView(customARView: CustomARView(frame: .zero), showProfile: .constant(true), sfxVolume: .constant(0))
+}
