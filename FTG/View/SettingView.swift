@@ -27,7 +27,7 @@ struct SettingView: View {
                         withAnimation {
                             showSettings.toggle()
                         }
-                        AudioManager.shared.playSFX(filename: "ButtonClick", volume: sfxVolume)
+                        AudioManager.shared.playSFX(filename: "sfxClick", volume: sfxVolume)
                     }) {
                         RoundedRectangle(cornerRadius: 10)
                             .frame(width: 40, height: 40)
@@ -73,7 +73,7 @@ struct SettingView: View {
 
                 CustomSlider(value: $sfxVolume, icon: "speaker.wave.2.fill") {
                     AudioManager.shared.setSFXVolume(sfxVolume)
-                    AudioManager.shared.playSFX(filename: "ButtonClick", volume: sfxVolume)
+                    AudioManager.shared.playSFX(filename: "sfxClick", volume: sfxVolume)
                 }
                 .frame(width: UIScreen.main.bounds.width * 9 / 16)
                 .padding()

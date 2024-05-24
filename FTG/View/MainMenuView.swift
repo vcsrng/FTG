@@ -31,7 +31,7 @@ struct MainMenuView: View {
                     Button(action: {
                         arView.resetGame()
                         showMainMenu = false
-                        AudioManager.shared.playSFX(filename: "ButtonClick2", volume: sfxVolume)
+                        AudioManager.shared.playSFX(filename: "sfxClick2", volume: sfxVolume)
                     }) {
                         RoundedRectangle(cornerRadius: 24)
                             .frame(width: UIScreen.main.bounds.width / 4, height: UIScreen.main.bounds.height / 16)
@@ -57,7 +57,7 @@ struct MainMenuView: View {
                 
                 Button(action: {
                     showHowToPlay.toggle()
-                    AudioManager.shared.playSFX(filename: "ButtonClick2", volume: sfxVolume)
+                    AudioManager.shared.playSFX(filename: "sfxClick2", volume: sfxVolume)
                 }) {
                     RoundedRectangle(cornerRadius: 24)
                         .frame(width: UIScreen.main.bounds.width / 4, height: UIScreen.main.bounds.height / 16)
@@ -82,7 +82,7 @@ struct MainMenuView: View {
                 
                 Button(action: {
                     showSettings.toggle()
-                    AudioManager.shared.playSFX(filename: "ButtonClick2", volume: sfxVolume)
+                    AudioManager.shared.playSFX(filename: "sfxClick2", volume: sfxVolume)
                 }) {
                     RoundedRectangle(cornerRadius: 24)
                         .frame(width: UIScreen.main.bounds.width / 4, height: UIScreen.main.bounds.height / 16)

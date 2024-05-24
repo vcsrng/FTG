@@ -31,7 +31,7 @@ struct GameEndView: View {
             
             HStack {
                 Button(action: {
-                    AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
+                    AudioManager.shared.playSFX(filename: "sfxClick", volume: customARView.sfxVolume)
                     showMainMenu = true
                     showGameEnd = false
                 }) {
@@ -58,7 +58,7 @@ struct GameEndView: View {
                 }.padding(.trailing, 32)
                 
                 Button(action: {
-                    AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
+                    AudioManager.shared.playSFX(filename: "sfxClick", volume: customARView.sfxVolume)
                     customARView.resetGame()
                     showGameEnd = false
                 }) {

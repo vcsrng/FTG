@@ -37,7 +37,7 @@ struct JournalView: View {
                         withAnimation {
                             showJournal.toggle()
                         }
-                        AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
+                        AudioManager.shared.playSFX(filename: "sfxClick", volume: customARView.sfxVolume)
                     }) {
                         RoundedRectangle(cornerRadius: 10)
                             .frame(width: 40, height: 40)

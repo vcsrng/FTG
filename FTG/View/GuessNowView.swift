@@ -36,7 +36,7 @@ struct GuessNowView: View {
                         withAnimation {
                             showGuessNow.toggle()
                         }
-                        AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
+                        AudioManager.shared.playSFX(filename: "sfxClick", volume: customARView.sfxVolume)
                     }) {
                         RoundedRectangle(cornerRadius: 10)
                             .frame(width: 40, height: 40)
@@ -181,7 +181,7 @@ struct GuessNowView: View {
             
             Button(action: {
                 submitGuess()
-                AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
+                AudioManager.shared.playSFX(filename: "sfxClick", volume: customARView.sfxVolume)
             }) {
                 RoundedRectangle(cornerRadius: 24)
                     .frame(width: UIScreen.main.bounds.width / 6, height: UIScreen.main.bounds.height / 24)

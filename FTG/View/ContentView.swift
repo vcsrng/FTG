@@ -65,7 +65,7 @@ struct ContentView: View {
                                             withAnimation {
                                                 showProfile.toggle()
                                             }
-                                            AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
+                                            AudioManager.shared.playSFX(filename: "sfxClick", volume: customARView.sfxVolume)
                                         }){
                                             ZStack {
                                                 // Invis box
@@ -122,7 +122,7 @@ struct ContentView: View {
                                             withAnimation {
                                                 showJournal.toggle()
                                             }
-                                            AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
+                                            AudioManager.shared.playSFX(filename: "sfxClick", volume: customARView.sfxVolume)
                                         }) {
                                             ZStack {
                                                 // Invis box
@@ -170,7 +170,7 @@ struct ContentView: View {
                                             withAnimation {
                                                 showGuessNow.toggle()
                                             }
-                                            AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
+                                            AudioManager.shared.playSFX(filename: "sfxClick", volume: customARView.sfxVolume)
                                         }) {
                                             // Invis box
                                             ZStack {
@@ -226,7 +226,7 @@ struct ContentView: View {
                                             withAnimation {
                                                 showSettings.toggle()
                                             }
-                                            AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
+                                            AudioManager.shared.playSFX(filename: "sfxClick", volume: customARView.sfxVolume)
                                         }) {
                                             ZStack{
                                                 // Invis box
@@ -280,7 +280,7 @@ struct ContentView: View {
                                             withAnimation {
                                                 showInventory.toggle()
                                             }
-                                            AudioManager.shared.playSFX(filename: "ButtonClick", volume: customARView.sfxVolume)
+                                            AudioManager.shared.playSFX(filename: "sfxClick", volume: customARView.sfxVolume)
                                         }) {
                                             ZStack{
                                                 // Invis box

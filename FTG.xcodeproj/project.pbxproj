@@ -80,15 +80,15 @@
 		BF76F1BA2BF8C62700F512F3 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1B92BF8C62700F512F3 /* SettingView.swift */; };
 		BF76F1BE2BF8D35F00F512F3 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1BD2BF8D35F00F512F3 /* AudioManager.swift */; };
 		BF76F1C12BF8D50D00F512F3 /* BGM.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1C02BF8D50D00F512F3 /* BGM.mp3 */; };
-		BF76F1C32BF8D72600F512F3 /* ItemCollect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1C22BF8D72600F512F3 /* ItemCollect.mp3 */; };
+		BF76F1C32BF8D72600F512F3 /* sfxItemCollect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1C22BF8D72600F512F3 /* sfxItemCollect.mp3 */; };
 		BF76F1CA2BF91E8E00F512F3 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1C92BF91E8E00F512F3 /* JournalView.swift */; };
 		BF76F1CC2BF91EC400F512F3 /* GuessNowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1CB2BF91EC400F512F3 /* GuessNowView.swift */; };
-		BF76F1D22BF9237D00F512F3 /* ButtonClick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1D12BF9237D00F512F3 /* ButtonClick.mp3 */; };
+		BF76F1D22BF9237D00F512F3 /* sfxClick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1D12BF9237D00F512F3 /* sfxClick.mp3 */; };
 		BF76F1DA2BFA5FFB00F512F3 /* GameEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1D92BFA5FFB00F512F3 /* GameEndView.swift */; };
 		BF76F1DC2BFA601F00F512F3 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1DB2BFA601F00F512F3 /* MainMenuView.swift */; };
 		BF76F1DE2BFA604200F512F3 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1DD2BFA604200F512F3 /* HowToPlayView.swift */; };
 		BF76F1E02BFB35E600F512F3 /* BGM2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1DF2BFB35E600F512F3 /* BGM2.mp3 */; };
-		BF76F1E22BFB362700F512F3 /* ButtonClick2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1E12BFB362700F512F3 /* ButtonClick2.mp3 */; };
+		BF76F1E22BFB362700F512F3 /* sfxClick2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1E12BFB362700F512F3 /* sfxClick2.mp3 */; };
 		BFD4F8462BFCF69E004AF67B /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4F8452BFCF69E004AF67B /* SplashScreen.swift */; };
 /* End PBXBuildFile section */
 
@@ -154,15 +154,15 @@
 		BF76F1B92BF8C62700F512F3 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		BF76F1BD2BF8D35F00F512F3 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		BF76F1C02BF8D50D00F512F3 /* BGM.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BGM.mp3; sourceTree = "<group>"; };
-		BF76F1C22BF8D72600F512F3 /* ItemCollect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ItemCollect.mp3; sourceTree = "<group>"; };
+		BF76F1C22BF8D72600F512F3 /* sfxItemCollect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sfxItemCollect.mp3; sourceTree = "<group>"; };
 		BF76F1C92BF91E8E00F512F3 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
 		BF76F1CB2BF91EC400F512F3 /* GuessNowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessNowView.swift; sourceTree = "<group>"; };
-		BF76F1D12BF9237D00F512F3 /* ButtonClick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ButtonClick.mp3; sourceTree = "<group>"; };
+		BF76F1D12BF9237D00F512F3 /* sfxClick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sfxClick.mp3; sourceTree = "<group>"; };
 		BF76F1D92BFA5FFB00F512F3 /* GameEndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEndView.swift; sourceTree = "<group>"; };
 		BF76F1DB2BFA601F00F512F3 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		BF76F1DD2BFA604200F512F3 /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
 		BF76F1DF2BFB35E600F512F3 /* BGM2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BGM2.mp3; sourceTree = "<group>"; };
-		BF76F1E12BFB362700F512F3 /* ButtonClick2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ButtonClick2.mp3; sourceTree = "<group>"; };
+		BF76F1E12BFB362700F512F3 /* sfxClick2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sfxClick2.mp3; sourceTree = "<group>"; };
 		BFD4F8452BFCF69E004AF67B /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -327,15 +327,15 @@
 			children = (
 				BF76F1C02BF8D50D00F512F3 /* BGM.mp3 */,
 				BF76F1DF2BFB35E600F512F3 /* BGM2.mp3 */,
-				BF76F1C22BF8D72600F512F3 /* ItemCollect.mp3 */,
-				BF76F1D12BF9237D00F512F3 /* ButtonClick.mp3 */,
-				BF76F1E12BFB362700F512F3 /* ButtonClick2.mp3 */,
+				BF76F1C22BF8D72600F512F3 /* sfxItemCollect.mp3 */,
+				BF76F1D12BF9237D00F512F3 /* sfxClick.mp3 */,
+				BF76F1E12BFB362700F512F3 /* sfxClick2.mp3 */,
+				BF4C8EAC2C011C520039467F /* sfxClick3.mp3 */,
 				BF4C8EA02C0105330039467F /* sfxMarkerCircle.mp3 */,
 				BF4C8EA22C0107D80039467F /* sfxBookmarkChange.mp3 */,
 				BF4C8EA52C010CD00039467F /* sfxGuessCorrect.mp3 */,
 				BF4C8EAA2C0119B50039467F /* sfxGuessIncorrect.mp3 */,
 				BF4C8EA82C0112930039467F /* sfxSplashScreen.mp3 */,
-				BF4C8EAC2C011C520039467F /* sfxClick3.mp3 */,
 				BF4C8EAE2C0122240039467F /* sfxLevelUp.mp3 */,
 			);
 			path = BGM;
@@ -462,8 +462,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF4C8EAF2C0122240039467F /* sfxLevelUp.mp3 in Resources */,
-				BF76F1E22BFB362700F512F3 /* ButtonClick2.mp3 in Resources */,
-				BF76F1C32BF8D72600F512F3 /* ItemCollect.mp3 in Resources */,
+				BF76F1E22BFB362700F512F3 /* sfxClick2.mp3 in Resources */,
+				BF76F1C32BF8D72600F512F3 /* sfxItemCollect.mp3 in Resources */,
 				BF4C8EA72C010CD00039467F /* sfxGuessCorrect.mp3 in Resources */,
 				BF76F1C12BF8D50D00F512F3 /* BGM.mp3 in Resources */,
 				BF4C8E492BFF8FD00039467F /* Whistle.usdz in Resources */,
@@ -487,7 +487,7 @@
 				BF4C8EA92C0112940039467F /* sfxSplashScreen.mp3 in Resources */,
 				BF4C8E5B2BFF8FD00039467F /* Notebook.usdz in Resources */,
 				BF4C8E8D2BFFA07E0039467F /* Lanyard.usdz in Resources */,
-				BF76F1D22BF9237D00F512F3 /* ButtonClick.mp3 in Resources */,
+				BF76F1D22BF9237D00F512F3 /* sfxClick.mp3 in Resources */,
 				BF4C8E4F2BFF8FD00039467F /* Bag.usdz in Resources */,
 				BF4C8E622BFF919F0039467F /* iPhone.usdz in Resources */,
 				BF76F0AA2BF4F57200F512F3 /* Assets.xcassets in Resources */,

@@ -420,7 +420,7 @@ class CustomARView: ARView, ObservableObject {
             let inventoryItem = InventoryItem(name: formattedItemName, modelURL: itemURL, thumbnail: image, description: itemDescription)
             self.inventory.addItem(inventoryItem)
 
-            AudioManager.shared.playSFX(filename: "ItemCollect", volume: self.sfxVolume)
+            AudioManager.shared.playSFX(filename: "sfxItemCollect", volume: self.sfxVolume)
 
             self.showItemFoundProgress(itemName: formattedItemName)
             

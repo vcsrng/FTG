@@ -25,7 +25,7 @@ struct InventoryView: View {
                         withAnimation {
                             showInventory.toggle()
                         }
-                        AudioManager.shared.playSFX(filename: "ButtonClick", volume: sfxVolume)
+                        AudioManager.shared.playSFX(filename: "sfxClick", volume: sfxVolume)
                     }) {
                         RoundedRectangle(cornerRadius: 10)
                             .frame(width: 40, height: 40)
