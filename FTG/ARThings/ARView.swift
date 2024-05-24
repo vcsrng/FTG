@@ -352,14 +352,14 @@ class CustomARView: ARView, ObservableObject {
 
     private func spawnItems() {
         let boundingBoxSize: Float = 1
-        let minX: Float = -boundingBoxSize / 2
-        let maxX: Float = boundingBoxSize / 2
-        let minZ: Float = -boundingBoxSize / 2
-        let maxZ: Float = boundingBoxSize / 2
+        let minX: Float = -boundingBoxSize * 2
+        let maxX: Float = boundingBoxSize * 2
+        let minZ: Float = -boundingBoxSize * 2
+        let maxZ: Float = boundingBoxSize * 2
 
         for (index, asset) in itemAssets.enumerated() {
             let randomX = Float.random(in: minX...maxX)
-            let randomY = Float.random(in: 0...2)
+            let randomY = Float.random(in: -1...1)
             let randomZ = Float.random(in: minZ...maxZ)
             let randomPosition = SIMD3<Float>(randomX, randomY, randomZ)
             let scale = itemScales[index]

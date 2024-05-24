@@ -18,7 +18,7 @@ struct ProfileView: View {
                 Text("Profile")
                     .font(Font.custom("Koulen-Regular", size: 64))
                     .padding()
-                    .padding(.top)
+//                    .padding(.top)
                 HStack {
                     Spacer()
                     Button(action: {
@@ -97,7 +97,7 @@ struct ProfileView: View {
             }
         }
         .padding()
-        .padding(.vertical, 16)
+        .padding(.vertical)
         .padding(.bottom, 32)
         .background(
             Image("BrownTexture2")

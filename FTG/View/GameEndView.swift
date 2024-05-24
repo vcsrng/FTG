@@ -25,9 +25,7 @@ struct GameEndView: View {
                     .font(.title2)
                     .padding(.top, 8)
             }
-            .padding()
             .padding(.vertical)
-            .padding(.bottom, 8)
             
             HStack {
                 Button(action: {
