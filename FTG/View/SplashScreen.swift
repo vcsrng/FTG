@@ -28,8 +28,8 @@ struct SplashScreen: View {
             }
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                AudioManager.shared.playSFX(filename: "sfxSplashScreen", volume: customARView.sfxVolume)
+            AudioManager.shared.playSFX(filename: "sfxFullSplashScreen", volume: customARView.sfxVolume)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                 withAnimation(.easeInOut(duration: 0.6)) {
                     splashTime = true
                 }

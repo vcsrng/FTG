@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct MainMenuView: View {
-    @StateObject var arView: CustomARView
+    @StateObject var customARView: CustomARView
     @Binding var showMainMenu: Bool
     @Binding var bgmVolume: Float
     @Binding var sfxVolume: Float
+    @Binding var isInGame: Bool
     @State private var showSettings = false
     @State private var showHowToPlay = false
     
@@ -29,8 +30,9 @@ struct MainMenuView: View {
                 
                 VStack {
                     Button(action: {
-                        arView.resetGame()
+                        customARView.resetGame()
                         showMainMenu = false
+                        isInGame = true
                         AudioManager.shared.playSFX(filename: "sfxClick2", volume: sfxVolume)
                     }) {
                         RoundedRectangle(cornerRadius: 24)
@@ -123,7 +125,7 @@ struct MainMenuView: View {
             }
             
             if showSettings{
-                SettingView(customARView: arView, showSettings: $showSettings, bgmVolume: $bgmVolume, sfxVolume: $sfxVolume)
+                SettingView(customARView: customARView, showSettings: $showSettings, bgmVolume: $bgmVolume, sfxVolume: $sfxVolume, isInGame: $isInGame)
                     .background(Color.white)
                     .cornerRadius(24)
                     .padding(UIScreen.main.bounds.width*3/16)
@@ -144,5 +146,5 @@ struct MainMenuView: View {
 }
                       
 #Preview {
-    MainMenuView(arView: CustomARView(frame: .zero), showMainMenu: .constant(true), bgmVolume: .constant(1), sfxVolume: .constant(1))
+    MainMenuView(customARView: CustomARView(frame: .zero), showMainMenu: .constant(true), bgmVolume: .constant(1), sfxVolume: .constant(1), isInGame: .constant(true))
 }

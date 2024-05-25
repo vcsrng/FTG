@@ -11,6 +11,7 @@ struct GameEndView: View {
     @Binding var showMainMenu: Bool
     @Binding var showGameEnd: Bool
     @Binding var isCorrect: Bool
+    @Binding var isInGame: Bool
     @ObservedObject var customARView: CustomARView
 
     var body: some View {
@@ -32,6 +33,7 @@ struct GameEndView: View {
                     AudioManager.shared.playSFX(filename: "sfxClick", volume: customARView.sfxVolume)
                     showMainMenu = true
                     showGameEnd = false
+                    isInGame = false
                 }) {
                     RoundedRectangle(cornerRadius: 24)
                         .frame(width: UIScreen.main.bounds.width / 6, height: UIScreen.main.bounds.height / 24)
@@ -86,7 +88,7 @@ struct GameEndView: View {
         }
         .padding(40)
         .background(
-            Image("BrownTexture2")
+            Image("BrownTexture")
                 .resizable()
                 .frame(width: 1384, height: 1384)
         )
@@ -98,5 +100,5 @@ struct GameEndView: View {
 }
 
 #Preview {
-    GameEndView(showMainMenu: .constant(true), showGameEnd: .constant(true), isCorrect: .constant(true), customARView: CustomARView(frame: .zero))
+    GameEndView(showMainMenu: .constant(true), showGameEnd: .constant(true), isCorrect: .constant(true), isInGame: .constant(false), customARView: CustomARView(frame: .zero))
 }

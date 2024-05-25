@@ -21,6 +21,12 @@ struct ContentView: View {
     
     @State private var isCorrect = false
     @State private var bgmVolume: Float = 1
+    
+    // harusnya state-binding
+    private let bgmLobbyFiles = ["bgmLobby", "bgmLobby2", "bgmLobby3"]
+    private let bgmInGameFiles = ["bgmInGame", "bgmInGame2", "bgmInGame3"]
+    @State private var selectedBGMIndex = Int.random(in: 0...2)
+    @State private var isInGame = false
 
     var body: some View {
         Group {
@@ -29,11 +35,11 @@ struct ContentView: View {
             } else {
                 if showMainMenu {
                     ZStack {
-                        MainMenuView(arView: customARView, showMainMenu: $showMainMenu, bgmVolume: $bgmVolume, sfxVolume: $customARView.sfxVolume)
+                        MainMenuView(customARView: customARView, showMainMenu: $showMainMenu, bgmVolume: $bgmVolume, sfxVolume: $customARView.sfxVolume, isInGame: $isInGame)
                     }
                     .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                            AudioManager.shared.playBGM(filename: "BGM2", volume: bgmVolume)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                            AudioManager.shared.playBGM(filename: bgmLobbyFiles[selectedBGMIndex], volume: bgmVolume)
                         }
                     }
                 } else {
@@ -41,9 +47,10 @@ struct ContentView: View {
                         ARContentView(arView: customARView)
                             .edgesIgnoringSafeArea(.all)
                         
+                        // Item collected indicator
                         VStack {
                             Text("\(customARView.collectedItems.count)")
-                                .font(.system(size: 104))
+                                .font(Font.custom("Koulen-Regular", size: 104))
                             Spacer()
                         }
                         .padding(.top, 80)
@@ -82,7 +89,7 @@ struct ContentView: View {
                                                             .padding(8)
                                                         }
                                                         .background(
-                                                            Image("BrownTexture2")
+                                                            Image("BrownTexture")
                                                         )
                                                     }
                                                     .foregroundColor(.white.opacity(0.6))
@@ -94,13 +101,20 @@ struct ContentView: View {
                                                     .frame(width: 72, height: 72)
                                                     .opacity(0)
                                                     .overlay {
-                                                        VStack {
-                                                            Image(systemName: "person.crop.circle")
-                                                                .font(.system(size: 32))
-                                                            Text("Level \(customARView.level)")
-                                                                .font(.subheadline)
+                                                        ZStack {
+                                                            Image("Profile")
+                                                                .resizable()
+                                                                .frame(width: 64, height: 64)
+                                                            VStack {
+                                                                Spacer()
+                                                                Text(" \(customARView.level)")
+                                                                    .font(Font.custom("Koulen-Regular", size: 20))
+                                                                    .foregroundColor(.white)
+                                                                    .padding(.bottom,-6)
+                                                                    .padding(.trailing,4)
+                                                            }
                                                         }
-                                                        .foregroundColor(.black)
+                                                        
                                                         .padding(8)
                                                     }
                                                     .clipShape(RoundedRectangle(cornerRadius: 24))
@@ -139,7 +153,7 @@ struct ContentView: View {
                                                             .padding(8)
                                                         }
                                                         .background(
-                                                            Image("BrownTexture2")
+                                                            Image("BrownTexture")
                                                         )
                                                     }
                                                     .foregroundColor(.white.opacity(0.6))
@@ -152,8 +166,9 @@ struct ContentView: View {
                                                     .opacity(0)
                                                     .overlay {
                                                         VStack {
-                                                            Image(systemName: "list.bullet.clipboard")
-                                                                .font(.system(size: 40))
+                                                            Image("Journal")
+                                                                .resizable()
+                                                                .frame(width: 50, height: 40)
                                                         }
                                                         .foregroundColor(.black)
                                                     }
@@ -187,7 +202,7 @@ struct ContentView: View {
                                                             .padding(8)
                                                         }
                                                         .background(
-                                                            Image("BrownTexture2")
+                                                            Image("BrownTexture")
                                                         )
                                                     }
                                                     .foregroundColor(.white.opacity(0.6))
@@ -200,11 +215,15 @@ struct ContentView: View {
                                                     .opacity(0)
                                                     .overlay {
                                                         VStack {
-                                                            Image(systemName: "sparkle.magnifyingglass")
-                                                                .font(.system(size: 80))
-                                                            Text("Guess now!")
-                                                                .font(.system(size: 20))
+                                                            Image("GuessNow")
+                                                                .resizable()
+                                                                .frame(width: 65, height: 80)
+                                                                .padding(.bottom, -24)
+                                                            Text("Guess Now!")
+                                                                .font(Font.custom("Koulen-Regular", size: 24))
+                                                                .padding(.bottom, -8)
                                                         }
+                                                        .padding()
                                                         .foregroundColor(.black)
                                                     }
                                                     .clipShape(RoundedRectangle(cornerRadius: 24))
@@ -243,7 +262,7 @@ struct ContentView: View {
                                                             .padding(8)
                                                         }
                                                         .background(
-                                                            Image("BrownTexture2")
+                                                            Image("BrownTexture")
                                                         )
                                                     }
                                                     .foregroundColor(.white.opacity(0.6))
@@ -256,16 +275,10 @@ struct ContentView: View {
                                                     .opacity(0)
                                                     .overlay {
                                                         VStack {
-                                                            ZStack {
-                                                                Image(systemName: "gearshape")
-                                                                    .font(.system(size: 32))
-                                                                    .position(x: 30, y: 46)
-                                                                Image(systemName: "gearshape.2")
-                                                                    .font(.system(size: 32))
-                                                                    .position(x: 42, y: 26)
-                                                            }
+                                                            Image("Settings")
+                                                                .resizable()
+                                                                .frame(width: 52, height: 52)
                                                         }
-                                                        .foregroundColor(.black)
                                                     }
                                                     .clipShape(RoundedRectangle(cornerRadius: 24))
                                             }
@@ -297,7 +310,7 @@ struct ContentView: View {
                                                             .padding(8)
                                                         }
                                                         .background(
-                                                            Image("BrownTexture2")
+                                                            Image("BrownTexture")
                                                         )
                                                     }
                                                     .foregroundColor(.white.opacity(0.6))
@@ -311,11 +324,15 @@ struct ContentView: View {
                                                     .opacity(0)
                                                     .overlay {
                                                         VStack {
-                                                            Image(systemName: "bag")
-                                                                .font(.system(size: 80))
+                                                            Image("Inventory")
+                                                                .resizable()
+                                                                .frame(width: 93.5, height: 80)
+                                                                .padding(.bottom, -24)
                                                             Text("Item found")
-                                                                .font(.system(size: 20))
+                                                                .font(Font.custom("Koulen-Regular", size: 24))
+                                                                .padding(.bottom, -8)
                                                         }
+                                                        .padding()
                                                         .foregroundColor(.black)
                                                     }
                                                     .clipShape(RoundedRectangle(cornerRadius: 24))
@@ -353,7 +370,7 @@ struct ContentView: View {
                         }
                         
                         if showSettings {
-                            SettingView(customARView: customARView, showSettings: $showSettings, bgmVolume: $bgmVolume, sfxVolume: $customARView.sfxVolume)
+                            SettingView(customARView: customARView, showSettings: $showSettings, bgmVolume: $bgmVolume, sfxVolume: $customARView.sfxVolume, isInGame: $isInGame)
                                 .background(Color.white)
                                 .cornerRadius(24)
                                 .padding(UIScreen.main.bounds.width * 3 / 16)
@@ -377,7 +394,7 @@ struct ContentView: View {
                         }
                         
                         if showGameEnd {
-                            GameEndView(showMainMenu: $showMainMenu, showGameEnd: $showGameEnd, isCorrect: $isCorrect, customARView: customARView)
+                            GameEndView(showMainMenu: $showMainMenu, showGameEnd: $showGameEnd, isCorrect: $isCorrect, isInGame: $isInGame, customARView: customARView)
                                 .background(Color.white)
                                 .cornerRadius(24)
                                 .padding(80)
@@ -385,7 +402,7 @@ struct ContentView: View {
                         }
                     }
                     .onAppear {
-                        AudioManager.shared.playBGM(filename: "BGM", volume: bgmVolume)
+                        AudioManager.shared.playBGM(filename: bgmInGameFiles[selectedBGMIndex], volume: bgmVolume)
                     }
                 }
             }

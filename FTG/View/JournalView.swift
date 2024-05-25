@@ -112,7 +112,7 @@ struct JournalView: View {
         }
         .scaleEffect(0.9)
         .background(
-            Image("BrownTexture2")
+            Image("BrownTexture")
                 .resizable()
                 .frame(width: 1384, height: 1384)
         )

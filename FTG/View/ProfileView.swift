@@ -100,7 +100,7 @@ struct ProfileView: View {
         .padding(.vertical)
         .padding(.bottom, 32)
         .background(
-            Image("BrownTexture2")
+            Image("BrownTexture")
                 .resizable()
                 .frame(width: 1384, height: 1384)
         )

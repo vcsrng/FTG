@@ -39,7 +39,7 @@ struct ItemFoundAlertView: View {
                         .padding(.vertical)
                         .padding(.bottom, 8)
                         .background(
-                            Image("BrownTexture2")
+                            Image("BrownTexture")
                                 .resizable()
                                 .frame(width: 1384, height: 1384)
                         )

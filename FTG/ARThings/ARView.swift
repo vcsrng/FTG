@@ -58,7 +58,7 @@ class CustomARView: ARView, ObservableObject {
         setupFocusEntity()
         setupARView()
 
-        let configuration = selectConfiguration(caseNumber: Int.random(in: 1...3))
+        let configuration = selectConfiguration(caseNumber: Int.random(in: 1...9))
         applyConfiguration(configuration)
 
         answerList = generateAnswerList()
@@ -484,7 +484,6 @@ class CustomARView: ARView, ObservableObject {
     }
 
     func showGameEnd(correct: Bool) {
-        // Implement your logic to show the game end view
         print(correct ? "Correct Guess" : "Incorrect Guess")
         NotificationCenter.default.post(name: .gameEnded, object: nil, userInfo: ["correct": correct])
     }
