@@ -1,5 +1,5 @@
 {
-  "originHash" : "27e40ebb9147b316fa2a1c3896366509d4abf8eee5d8193c710501cb1857705e",
+  "originHash" : "f710aeab8329fe2e59dc357dac667b72e955248f110ccbfa33afea41df0607fe",
   "pins" : [
     {
       "identity" : "focusentity",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "5fa521172e447cbfa8c2fc1d6602d9d6bed202c7",
         "version" : "2.5.1"
+      }
+    },
+    {
+      "identity" : "swiftysegmentedpicker",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/KazaiMazai/SwiftySegmentedPicker.git",
+      "state" : {
+        "revision" : "c3c63962939c161aeef1bcef40ee97bd57eca943",
+        "version" : "0.0.2"
       }
     }
   ],

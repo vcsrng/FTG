@@ -8,154 +8,282 @@
 import SwiftUI
 
 struct GuessNowView: View {
-    @ObservedObject var inventory: Inventory
-    @Binding var showGuessNow: Bool
-    @Binding var sfxVolume: Float
-
-    @State private var selectedEvidence: Set<String> = []
+    @ObservedObject var customARView: CustomARView
+    @Environment(\.presentationMode) var presentationMode
     
-    var itemDescriptions: [String]
-    var answerKey: String
-    var answerList: [String: [String]] // Dictionary to hold answers and their corresponding evidence
-
+    @State private var selectedEvidence: Set<String> = []
+    @State private var possibleAnswers: [String] = []
+    @State private var selectedAnswer: String? = nil
+    @Binding var showGuessNow: Bool
+    @Binding var showGameEnd: Bool
+    @Binding var isCorrect: Bool
+    
+    private var allEvidence: [String] {
+        Array(Set(customARView.answerList.values.flatMap { $0 })).sorted()
+    }
+    
     var body: some View {
         VStack {
+            // Top Container
             ZStack {
                 Text("Guess Now")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                    .font(Font.custom("Koulen-Regular", size: 64))
                     .padding()
+                    .padding(.top)
                 HStack {
                     Spacer()
                     Button(action: {
                         withAnimation {
                             showGuessNow.toggle()
                         }
-                        AudioManager.shared.playSFX(filename: "ButtonClick", volume: sfxVolume)
+                        AudioManager.shared.playSFX(filename: "sfxClick", volume: customARView.sfxVolume)
                     }) {
-                        Image(systemName: "x.square.fill")
-                            .font(.system(size: 40))
+                        RoundedRectangle(cornerRadius: 10)
+                            .frame(width: 40, height: 40)
                             .foregroundColor(.red)
-                            .padding()
+                            .overlay{
+                                ZStack{
+                                    VStack{
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .foregroundColor(.white.opacity(0.2))
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .opacity(0)
+                                    }
+                                    .padding(4)
+                                    Image("CloseIcon")
+                                        .resizable()
+                                        .frame(width: 24, height: 24)
+                                        .shadow(radius: 4)
+                                    
+                                }
+                            }
+                            .padding(.trailing, 24)
                     }
                     .padding()
                 }
             }
-
-            ScrollView {
-                Text("Collected Items")
-                    .font(.title2)
-                    .padding(.top)
-
-                ForEach(inventory.items, id: \.id) { item in
-                    HStack {
-                        if let thumbnail = item.thumbnail {
-                            Image(uiImage: thumbnail)
-                                .resizable()
-                                .frame(width: 80, height: 80)
-                                .padding()
-                        } else {
-                            Image(systemName: "cube.box.fill")
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                                .padding()
-                        }
-
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.headline)
-                            Text(item.modelURL.absoluteString)
-                                .font(.subheadline)
-                                .foregroundColor(.gray)
-                        }
-
-                        Spacer()
-                    }
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(10)
-                    .shadow(radius: 5)
-                    .padding([.leading, .trailing, .top])
-                }
-
-                Text("Select Evidence")
-                    .font(.title2)
-                    .padding(.top)
-
-                ForEach(itemDescriptions, id: \.self) { description in
-                    Button(action: {
-                        if selectedEvidence.contains(description) {
-                            selectedEvidence.remove(description)
-                        } else {
-                            selectedEvidence.insert(description)
-                        }
-                        AudioManager.shared.playSFX(filename: "ButtonClick", volume: sfxVolume)
-                    }) {
-                        HStack {
-                            Text(description)
-                                .padding()
-                            Spacer()
-                            if selectedEvidence.contains(description) {
-                                Image(systemName: "checkmark.circle.fill")
-                                    .foregroundColor(.green)
-                                    .padding()
+            
+            HStack {
+                VStack {
+                    Text("Collected Items")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .padding(.vertical, 16)
+                        .padding(.top, 16)
+                    Divider()
+                        .frame(minHeight: 4)
+                        .background(Color.black)
+                        .padding(.leading, 32)
+                        .padding(.trailing, -8)
+                    ScrollView(showsIndicators: false) {
+                        VStack {
+                            ForEach(customARView.inventory.items, id: \.id) { item in
+                                HStack {
+                                    if let thumbnail = item.thumbnail {
+                                        Image(uiImage: thumbnail)
+                                            .resizable()
+                                            .frame(width: 80, height: 80)
+                                            .padding()
+                                    } else {
+                                        Image(systemName: "cube.box.fill")
+                                            .resizable()
+                                            .frame(width: 80, height: 80)
+                                            .padding()
+                                    }
+                                    
+                                    VStack(alignment: .leading) {
+                                        Text(item.name)
+                                            .font(.headline)
+                                        Text(item.description)
+                                            .font(.subheadline)
+                                            .foregroundColor(.black.opacity(0.8))
+                                    }
+                                    .padding(.vertical)
+                                    Spacer()
+                                }
+                                .background(Color.white.opacity(0.2))
+                                .cornerRadius(10)
                             }
                         }
-                        .background(selectedEvidence.contains(description) ? Color.blue.opacity(0.3) : Color.blue.opacity(0.1))
-                        .cornerRadius(10)
-                        .padding(.horizontal)
-                        .padding(.top, 2)
+                        .padding(.leading, 32)
                     }
                 }
                 
-                Text("Possible Answers")
-                    .font(.title2)
-                    .padding(.top)
+                Divider()
+                    .frame(minWidth: 4)
+                    .background(Color.black)
                 
-                ForEach(filteredAnswers(), id: \.self) { answer in
-                    HStack {
-                        Text(answer)
-                            .padding()
-                        Spacer()
+                VStack(alignment: .center) {
+                    Text("Select Evidence")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .padding(.vertical, 16)
+                        .padding(.top, 16)
+                    Divider()
+                        .frame(minHeight: 4)
+                        .background(Color.black)
+                        .padding(.horizontal, -8)
+                    ScrollView(showsIndicators: false) {
+                        ForEach(allEvidence, id: \.self) { evidence in
+                            RoundedRectangle(cornerRadius: 10)
+                                .frame(height: 48)
+                                .foregroundColor(Color.white.opacity(0.2))
+                                .overlay{
+                                    EvidenceRow(customARView: customARView, evidence: evidence, isSelected: selectedEvidence.contains(evidence)) {
+                                        toggleEvidenceSelection(evidence)
+                                    }
+                                    .font(.body)
+                                    .padding()
+                                    .foregroundColor(.black)
+                                }
+                        }
                     }
-                    .background(Color.green.opacity(0.1))
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                    .padding(.top, 2)
+                }
+                
+                Divider()
+                    .frame(minWidth: 4)
+                    .background(Color.black)
+                
+                VStack(alignment: .center) {
+                    Text("Possible Answers")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .padding(.vertical, 16)
+                        .padding(.top, 16)
+                    Divider()
+                        .frame(minHeight: 4)
+                        .background(Color.black)
+                        .padding(.trailing, 32)
+                        .padding(.leading, -8)
+                    ScrollView(showsIndicators: false) {
+                        ForEach(possibleAnswers, id: \.self) { answer in
+                            Button(action: {
+                                selectedAnswer = answer
+                                AudioManager.shared.playSFX(filename: "sfxClick3", volume: customARView.sfxVolume)
+                            }) {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .frame(height: 48)
+                                    .foregroundColor(selectedAnswer == answer ? Color.green.opacity(0.4) : Color.white.opacity(0.2))
+                                    .overlay{
+                                        Text(answer)
+                                            .font(.body)
+                                            .padding()
+                                            .foregroundColor(.black)
+                                    }
+                            }
+                        }
+                        .padding(.trailing, 32)
+                    }
+                    .frame(maxHeight: UIScreen.main.bounds.height * 2 / 3)
                 }
             }
-            .padding(.horizontal, 24)
-
-            Spacer()
-
+            .padding()
+            
             Button(action: {
-                // Add the logic to handle the final guess here
-                withAnimation {
-                    showGuessNow.toggle()
-                }
-                AudioManager.shared.playSFX(filename: "ButtonClick", volume: sfxVolume)
+                submitGuess()
+                AudioManager.shared.playSFX(filename: "sfxClick", volume: customARView.sfxVolume)
             }) {
-                Text("Submit Guess")
-                    .font(.title2)
-                    .bold()
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.green)
-                    .cornerRadius(10)
-                    .padding(.bottom, 20)
+                RoundedRectangle(cornerRadius: 24)
+                    .frame(width: UIScreen.main.bounds.width / 6, height: UIScreen.main.bounds.height / 24)
+                    .overlay{
+                        ZStack {
+                            VStack {
+                                RoundedRectangle(cornerRadius: 16)
+                                    .foregroundColor(.white.opacity(0.2))
+                                RoundedRectangle(cornerRadius: 24)
+                                    .opacity(0)
+                            }
+                            .padding(8)
+                            
+                            Text("Submit Guess")
+                                .font(.title2)
+                                .padding()
+                                .foregroundColor(.white)
+                        }
+                        .background(.blue)
+                        .clipShape(RoundedRectangle(cornerRadius: 24))
+                    }
             }
+            .padding(.bottom, 24)
+            .padding()
+        }
+        .background(
+            Image("BrownTexture")
+                .resizable()
+                .frame(width: 1384, height: 1384)
+        )
+        .onAppear(perform: updatePossibleAnswers)
+    }
+    
+    private func toggleEvidenceSelection(_ evidence: String) {
+        if selectedEvidence.contains(evidence) {
+            selectedEvidence.remove(evidence)
+        } else {
+            selectedEvidence.insert(evidence)
+        }
+        updatePossibleAnswers()
+    }
+    
+    private func updatePossibleAnswers() {
+        possibleAnswers = customARView.answerList.filter { answer, evidences in
+            selectedEvidence.isSubset(of: evidences)
+        }.map { $0.key }.sorted()
+        
+        if possibleAnswers.count == 1 {
+            selectedAnswer = possibleAnswers.first
+        } else {
+            selectedAnswer = nil
         }
     }
     
-    private func filteredAnswers() -> [String] {
-        return answerList.filter { answer, evidences in
-            Set(evidences).isSubset(of: selectedEvidence)
-        }.map { $0.key }
+    private func submitGuess() {
+        guard let selectedAnswer = selectedAnswer else { return }
+        customARView.handleGuess(guess: selectedAnswer)
+        
+        isCorrect = customARView.isGuessCorrect
+        showGuessNow = false
+        showGameEnd = true
     }
 }
 
-struct GuessNowView_Previews: PreviewProvider {
-    static var previews: some View {
-        GuessNowView(inventory: Inventory(), showGuessNow: .constant(true), sfxVolume: .constant(0.5), itemDescriptions: ["Evidence 1", "Evidence 2", "Evidence 3"], answerKey: "Coach", answerList: ["Answer 1": ["Evidence 1", "Evidence 2"], "Answer 2": ["Evidence 2", "Evidence 3"]])
+struct EvidenceRow: View {
+    @ObservedObject var customARView: CustomARView
+    let evidence: String
+    let isSelected: Bool
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: {
+            action()
+            AudioManager.shared.playSFX(filename: "sfxClick3", volume: customARView.sfxVolume)
+        }) {
+            HStack {
+                Text(evidence)
+                Spacer()
+                if isSelected {
+                    ZStack {
+                        Circle()
+                            .frame(width: 16, height: 16)
+                            .foregroundColor(Color.white)
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.title3)
+                            .foregroundColor(.green)
+                        Image(systemName: "circle")
+                            .font(.title3)
+                            .foregroundColor(.black.opacity(0.6))
+                    }
+                } else {
+                    Image(systemName: "circle")
+                        .font(.title3)
+                        .foregroundColor(.black)
+                }
+            }
+            .padding()
+            .cornerRadius(8)
+        }
     }
+}
+
+#Preview {
+    GuessNowView(customARView: CustomARView(frame: .zero), showGuessNow: .constant(true), showGameEnd: .constant(false), isCorrect: .constant(true))
 }

@@ -16,27 +16,43 @@ struct InventoryView: View {
         VStack {
             ZStack {
                 Text("Found Items")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                    .font(Font.custom("Koulen-Regular", size: 64))
                     .padding()
+                    .padding(.top)
                 HStack {
                     Spacer()
                     Button(action: {
                         withAnimation {
                             showInventory.toggle()
                         }
-                        AudioManager.shared.playSFX(filename: "ButtonClick", volume: sfxVolume)
+                        AudioManager.shared.playSFX(filename: "sfxClick", volume: sfxVolume)
                     }) {
-                        Image(systemName: "x.square.fill")
-                            .font(.system(size: 40))
+                        RoundedRectangle(cornerRadius: 10)
+                            .frame(width: 40, height: 40)
                             .foregroundColor(.red)
-                            .padding()
+                            .overlay{
+                                ZStack{
+                                    VStack{
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .foregroundColor(.white.opacity(0.2))
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .opacity(0)
+                                    }
+                                    .padding(4)
+                                    Image("CloseIcon")
+                                        .resizable()
+                                        .frame(width: 24, height: 24)
+                                        .shadow(radius: 4)
+                                    
+                                }
+                            }
+                            .padding(.trailing, 24)
                     }
                     .padding()
                 }
             }
             
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 ForEach(inventory.items, id: \.id) { item in
                     HStack {
                         if let thumbnail = item.thumbnail {
@@ -54,21 +70,26 @@ struct InventoryView: View {
                         VStack(alignment: .leading) {
                             Text(item.name)
                                 .font(.headline)
-                            Text(item.modelURL.absoluteString)
+                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            Text(item.description)
                                 .font(.subheadline)
-                                .foregroundColor(.gray)
+                                .foregroundColor(.black.opacity(0.8))
                         }
 
                         Spacer()
                     }
                     .padding()
-                    .background(Color.gray.opacity(0.1))
+                    .background(Color.white.opacity(0.2))
                     .cornerRadius(10)
-                    .shadow(radius: 5)
-                    .padding([.leading, .trailing, .top])
+                    .padding([.horizontal, .top])
                 }
             }
             .padding(.horizontal, 24)
         }
+        .background(
+            Image("BrownTexture")
+                .resizable()
+                .frame(width: 1384, height: 1384)
+        )
     }
 }

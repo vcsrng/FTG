@@ -8,93 +8,338 @@
 import SwiftUI
 
 struct JournalView: View {
-    @ObservedObject var inventory: Inventory
-    let answerKey: String
+    @ObservedObject var customARView: CustomARView
     @Binding var showJournal: Bool
-    @Binding var sfxVolume: Float
+    @State private var selectedPage: Int = 0
+    @State private var selectedAnswer: String? = nil
+
+    let pages: [JournalSegment] = [.overview, .evidence, .answers]
+
+    enum JournalSegment: String, CaseIterable, Identifiable {
+        case overview = "Overview"
+        case evidence = "Evidence"
+        case answers = "Answers"
+
+        var id: String { self.rawValue }
+    }
 
     var body: some View {
         VStack {
+            // Top container
             ZStack {
-                Text("Journal")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                Text("Game Guide")
+                    .font(Font.custom("Koulen-Regular", size: 64))
                     .padding()
+                    .padding(.top)
                 HStack {
                     Spacer()
                     Button(action: {
                         withAnimation {
                             showJournal.toggle()
                         }
-                        AudioManager.shared.playSFX(filename: "ButtonClick", volume: sfxVolume)
+                        AudioManager.shared.playSFX(filename: "sfxClick", volume: customARView.sfxVolume)
                     }) {
-                        Image(systemName: "x.square.fill")
-                            .font(.system(size: 40))
+                        RoundedRectangle(cornerRadius: 10)
+                            .frame(width: 40, height: 40)
                             .foregroundColor(.red)
-                            .padding()
+                            .overlay{
+                                ZStack{
+                                    VStack{
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .foregroundColor(.white.opacity(0.2))
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .opacity(0)
+                                    }
+                                    .padding(4)
+                                    Image("CloseIcon")
+                                        .resizable()
+                                        .frame(width: 24, height: 24)
+                                        .shadow(radius: 4)
+                                    
+                                }
+                            }
+                            .padding(.trailing, 24)
                     }
                     .padding()
                 }
             }
 
-            ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
-                    // Game Overview
-                    Text("Game Overview")
-                        .font(.headline)
-                    Text("In this game, you need to find and collect items scattered in the AR environment. Use the clues from the items to determine the answer key.")
-                        .padding(.bottom)
+            // Custom Bookmark Picker
+            HStack {
+                ForEach(pages.indices, id: \.self) { index in
+                    BookmarkTab(isSelected: selectedPage == index, text: pages[index].rawValue)
+                        .onTapGesture {
+                            withAnimation {
+                                selectedPage = index
+                            }
+                            AudioManager.shared.playSFX(filename: "sfxBookmarkChange", volume: customARView.sfxVolume)
+                        }
+                }
+            }
+            .padding(.horizontal, 44)
 
-                    // Item Evidence List
-                    Text("Item Evidence List")
-                        .font(.headline)
-                    ForEach(inventory.items, id: \.id) { item in
+            // Page View
+            TabView(selection: $selectedPage) {
+                ForEach(pages.indices, id: \.self) { index in
+                    pageView(for: pages[index])
+                        .tag(index)
+                        .padding()
+                }
+            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)) // Hide built-in tabview indicator
+            .background(Color.white.opacity(0.2))
+            .clipShape(.rect(bottomLeadingRadius: 24, bottomTrailingRadius: 24))
+            .padding(.horizontal, 40)
+            .onChange(of: selectedPage) {
+                AudioManager.shared.playSFX(filename: "sfxBookmarkChange", volume: customARView.sfxVolume)
+            }
+
+            // Custom Page Control
+            HStack {
+                ForEach(pages.indices, id: \.self) { index in
+                    Circle()
+                        .frame(width: 10, height: 10)
+                        .foregroundColor(selectedPage == index ? .black : .gray)
+                        .onTapGesture {
+                            withAnimation {
+                                selectedPage = index
+                            }
+                            AudioManager.shared.playSFX(filename: "sfxBookmarkChange", volume: customARView.sfxVolume)
+                        }
+                }
+            }
+            .padding()
+        }
+        .scaleEffect(0.9)
+        .background(
+            Image("BrownTexture")
+                .resizable()
+                .frame(width: 1384, height: 1384)
+        )
+    }
+
+    @ViewBuilder
+    private func pageView(for segment: JournalSegment) -> some View {
+        switch segment {
+        case .overview:
+            overviewView()
+        case .evidence:
+            evidenceView()
+        case .answers:
+            answersView()
+        }
+    }
+
+    private func overviewView() -> some View {
+        VStack {
+            VStack(alignment:.leading){
+                Text("How to Play")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.vertical, 16)
+                    .padding(.top, 16)
+                Divider()
+                    .frame(minHeight: 4)
+                    .background(Color.black)
+                ForEach(1...4, id: \.self) { index in
+                    HStack {
+                        Circle()
+                            .frame(width: 32)
+                            .foregroundColor(Color.black)
+                            .overlay {
+                                Text("\(index)")
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                                }
+                        Text(overviewText(for: index))
+                            .font(.title2)
+                            .padding(.leading, 8)
+                    }
+                }
+                .padding(.top, 16)
+            }
+            .padding(.horizontal, 32)
+            Spacer()
+        }
+    }
+
+    private func evidenceView() -> some View {
+        VStack(alignment: .leading){
+            Text("Found Item List")
+                .font(.title)
+                .fontWeight(.bold)
+                .padding(.vertical, 16)
+                .padding(.top, 16)
+            Divider()
+                .frame(minHeight: 4)
+                .background(Color.black)
+            ScrollView(showsIndicators: false) {
+                VStack {
+                    ForEach(customARView.inventory.items, id: \.id) { item in
                         HStack {
                             if let thumbnail = item.thumbnail {
                                 Image(uiImage: thumbnail)
                                     .resizable()
-                                    .frame(width: 50, height: 50)
+                                    .frame(width: 80, height: 80)
                                     .padding()
                             } else {
                                 Image(systemName: "cube.box.fill")
                                     .resizable()
-                                    .frame(width: 50, height: 50)
+                                    .frame(width: 80, height: 80)
                                     .padding()
                             }
+                            
                             VStack(alignment: .leading) {
                                 Text(item.name)
                                     .font(.headline)
-                                Text(item.modelURL.absoluteString)
+                                    .fontWeight(.bold)
+                                Text(item.description)
                                     .font(.subheadline)
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(.black.opacity(0.8))
                             }
                             Spacer()
                         }
-                        .padding()
-                        .background(Color.gray.opacity(0.1))
+                        .background(Color.white.opacity(0.2))
                         .cornerRadius(10)
-                        .shadow(radius: 5)
-                    }
-
-                    // Answer Key Section
-                    Text("Answer Key")
-                        .font(.headline)
                         .padding(.top)
-                    Text("Based on the collected items, the answer key is: \(answerKey)")
-                        .padding()
-                        .background(Color.yellow.opacity(0.3))
-                        .cornerRadius(10)
-                        .shadow(radius: 5)
+                    }
                 }
-                .padding(.horizontal, 24)
+            }
+        }.padding(.horizontal, 32)
+    }
+
+    private func answersView() -> some View {
+        GeometryReader { geometry in
+            HStack{
+                //Kiri
+                VStack{
+                    Text("Answer List")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(.vertical, 16)
+                        .padding(.top, 16)
+                    Divider()
+                        .frame(minHeight: 4)
+                        .background(Color.black)
+                        .padding(.leading, 32)
+                        .padding(.trailing, -8)
+                    ScrollView(showsIndicators: false) {
+                        ForEach(Array(customARView.answerList.keys), id: \.self) { answer in
+                            Button(action: {
+                                selectedAnswer = answer
+                                AudioManager.shared.playSFX(filename: "sfxMarkerCircle", volume: customARView.sfxVolume)
+                            }) {
+                                Image("EllipseMarker")
+                                    .resizable()
+                                    .frame(width: 160, height: 80)
+                                    .opacity(selectedAnswer == answer ? 1 : 0)
+                                    .overlay{
+                                        Text(answer)
+                                            .font(.headline)
+                                            .foregroundColor(Color.black)
+                                            .padding(.top)
+                                    }
+                            }
+                            .padding(.top)
+                        }
+                    }
+                }
+                
+                // Batas
+                Spacer()
+                Divider()
+                    .frame(minWidth: 4)
+                    .background(Color.black)
+                Spacer()
+                
+                //Kanan
+                VStack{
+                    Text("Evidence List")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(.vertical, 16)
+                        .padding(.top, 16)
+                    Divider()
+                        .frame(minHeight: 4)
+                        .background(Color.black)
+                        .padding(.trailing, 32)
+                        .padding(.leading, -8)
+                    Spacer()
+                    if let selectedAnswer = selectedAnswer {
+                        ScrollView(showsIndicators: false) {
+                            ForEach(customARView.answerList[selectedAnswer] ?? [], id: \.self) { evidence in
+                                RoundedRectangle(cornerRadius: 10)
+                                    .strokeBorder()
+                                    .foregroundColor(.black)
+                                    .background(Color.white.opacity(0.2))
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .frame(width: geometry.size.width / 3 - 120, height: 50)
+                                    .overlay {
+                                        Text(evidence)
+                                            .font(.headline)
+                                            .padding()
+                                    }
+                                    .padding(.top)
+                            }
+                        }
+                    } else {
+                        VStack(alignment: .center){
+                            Text("Select an answer to see the evidence.")
+                                .font(.headline)
+                                .foregroundColor(.black.opacity(0.8))
+                        }
+                    }
+                    Spacer()
+                }
             }
         }
-        .padding(.top, 40)
+    }
+    
+    private func overviewText(for index: Int) -> String {
+        switch index {
+        case 1:
+            return "Explore the area and collect items."
+        case 2:
+            return "Select evidence from the collected items and possible answers."
+        case 3:
+            return "Make your guess based on the selected evidence."
+        case 4:
+            return "Submit your guess and see if you're correct!"
+        default:
+            return ""
+        }
     }
 }
 
-struct JournalView_Previews: PreviewProvider {
-    static var previews: some View {
-        JournalView(inventory: Inventory(), answerKey: "Sample Answer Key", showJournal: .constant(true), sfxVolume: .constant(1.0))
+// Custom BookmarkTab View
+struct BookmarkTab: View {
+    var isSelected: Bool
+    var text: String
+
+    var body: some View {
+        VStack(alignment: .leading){
+            Rectangle()
+                .clipShape(.rect(topLeadingRadius: 24, topTrailingRadius: 24))
+                .foregroundColor(isSelected ? .white.opacity(0.2) : .gray.opacity(0.2))
+                .frame(width: (UIScreen.main.bounds.width-80)/3, height: 80)
+                .overlay {
+                    Text(text)
+                        .font(.title)
+                        .fontWeight(.bold)
+                    }
+                .padding(.horizontal, -4)
+                .padding(.bottom, -8)
+            Rectangle()
+                .fill(isSelected ? Color.white.opacity(0.2) : Color.black)
+                .frame(width: (UIScreen.main.bounds.width-80)/3,height: 4)
+                .padding(.horizontal, -4)
+                .padding(.bottom, -8)
+        }
+        .padding(.bottom,-4)
     }
+}
+
+#Preview {
+    JournalView(customARView: CustomARView(frame: .zero), showJournal: .constant(true))
 }
