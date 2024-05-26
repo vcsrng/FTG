@@ -87,6 +87,7 @@ struct SettingView: View {
             .padding(.bottom)
 
             Button(action: {
+                AudioManager.shared.playSFX(filename: "sfxClick", volume: sfxVolume)
                 if isInGame {
                     selectedBGMIndex = (selectedBGMIndex + 1) % bgmInGameFiles.count
                     AudioManager.shared.playBGM(filename: bgmInGameFiles[selectedBGMIndex], volume: bgmVolume)
@@ -94,7 +95,6 @@ struct SettingView: View {
                     selectedBGMIndex = (selectedBGMIndex + 1) % bgmLobbyFiles.count
                     AudioManager.shared.playBGM(filename: bgmLobbyFiles[selectedBGMIndex], volume: bgmVolume)
                 }
-                AudioManager.shared.playSFX(filename: "sfxClick", volume: sfxVolume)
             }) {
                 RoundedRectangle(cornerRadius: 24)
                     .frame(width: UIScreen.main.bounds.width / 6, height: UIScreen.main.bounds.height / 16)
