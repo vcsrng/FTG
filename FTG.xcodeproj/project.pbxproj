@@ -53,7 +53,6 @@
 		BF4C8E632BFF919F0039467F /* iPhone.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E612BFF919F0039467F /* iPhone.usdz */; };
 		BF4C8E642BFF919F0039467F /* iPhone.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E612BFF919F0039467F /* iPhone.usdz */; };
 		BF4C8E8D2BFFA07E0039467F /* Lanyard.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8E8C2BFFA07E0039467F /* Lanyard.usdz */; };
-		BF4C8E912BFFA3BE0039467F /* SegmentedPicker in Frameworks */ = {isa = PBXBuildFile; productRef = BF4C8E902BFFA3BE0039467F /* SegmentedPicker */; };
 		BF4C8E992BFFAB330039467F /* ItemFoundAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C8E982BFFAB330039467F /* ItemFoundAlertView.swift */; };
 		BF4C8E9D2C0061300039467F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C8E9C2C0061300039467F /* ProfileView.swift */; };
 		BF4C8E9F2C0068450039467F /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C8E9E2C0068450039467F /* ProgressBar.swift */; };
@@ -71,6 +70,8 @@
 		BF4C8ECF2C01EE520039467F /* sfxClick2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8ECC2C01EE510039467F /* sfxClick2.mp3 */; };
 		BF4C8ED02C01EE520039467F /* sfxClick3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8ECD2C01EE510039467F /* sfxClick3.mp3 */; };
 		BF4C8ED12C01EE520039467F /* sfxClick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF4C8ECE2C01EE510039467F /* sfxClick.mp3 */; };
+		BF4C8EDA2C0307A90039467F /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = BF4C8ED92C0307A90039467F /* FocusEntity */; };
+		BF4C8EDD2C0307B20039467F /* SegmentedPicker in Frameworks */ = {isa = PBXBuildFile; productRef = BF4C8EDC2C0307B20039467F /* SegmentedPicker */; };
 		BF76F0A62BF4F57100F512F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F0A52BF4F57100F512F3 /* AppDelegate.swift */; };
 		BF76F0AA2BF4F57200F512F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0A92BF4F57200F512F3 /* Assets.xcassets */; };
 		BF76F0AD2BF4F57200F512F3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF76F0AC2BF4F57200F512F3 /* Preview Assets.xcassets */; };
@@ -83,7 +84,6 @@
 		BF76F16F2BF656CF00F512F3 /* InventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F16E2BF656CF00F512F3 /* InventoryView.swift */; };
 		BF76F1712BF6575300F512F3 /* InventoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1702BF6575300F512F3 /* InventoryItem.swift */; };
 		BF76F1732BF657B800F512F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1722BF657B800F512F3 /* ContentView.swift */; };
-		BF76F1B82BF7052C00F512F3 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = BF76F1B72BF7052C00F512F3 /* FocusEntity */; };
 		BF76F1BA2BF8C62700F512F3 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1B92BF8C62700F512F3 /* SettingView.swift */; };
 		BF76F1BE2BF8D35F00F512F3 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76F1BD2BF8D35F00F512F3 /* AudioManager.swift */; };
 		BF76F1C12BF8D50D00F512F3 /* bgmInGame.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF76F1C02BF8D50D00F512F3 /* bgmInGame.mp3 */; };
@@ -179,8 +179,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF76F1B82BF7052C00F512F3 /* FocusEntity in Frameworks */,
-				BF4C8E912BFFA3BE0039467F /* SegmentedPicker in Frameworks */,
+				BF4C8EDA2C0307A90039467F /* FocusEntity in Frameworks */,
+				BF4C8EDD2C0307B20039467F /* SegmentedPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,8 +234,6 @@
 			children = (
 				BF76F0A52BF4F57100F512F3 /* AppDelegate.swift */,
 				BF4C8E1E2BFE23B10039467F /* Font */,
-				BF76F1BF2BF8D4EA00F512F3 /* BGM */,
-				BF76F1772BF65C0700F512F3 /* Model */,
 				BF76F1C42BF8D7C000F512F3 /* Audio */,
 				BF76F1742BF65BAE00F512F3 /* ARThings */,
 				BF76F1762BF65BF900F512F3 /* View */,
@@ -274,6 +272,7 @@
 		BF76F1742BF65BAE00F512F3 /* ARThings */ = {
 			isa = PBXGroup;
 			children = (
+				BF76F1772BF65C0700F512F3 /* Model */,
 				BF76F1642BF61FAC00F512F3 /* ARView.swift */,
 				BF76F1622BF61F9000F512F3 /* ARContentView.swift */,
 			);
@@ -330,7 +329,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		BF76F1BF2BF8D4EA00F512F3 /* BGM */ = {
+		BF76F1BF2BF8D4EA00F512F3 /* AudioAssets */ = {
 			isa = PBXGroup;
 			children = (
 				BF76F1C02BF8D50D00F512F3 /* bgmInGame.mp3 */,
@@ -350,12 +349,13 @@
 				BF4C8EA52C010CD00039467F /* sfxGuessCorrect.mp3 */,
 				BF4C8EAA2C0119B50039467F /* sfxGuessIncorrect.mp3 */,
 			);
-			path = BGM;
+			path = AudioAssets;
 			sourceTree = "<group>";
 		};
 		BF76F1C42BF8D7C000F512F3 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				BF76F1BF2BF8D4EA00F512F3 /* AudioAssets */,
 				BF76F1BD2BF8D35F00F512F3 /* AudioManager.swift */,
 			);
 			path = Audio;
@@ -378,8 +378,8 @@
 			);
 			name = FTG;
 			packageProductDependencies = (
-				BF76F1B72BF7052C00F512F3 /* FocusEntity */,
-				BF4C8E902BFFA3BE0039467F /* SegmentedPicker */,
+				BF4C8ED92C0307A90039467F /* FocusEntity */,
+				BF4C8EDC2C0307B20039467F /* SegmentedPicker */,
 			);
 			productName = FTG;
 			productReference = BF76F0A22BF4F57100F512F3 /* FTG.app */;
@@ -454,8 +454,8 @@
 			);
 			mainGroup = BF76F0992BF4F57100F512F3;
 			packageReferences = (
-				BF76F1B62BF7052C00F512F3 /* XCRemoteSwiftPackageReference "FocusEntity" */,
-				BF4C8E8F2BFFA3BE0039467F /* XCRemoteSwiftPackageReference "SwiftySegmentedPicker" */,
+				BF4C8ED82C0307A90039467F /* XCRemoteSwiftPackageReference "FocusEntity" */,
+				BF4C8EDB2C0307B20039467F /* XCRemoteSwiftPackageReference "SwiftySegmentedPicker" */,
 			);
 			productRefGroup = BF76F0A32BF4F57100F512F3 /* Products */;
 			projectDirPath = "";
@@ -924,15 +924,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BF4C8E8F2BFFA3BE0039467F /* XCRemoteSwiftPackageReference "SwiftySegmentedPicker" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/KazaiMazai/SwiftySegmentedPicker.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.2;
-			};
-		};
-		BF76F1B62BF7052C00F512F3 /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
+		BF4C8ED82C0307A90039467F /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/maxxfrazer/FocusEntity";
 			requirement = {
@@ -940,18 +932,26 @@
 				minimumVersion = 2.5.1;
 			};
 		};
+		BF4C8EDB2C0307B20039467F /* XCRemoteSwiftPackageReference "SwiftySegmentedPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/KazaiMazai/SwiftySegmentedPicker.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BF4C8E902BFFA3BE0039467F /* SegmentedPicker */ = {
+		BF4C8ED92C0307A90039467F /* FocusEntity */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BF4C8E8F2BFFA3BE0039467F /* XCRemoteSwiftPackageReference "SwiftySegmentedPicker" */;
-			productName = SegmentedPicker;
-		};
-		BF76F1B72BF7052C00F512F3 /* FocusEntity */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF76F1B62BF7052C00F512F3 /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			package = BF4C8ED82C0307A90039467F /* XCRemoteSwiftPackageReference "FocusEntity" */;
 			productName = FocusEntity;
+		};
+		BF4C8EDC2C0307B20039467F /* SegmentedPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF4C8EDB2C0307B20039467F /* XCRemoteSwiftPackageReference "SwiftySegmentedPicker" */;
+			productName = SegmentedPicker;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
